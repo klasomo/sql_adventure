@@ -24,28 +24,41 @@
 
 <body>
     <main>
+        <div class="flex flex-col justify-between" style="height: 100vh;">
+            <div class="flex justify-center">
+                <div class="flex flex-col w-2/3 ">
+                    <div class="flex items-center justify-center mt-40">
+                        <div class="bg-neutral rounded-box w-full h-[300px] overflow-x-auto" id="output">
+                            <!-- Table content -->
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex items-center justify-center mb-5">
+                        <div class="p-2 bg-neutral rounded-box w-full inline-flex justify-between">
+                            <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
+                            <button id="execute" class=" btn h-px h-30 ml-10">Run</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button id="savedb" class="btn">Save the db</button>
+                <button id="opendb" class="btn">Open Database</button>
+                <label class="btn">Load an SQLite database file: <input type="file" id="dbfile"/></label>
+                <div id="error" class="error"></div>
+            </div>
 
-        <div class="flex flex-col w-full">
-            <div class="flex items-center justify-center mt-40">
-                <div class="bg-neutral rounded-box w-1/2 h-[300px]">
-                    <!-- Table content -->
+            <div class="flex justify-center pb-10">
+                <div class=" w-1/4 navbar bg-neutral rounded-box">
+                    <!-- Navbar content goes here -->
                 </div>
             </div>
-            <div class="divider"></div>
-            <div class="flex items-center justify-center mb-5">
-                <div class="p-6 bg-neutral rounded-box w-1/2 inline-flex justify-between">
-                    <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
-                    <button id="execute" class=" btn h-px h-30 ml-10">Run</button>
-                </div>
-            </div>
+
         </div>
 
 
-        <button id="savedb" class="btn">Save the db</button>
-        <button id="opendb" class="btn">Open Database</button>
-        <label class="btn">Load an SQLite database file: <input type="file" id="dbfile"
-      /></label>
-        <div id="error" class="error"></div>
+
+
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>
 

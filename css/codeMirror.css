@@ -132,3 +132,7 @@
 .CodeMirror-line span[role="presentation"] {
     padding-left: 10px;
 }
+
+.CodeMirror-vscrollbar {
+    visibility: hidden;
+}

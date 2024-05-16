@@ -24,17 +24,22 @@
 
 <body>
     <main>
-        <div class="flex items-center justify-center my-5">
-            <div class="bg-neutral rounded-box w-1/2 h-[300px]">
-                <!-- Table content -->
+
+        <div class="flex flex-col w-full">
+            <div class="flex items-center justify-center mt-40">
+                <div class="bg-neutral rounded-box w-1/2 h-[300px]">
+                    <!-- Table content -->
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="flex items-center justify-center mb-5">
+                <div class="p-6 bg-neutral rounded-box w-1/2 inline-flex justify-between">
+                    <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
+                    <button id="execute" class=" btn h-px h-30 ml-10">Run</button>
+                </div>
             </div>
         </div>
-        <div class="flex items-center justify-center my-5">
-            <div class="p-6 bg-neutral rounded-box w-1/2 inline-flex justify-between">
-                <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
-                <button id="execute" class=" btn h-px h-30 ml-10">Run</button>
-            </div>
-        </div>
+
 
         <button id="savedb" class="btn">Save the db</button>
         <button id="opendb" class="btn">Open Database</button>

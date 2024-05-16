@@ -44,6 +44,7 @@
 }
 
 .cm-s-3024-night .CodeMirror-linenumber {
+    width: auto;
     color: #5c5855;
 }
 
@@ -119,15 +120,15 @@
     font-size: 20px;
 }
 
-.CodeMirror-lines {
-    padding-left: 1rem;
-}
-
-.CodeMirror-linenumber {
-    left: -1rem !important;
-}
-
 .CodeMirror-sizer {
     height: 48px;
     margin-top: 5px;
+}
+
+.CodeMirror-line {
+    margin-left: 20px;
+}
+
+.CodeMirror-line span[role="presentation"] {
+    padding-left: 10px;
 }

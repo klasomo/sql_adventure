@@ -26,16 +26,16 @@
     <main>
         <div class="flex items-center justify-center my-5">
             <div class="bg-neutral rounded-box w-1/2 h-[300px]">
-                Hello World
+                <!-- Table content -->
             </div>
         </div>
         <div class="flex items-center justify-center my-5">
-            <div class="p-6 bg-neutral rounded-box w-1/2">
-                <textarea class="w-full textarea bg-neutral" id="commands"></textarea>
+            <div class="p-6 bg-neutral rounded-box w-1/2 inline-flex justify-between">
+                <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
+                <button id="execute" class=" btn h-px h-30 ml-10">Run</button>
             </div>
         </div>
 
-        <button id="execute" class="btn">Execute</button>
         <button id="savedb" class="btn">Save the db</button>
         <button id="opendb" class="btn">Open Database</button>
         <label class="btn">Load an SQLite database file: <input type="file" id="dbfile"

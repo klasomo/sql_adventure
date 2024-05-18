@@ -151,7 +151,7 @@ savedbBtn.addEventListener("click", savedb, true);
 
 // Open the database
 function openDatabase() {
-    var dbFileName = "db/example.sqlite"; // Der Name deiner Datenbankdatei
+    var dbFileName = "../db/example.sqlite"; // Der Name deiner Datenbankdatei
     var xhr = new XMLHttpRequest();
     xhr.open("GET", dbFileName, true);
     xhr.responseType = "blob";
@@ -193,4 +193,4 @@ function openSelectedDatabase() {
 }
 
 var openDbBtn = document.getElementById("opendb");
-openDbBtn.addEventListener("click", openSelectedDatabase);
+openDbBtn.addEventListener("click", openDatabase);

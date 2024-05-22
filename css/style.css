@@ -1,0 +1,5 @@
+.dividerRec{
+    width: auto;  /* Breite des Rechtecks */
+    height: 6px; /* Höhe des Rechtecks */
+    border-radius: 3px; /* Abrundung der Ecken */
+}

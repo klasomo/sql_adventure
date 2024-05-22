@@ -5,9 +5,10 @@ worker.onerror = error;
 // Open a database
 worker.postMessage({ action: "open" });
 
+var outputElm = document.getElementById("output");
 // Connect to the HTML element we 'print' to
 function print(text) {
-    var outputElm = document.getElementById("output");
+
     outputElm.innerHTML = text.replace(/\n/g, "<br>");
 }
 
@@ -23,24 +24,28 @@ function noerror() {
     errorElm.style.height = "0";
 }
 
-// Run a command in the database
-function execute(commands) {
+var commandArray = [];
+
+var queryOutput = "";
+
+// Modifizierte Execute-Funktion, um Ergebnisse in das angegebene Element einzufügen
+function execute(commands, outputElement) {
     worker.onmessage = function(event) {
         var results = event.data.results;
         if (!results) {
             error({ message: event.data.error });
+            commandArray.pop();
             return;
         }
+       
+        outputElement.innerHTML = "";  // Leeren des Output-Elements
 
-        var outputElm = document.getElementById("output");
-        outputElm.innerHTML = "";
         for (var i = 0; i < results.length; i++) {
-            outputElm.appendChild(tableCreate(results[i].columns, results[i].values));
+            outputElement.appendChild(tableCreate(results[i].columns, results[i].values));
         }
     };
     worker.postMessage({ action: "exec", sql: commands });
-    var outputElm = document.getElementById("output");
-    outputElm.textContent = "Fetching results...";
+    outputElement.innerHTML = "Fetching results...";
 }
 
 // Create an HTML table
@@ -65,10 +70,13 @@ var tableCreate = (function() {
     };
 })();
 
+
 // Execute the commands when the button is clicked
 function execEditorContents() {
     noerror();
-    execute(sqlInput.getValue() + ";");
+    outputElm.innerHTML = "";
+    commandArray.push(sqlInput.getValue());
+    execute(sqlInput.getValue(), outputElm);
 }
 var execBtn = document.getElementById("execute");
 execBtn.addEventListener("click", execEditorContents, true);
@@ -102,31 +110,8 @@ function checkAndUpdateHeight() {
         sqlInput.setSize(null, "auto");
     } else {
         sqlInput.setSize(null, sqlInput.defaultTextHeight() * maxLines + 10);
-        codeMirrorScrollbar.style.visibility = "hidden";
     }
 }
-
-// Load a db from a file
-var dbFileBtn = document.getElementById("dbfile");
-dbFileBtn.onchange = function() {
-    var f = dbFileBtn.files[0];
-    var r = new FileReader();
-    r.onload = function() {
-        worker.onmessage = function() {
-            // Show the schema of the loaded database
-            sqlInput.setValue(
-                "SELECT `name`, `sql`\n  FROM `sqlite_master`\n  WHERE type='table';"
-            );
-            execEditorContents();
-        };
-        try {
-            worker.postMessage({ action: "open", buffer: r.result }, [r.result]);
-        } catch (exception) {
-            worker.postMessage({ action: "open", buffer: r.result });
-        }
-    };
-    r.readAsArrayBuffer(f);
-};
 
 // Save the db to a file
 function savedb() {
@@ -146,8 +131,6 @@ function savedb() {
     };
     worker.postMessage({ action: "export" });
 }
-var savedbBtn = document.getElementById("savedb");
-savedbBtn.addEventListener("click", savedb, true);
 
 // Open the database
 function openDatabase() {
@@ -167,30 +150,142 @@ function openDatabase() {
 
         fileReader.readAsArrayBuffer(blob);
     };
-
     xhr.send();
 }
 
-function openSelectedDatabase() {
-    var selectedDb = selectDbDropdown.value;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", selectedDb, true);
-    xhr.responseType = "blob";
+var btnMap = document.getElementById("btnMap");
+var btnPolice = document.getElementById("btnPolice");
+var btnServer = document.getElementById("btnServer");
+var btnCompany = document.getElementById("btnCompany");
 
-    xhr.onload = function(event) {
-        var blob = xhr.response;
-        var fileReader = new FileReader();
+btnPolice.addEventListener("click", function(){
+    changeBackgroundImage("./assets/images/background/buero.png");
+});
 
-        fileReader.onload = function() {
-            var buffer = this.result;
-            worker.postMessage({ action: "open", buffer: buffer }, [buffer]);
-        };
+btnMap.addEventListener("click", function(){
+    changeBackgroundImage("./assets/images/background/pinboard2.png");
+});
 
-        fileReader.readAsArrayBuffer(blob);
-    };
+btnServer.addEventListener("click", function(){
+    changeBackgroundImage("./assets/images/background/computer.png");
+ });
+ 
+ btnCompany.addEventListener("click", function(){
+     changeBackgroundImage("./assets/images/background/computer2.png");
+ });
 
-    xhr.send();
+function changeBackgroundImage(imagePath) {
+    console.log(imagePath);
+    document.body.style.backgroundImage = `url('${imagePath}')`;
 }
 
-var openDbBtn = document.getElementById("opendb");
-openDbBtn.addEventListener("click", openDatabase);
+
+
+// Progressbar 
+function updateProgressBar(stepIndex){
+    var steps = document.querySelectorAll('.steps .step');
+    
+    for(var i = 0; i < steps.length; i++){
+        if ( i < stepIndex){
+            steps[i].classList.add('step-primary');
+        }else{
+            steps[i].classList.remove('step-primary');
+        }
+    }
+}
+
+var btnCommandHistory = document.getElementById("commandHistory");
+
+btnCommandHistory.addEventListener("click", function() {
+    outputElm.innerHTML = "";
+
+    // Erstellen eines Container-Divs für die Historie
+    var containerDiv = document.createElement('div');
+    containerDiv.classList.add('p-5');
+
+    for (var i = 0; i < commandArray.length; i++) {
+        // Erstellen des collapse-div
+        var collapseDiv = document.createElement('div');
+        collapseDiv.classList.add('collapse', 'bg-base-200', 'mb-2', 'collapse-arrow');
+
+        // Erstellen des input-Elements
+        var input = document.createElement('input');
+        input.type = 'checkbox';
+
+        // Erstellen des collapse-title
+        var titleDiv = document.createElement('div');
+        titleDiv.classList.add('collapse-title', 'text-xl', 'font-medium');
+        titleDiv.textContent = commandArray[i];
+
+        // Erstellen des collapse-content
+        var contentDiv = document.createElement('div');
+        contentDiv.classList.add('collapse-content');
+        contentDiv.innerHTML = "<p>Ergebnisse werden geladen...</p>";  // Platzhalter-Text
+
+        // Event-Listener zum Ausführen des SQL-Befehls beim ersten Öffnen des collapse-Elements
+        input.addEventListener('change', (function(cmd, contentElement, inputElement) {
+            return function() {
+                if (inputElement.checked && !contentElement.dataset.loaded) {
+                    execute(cmd, contentElement);
+                    contentElement.dataset.loaded = true;  // Markiere als geladen
+                }
+            };
+        })(commandArray[i], contentDiv, input));
+
+        // Zusammenbauen der Elemente
+        collapseDiv.appendChild(input);
+        collapseDiv.appendChild(titleDiv);
+        collapseDiv.appendChild(contentDiv);
+        containerDiv.appendChild(collapseDiv);
+    }
+
+    // Hinzufügen des Container-Divs zum Output-Element
+    outputElm.appendChild(containerDiv);
+});
+
+
+window.onload = function() {
+    openDatabase();
+    changeBackgroundImage("./assets/images/background/buero.png");
+    updateProgressBar(1);
+};
+
+
+window.onbeforeunload = function() {
+    //savedb();
+};
+
+
+// Verhindert das Zoomen mit STRG + Mausrad
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// Verhindert das Zoomen mit Gesten auf Touchscreen-Geräten
+document.addEventListener('touchstart', function(event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// Verhindert das Zoomen mit Tastaturkombinationen
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && (event.key === '+' || event.key === '-' || event.key === '0')) {
+        event.preventDefault();
+    }
+});
+
+// Setzt den Zoom-Level zurück, falls er sich ändert
+const resetZoom = () => {
+    document.body.style.transform = 'scale(1)';
+    document.body.style.transformOrigin = '0 0';
+};
+
+//Überwacht Änderungen des Zoom-Levels
+const observer = new MutationObserver(resetZoom);
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+
+// Überwacht Änderungen der Fenstergröße
+window.addEventListener('resize', resetZoom);

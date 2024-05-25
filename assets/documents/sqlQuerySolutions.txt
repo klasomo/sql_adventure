@@ -1,0 +1,69 @@
+
+DB Tatortbericht
+select * from Tatortbericht where ort is "SYMMEX";
+--> Bericht mit Informationen: Ermittler des Berichts (Alexander Wolf)
+DB Zeugenaussagen
+select * from Zeugenaussagen where Ermittler is "Alexander Wolf" and Datum is "27.06.2024";
+--> Anna Fischer: Raum(Großraumbüro 404)
+--> Sophie Schmidt: Verdächtigte Person aus der IT Abteilung gesehen
+
+
+DB Mitarbeiter
+select name from Mitarbeiter where Arbeitsplatz is "404-03";
+--> "Max Brandt"
+
+"select *" blockieren aus datenschutzgründen Freie Informationen "name"
+
+
+
+--> Login am PC 
+--> Benutzername auf Stickynote wie er sich zusammensetzt wird + Informationen aus select query
+--> Password auf Stickynote
+
+<----------Eingeschränkter PC Modus------------->
+
+DB Türprotokoll
+
+select count(*) from Türprotokoll where Raum_Nr is "404";
+--> Anzahl der Verdächtigen Personen
+
+??? Ideen:  1. Kamera Offline Zeiten Checken dafür wird neue DB benötigt
+            2. Aussage über Verdächtige Person mit Log daten verknüpfen um einzugrenzen
+
+
+update Mitarbeiter set Zugangsberechtigung = 5 where Name is "Max Brandt";
+
+
+
+
+<----------Uneingeschränkter PC Modus------------->
+
+select * from Türprotokoll where Raum_Nr is "404" join Mitarbeiter on Mitarbeiter_Id;
+--> Täter wird zurückgegeben Paul Huber
+
+select * from Email where Absender is "p.Huber@symmex.it" or Empfänger is "p.Huber@symmex.it"
+--> Email entschlüsseln durch Programm auf dem Desktop
+    --> AnschlagenOrt Eckdaten z.B. mehr 
+--> Komplize der Verschlüsselten Emails (Tina Schneider)
+
+
+
+
+Gebäude DB
+
+--> Gebäude vom Anschlag
+
+
+Bomben DB
+
+Bombe Enschräfen mit neue Table jedoch Bombnummer nicht vollständig lesbar "is like "_A92%"
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!----------- IDEEN ------------!!!!!!!!!!!!!!!!!!!!!!!
+Schüler müssen eigenen Tabelle mit DetektivNamen etc... Anlegen am ende vllt noch mit Update bearbeiten
+
+
+
+

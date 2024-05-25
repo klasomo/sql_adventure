@@ -187,9 +187,9 @@ function updateProgressBar(stepIndex){
     
     for(var i = 0; i < steps.length; i++){
         if ( i < stepIndex){
-            steps[i].classList.add('step-primary');
+            steps[i].classList.add('step-primary', 'text-primary');
         }else{
-            steps[i].classList.remove('step-primary');
+            steps[i].classList.remove('step-primary', 'text-primary');
         }
     }
 }
@@ -247,7 +247,7 @@ btnCommandHistory.addEventListener("click", function() {
 window.onload = function() {
     openDatabase();
     changeBackgroundImage("./assets/images/background/buero.png");
-    updateProgressBar(1);
+    updateProgressBar(3);
 };
 
 

@@ -6,8 +6,11 @@
 
 
 .font-typewriter{
-    font-family: "Special Elite", system-ui;
-    font-weight: 400;
-    font-style: normal;
+    font-family: "toxTypewriter", system-ui;
+}
+
+@font-face {
+    font-family: 'toxTypewriter';
+    src: url('../assets/fonts/Tox\ Typewriter.ttf') format('truetype');
 }
 

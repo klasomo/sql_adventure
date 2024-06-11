@@ -1,0 +1,61 @@
+{
+    "title": "Kanban",
+    "cols": [
+        {
+            "title": "Bugs",
+            "tasks": [],
+            "id": "ki3nts9bpilwej9j1xfjif2n",
+            "color": "#eb144c"
+        },
+        {
+            "title": "To-Do",
+            "tasks": [
+                {
+                    "text": "",
+                    "id": "a814wp02e3prm6a3ywxtrowp"
+                },
+                {
+                    "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
+                    "id": "af0ms3l0ljvi6yr18h33cdbk"
+                },
+                {
+                    "text": "Change db with Background change",
+                    "id": "x6bq9zhqwpckyp6xekwx12l6"
+                },
+                {
+                    "text": "Excel -> SQLlite Db erstellen\n",
+                    "id": "eoxlglu15k1zxykkz2ygtc6a"
+                },
+                {
+                    "text": "Timer in Navbar hinzufügen",
+                    "id": "cegkhhcuic389w7pxr7bdm8s"
+                },
+                {
+                    "text": "Email New Page anlegen",
+                    "id": "pky8s8bthqf4ejbmj5iticxp"
+                },
+                {
+                    "text": "PC Login anlegen",
+                    "id": "cac6pe4di61p20gq5djt79yz"
+                }
+            ],
+            "id": "sh9jhul7cesngtxuqc60vhsl",
+            "color": "#fcb900"
+        },
+        {
+            "title": "Doing",
+            "tasks": [],
+            "id": "ttux46kf65fq8hkfchvfpmiq",
+            "color": "#0693e3"
+        },
+        {
+            "title": "Done",
+            "tasks": [],
+            "id": "cf7w66jpwx3ku4aeoi141zdl",
+            "color": "#00d084"
+        }
+    ],
+    "autosave": true,
+    "saveToFile": true,
+    "timestamp": 1718124991665
+}

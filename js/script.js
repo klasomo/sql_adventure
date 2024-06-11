@@ -134,7 +134,7 @@ function savedb() {
 
 // Open the database
 function openDatabase() {
-    var dbFileName = "../db/example.sqlite"; // Der Name deiner Datenbankdatei
+    var dbFileName = "../db/MITARBEITER_EINGESCHRAENKT.sqlite"; // Der Name deiner Datenbankdatei
     var xhr = new XMLHttpRequest();
     xhr.open("GET", dbFileName, true);
     xhr.responseType = "blob";

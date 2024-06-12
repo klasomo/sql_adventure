@@ -133,10 +133,9 @@ function savedb() {
 }
 
 // Open the database
-function openDatabase() {
-    var dbFileName = "../db/firma.sqlite"; // Der Name deiner Datenbankdatei
+function openDatabase(dbPath) {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", dbFileName, true);
+    xhr.open("GET", dbPath, true);
     xhr.responseType = "blob";
 
     xhr.onload = function(event) {
@@ -156,21 +155,27 @@ function openDatabase() {
 var btnMap = document.getElementById("btnMap");
 var btnPolice = document.getElementById("btnPolice");
 var btnServer = document.getElementById("btnServer");
-var btnCompany = document.getElementById("btnCompany");
+var btnBomb = document.getElementById("btnBomb");
 
 btnPolice.addEventListener("click", function(){
-    changeBackgroundImage("./assets/images/background/buero.png");
+    changeBackgroundImage("./assets/images/background/pinboard2.png");
+    console.log("Police Database Loaded");
+    openDatabase('./db/police.sqlite');
 });
+
+
+btnServer.addEventListener("click", function(){
+    changeBackgroundImage("./assets/images/background/computer.png");
+    console.log("Firma Database Loaded");
+    openDatabase('./db/firma.sqlite');
+ });
 
 btnMap.addEventListener("click", function(){
     changeBackgroundImage("./assets/images/background/pinboard2.png");
 });
 
-btnServer.addEventListener("click", function(){
-    changeBackgroundImage("./assets/images/background/computer.png");
- });
  
- btnCompany.addEventListener("click", function(){
+ btnBomb.addEventListener("click", function(){
      changeBackgroundImage("./assets/images/background/computer2.png");
  });
 
@@ -230,7 +235,6 @@ btnCommandHistory.addEventListener("click", function() {
 
 
 window.onload = function() {
-    openDatabase();
     changeBackgroundImage("./assets/images/background/buero.png");
 };
 

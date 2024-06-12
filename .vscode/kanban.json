@@ -11,10 +11,6 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
-                    "id": "af0ms3l0ljvi6yr18h33cdbk"
-                },
-                {
                     "text": "Change db with Background change",
                     "id": "x6bq9zhqwpckyp6xekwx12l6"
                 },
@@ -28,7 +24,12 @@
         },
         {
             "title": "Doing",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
+                    "id": "af0ms3l0ljvi6yr18h33cdbk"
+                }
+            ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
             "color": "#0693e3"
         },
@@ -46,6 +47,10 @@
                 {
                     "text": "Email New Page anlegen",
                     "id": "pky8s8bthqf4ejbmj5iticxp"
+                },
+                {
+                    "text": "DB Umlaute\n",
+                    "id": "d3sv8709cp74w611tex8fs76"
                 }
             ],
             "id": "cf7w66jpwx3ku4aeoi141zdl",
@@ -54,5 +59,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718205329794
+    "timestamp": 1718209357781
 }

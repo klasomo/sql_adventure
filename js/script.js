@@ -299,4 +299,7 @@ function getWindowSize() {
     return { width: width, height: height };
 }
 
+console.log("Hi, sollte eigentlich schon auf jeden Bildschirm gut ausschauen.\n");
+console.log("Breite: 3,171e-17 Lichtjahr, Höhe: 0.00005399568 seemeile == 0.32808399 foot == 0.10936133 yard == 0.000062137119 mile");
 console.log("Breite: " + size.width + ", Höhe: " + size.height);
+console.log("Ich wünsche dir noch ein schönen Arbeitstag :)");

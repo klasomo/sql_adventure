@@ -134,7 +134,7 @@ function savedb() {
 
 // Open the database
 function openDatabase() {
-    var dbFileName = "../db/MITARBEITER_EINGESCHRAENKT.sqlite"; // Der Name deiner Datenbankdatei
+    var dbFileName = "../db/firma.sqlite"; // Der Name deiner Datenbankdatei
     var xhr = new XMLHttpRequest();
     xhr.open("GET", dbFileName, true);
     xhr.responseType = "blob";
@@ -177,21 +177,6 @@ btnServer.addEventListener("click", function(){
 function changeBackgroundImage(imagePath) {
     console.log(imagePath);
     document.body.style.backgroundImage = `url('${imagePath}')`;
-}
-
-
-
-// Progressbar 
-function updateProgressBar(stepIndex){
-    var steps = document.querySelectorAll('.steps .step');
-    
-    for(var i = 0; i < steps.length; i++){
-        if ( i < stepIndex){
-            steps[i].classList.add('step-primary', 'text-primary');
-        }else{
-            steps[i].classList.remove('step-primary', 'text-primary');
-        }
-    }
 }
 
 var btnCommandHistory = document.getElementById("commandHistory");
@@ -247,7 +232,6 @@ btnCommandHistory.addEventListener("click", function() {
 window.onload = function() {
     openDatabase();
     changeBackgroundImage("./assets/images/background/buero.png");
-    updateProgressBar(3);
 };
 
 
@@ -292,9 +276,11 @@ window.addEventListener('resize', resetZoom);
 
 
 
-window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = '';
-  });
+//FÜR ENTWICKLUNG AUSKOMMENTIERT
+
+// window.addEventListener('beforeunload', function (e) {
+//     // Cancel the event
+//     e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+//     // Chrome requires returnValue to be set
+//     e.returnValue = '';
+//   });

@@ -1,6 +1,5 @@
 // Start the worker in which sql.js will run
 var worker = new Worker("js/sqlite/worker.sql-wasm.js");
-worker.onerror = error;
 
 // Open a database
 worker.postMessage({ action: "open" });
@@ -12,16 +11,7 @@ function print(text) {
     outputElm.innerHTML = text.replace(/\n/g, "<br>");
 }
 
-function error(e) {
-    var errorElm = document.getElementById("error");
-    errorElm.style.height = "2em";
-    errorElm.textContent = e.message;
-}
 
-function noerror() {
-    var errorElm = document.getElementById("error");
-    errorElm.style.height = "0";
-}
 
 var commandArray = [];
 
@@ -72,7 +62,6 @@ var tableCreate = (function() {
 
 // Execute the commands when the button is clicked
 function execEditorContents() {
-    noerror();
     outputElm.innerHTML = "";
     commandArray.push(sqlInput.getValue());
     execute(sqlInput.getValue(), outputElm);
@@ -231,7 +220,8 @@ btnCommandHistory.addEventListener("click", function() {
 
 
 window.onload = function() {
-    changeBackgroundImage("./assets/images/background/buero.png");
+    changeBackgroundImage("./assets/images/background/pinboard2.png");
+    openDatabase('./db/police.sqlite');
 };
 
 

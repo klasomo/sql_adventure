@@ -13,7 +13,6 @@ function print(text) {
 }
 
 function error(e) {
-    console.log(e);
     var errorElm = document.getElementById("error");
     errorElm.style.height = "2em";
     errorElm.textContent = e.message;
@@ -159,14 +158,12 @@ var btnBomb = document.getElementById("btnBomb");
 
 btnPolice.addEventListener("click", function(){
     changeBackgroundImage("./assets/images/background/pinboard2.png");
-    console.log("Police Database Loaded");
     openDatabase('./db/police.sqlite');
 });
 
 
 btnServer.addEventListener("click", function(){
     changeBackgroundImage("./assets/images/background/computer.png");
-    console.log("Firma Database Loaded");
     openDatabase('./db/firma.sqlite');
  });
 
@@ -180,7 +177,6 @@ btnMap.addEventListener("click", function(){
  });
 
 function changeBackgroundImage(imagePath) {
-    console.log(imagePath);
     document.body.style.backgroundImage = `url('${imagePath}')`;
 }
 

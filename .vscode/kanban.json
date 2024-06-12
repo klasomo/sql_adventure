@@ -3,7 +3,12 @@
     "cols": [
         {
             "title": "Bugs",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Mit anderen auflösungen Testen:\nBreite: 1357 Höhe: 1004",
+                    "id": "sgcmuvkhgbwgp0gt23fll9p4"
+                }
+            ],
             "id": "ki3nts9bpilwej9j1xfjif2n",
             "color": "#eb144c"
         },
@@ -11,8 +16,20 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Change db with Background change",
-                    "id": "x6bq9zhqwpckyp6xekwx12l6"
+                    "text": "Code History Fixen\n",
+                    "id": "pulg8oz8p21srnmuek8x38oc"
+                },
+                {
+                    "text": "add Allert and Warning in Table Output ",
+                    "id": "n93ud4nga1u2bjdfa6yd252k"
+                },
+                {
+                    "text": "Step Modal Input Hinzufügen",
+                    "id": "moznvs8vitsmx6ybir8eai97"
+                },
+                {
+                    "text": "Türprotkolle DB erstellen",
+                    "id": "dnku1fab1ptrh3lqti34sf0m"
                 },
                 {
                     "text": "PC Login anlegen",
@@ -51,6 +68,10 @@
                 {
                     "text": "DB Umlaute\n",
                     "id": "d3sv8709cp74w611tex8fs76"
+                },
+                {
+                    "text": "Change db with Background change",
+                    "id": "x6bq9zhqwpckyp6xekwx12l6"
                 }
             ],
             "id": "cf7w66jpwx3ku4aeoi141zdl",
@@ -59,5 +80,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718209357781
+    "timestamp": 1718222113989
 }

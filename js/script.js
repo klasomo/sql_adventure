@@ -288,3 +288,19 @@ window.addEventListener('resize', resetZoom);
 //     // Chrome requires returnValue to be set
 //     e.returnValue = '';
 //   });
+
+var size = getWindowSize();
+
+function getWindowSize() {
+    var width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+    var height = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+
+    return { width: width, height: height };
+}
+
+console.log("Breite: " + size.width + ", Höhe: " + size.height);

@@ -49,14 +49,15 @@ select * from Email where Absender is "p.Huber@symmex.it" or Empfänger is "p.Hu
 
 
 
-Gebäude DB
+Veranstaltung DB
 
---> Gebäude vom Anschlag
+--> Veranstaltung vom Anschlag
 
 
 Bomben DB
 
 Bombe Enschräfen mit neue Table jedoch Bombnummer nicht vollständig lesbar "is like "_A92%"
+-->
 
 
 

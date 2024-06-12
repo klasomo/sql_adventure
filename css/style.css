@@ -11,6 +11,25 @@
 
 @font-face {
     font-family: 'toxTypewriter';
-    src: url('../assets/fonts/Tox\ Typewriter.ttf') format('truetype');
+    src: url('../assets/fonts/ToxTypewriter.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'sevenSegment';
+    src: url('../assets/fonts/SevenSegment.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'sevenSegmentClock';
+    src: url('../assets/fonts/SevenSegmentClock.ttf') format('truetype');
+}
+
+.font-sevenSegmentClock{
+    font-family: 'sevenSegmentClock', system-ui;
+}
+
+.font-sevenSegment{
+    font-family: 'sevenSegment', system-ui;
+}
+
 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>SQL Adventure</title>
+
+    <!--localSylesheet-->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/codeMirror.css" />
+    <link rel="stylesheet" href="css/testing.css" />
+
+    <!--CodeMirror-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+
+    <!-- Tailwind -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP GreenSock Animation Platfrom -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+
+    <!-- Daisy UI-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <input type="checkbox" id="decrypt" class="modal-toggle" />
+  <!-- DaisyUI Modal -->
+  <dialog id="step_modal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">Hello!</h3>
+        <p class="py-4">Press ESC key or click outside to close</p>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+  </dialog>
+  <div class="modal" role="dialog">
+    <div class="modal-box flex justify-center items-center flex-col w-1/2">
+      <div class="modal-box flex justify-center items-center relative">
+        <div class="alert alert-warning absolute bottom-0 w-1/2 invisible">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>Warning: Invalid email address!</span>
+        </div>
+        <textarea
+          class="textarea textarea-primary w-full h-[400px] codedText text-2xl font-bold mx-auto px-0"
+          id="encryptedText"
+          placeholder="Encrypted Text"
+        ></textarea>
+      </div>
+
+      <button class="btn btn-primary w-full mt-5" id="decryptBtn">
+        Decrypt
+      </button>
+    </div>
+    <label class="modal-backdrop" for="decrypt">Close</label>
+  </div>
+  <body>
+    <main>
+      <div class="flex flex-col" style="height: 100vh">
+        <!-- Progressbar -->
+        <ul class="steps bg-neutral py-5">
+          <li id="step1" class="step text-xl font-typewriter">Case Overview</li>
+          <li id="step2" class="step text-xl font-typewriter">Victim & Time</li>
+          <li id="step3" class="step text-xl font-typewriter">Get Access</li>
+          <li id="step4" class="step text-xl font-typewriter">Logs & Footage</li>
+          <li id="step5" class="step text-xl font-typewriter">Suspects & Alibis</li>
+          <li id="step6" class="step text-xl font-typewriter">Prevent Next Crime</li>
+          <li id="step7" class="step text-xl font-typewriter">Catch Perpetrator</li>
+        </ul>
+        <!-- Output and Input Field -->
+        <div class="flex justify-center">
+          <div class="flex flex-col w-1/2">
+            <!-- Output field -->
+            <div class="flex items-center justify-center mt-40">
+              <div
+                class="bg-neutral rounded-box w-full h-[600px] overflow-x-auto"
+                id="output"
+              >
+                <!-- Table content -->
+              </div>
+            </div>
+            <div class="dividerRec my-5 bg-neutral"></div>
+            <!-- SQL input and run button -->
+            <div class="flex items-center justify-center mb-5">
+              <div
+                class="p-2 bg-neutral rounded-box w-full inline-flex justify-between"
+              >
+                <button id="commandHistory" class="btn btn-square p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="#ffffff"
+                    viewBox="0 0 24 24"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        fill-opacity=".9"
+                        d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                      ></path>
+                    </g>
+                  </svg>
+                </button>
+                <textarea
+                  class="flex-auto w-80 textarea"
+                  id="commands"
+                ></textarea>
+                <button id="execute" class="btn h-px h-30 ml-10">Run</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Button Group -->
+        <div class="">
+          <!-- The button to open modal -->
+          <label for="decrypt" class="btn">open modal</label>
+          <div id="error" class="error"></div>
+          <!-- Bottom Navbar -->
+        </div>
+          <div class="fixed bottom-0 w-full flex justify-center pb-10 bottom-0">
+            <div class="w-1/4 navbar bg-neutral rounded-box justify-between">
+              <button
+                class="btn btn-circle btn-ghost btn-outline p-2"
+                id="btnMap"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M12 6H12.01M9 20L3 17V4L5 5M9 20L15 17M9 20V14M15 17L21 20V7L19 6M15 17V14M15 6.2C15 7.96731 13.5 9.4 12 11C10.5 9.4 9 7.96731 9 6.2C9 4.43269 10.3431 3 12 3C13.6569 3 15 4.43269 15 6.2Z"
+                      stroke="#ffffff"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+              <button
+                class="btn btn-ghost btn-circle btn-outline p-2"
+                id="btnPolice"
+              >
+                <svg
+                  fill="#ffffff"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 508.053 508.053"
+                  xml:space="preserve"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g>
+                      <g>
+                        <path
+                          d="M475.897,76.703l-62.1-64.6c-4.5-4.6-11.5-5.7-17.1-2.5c-54.4,30.8-123.5-1.5-135.1-7.4c-3.7-2.4-8.5-2.9-12.7-1.2 c-0.9,0.3-1.7,0.8-2.5,1.3c-12,6.1-80.8,38-135,7.4c-5.6-3.2-12.6-2.1-17.1,2.5l-62.2,64.5c-3.3,3.5-4.7,8.4-3.6,13.1 c0.3,1.2,28.4,120.5,10.3,181.6c-0.1,0.3-0.2,0.6-0.2,0.9c-1.5,6.2-31.6,153.7,210.8,235c3.1,1,6.2,1,9.1,0 c242.5-81.3,212.4-228.8,211-235c-0.1-0.3-0.2-0.6-0.2-0.9c-18.1-61.1,10-180.4,10.3-181.6 C480.597,85.103,479.297,80.103,475.897,76.703z M441.997,278.803c1.3,7.2,20.5,128.6-188,200.2 c-208.8-71.8-189.7-191.5-188-200.2c17.3-59.6-2.2-159.6-8.3-188l49.6-51.6c58.7,26.5,125,0.7,146.7-9.3 c21.7,10,88,35.8,146.7,9.3l49.6,51.6C444.097,119.203,424.697,219.203,441.997,278.803z"
+                        ></path>
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="M390.197,187.003l-93.6-0.3l-29.2-88.9c-4.3-12.9-22.6-12.9-26.8,0l-29.2,88.9l-93.6,0.3c-13.6,0-19.3,17.5-8.3,25.5 l75.6,55.3l-28.7,89.1c-4.2,13,10.6,23.7,21.7,15.8l75.9-54.8l75.9,54.8c11,8,25.9-2.8,21.7-15.8l-28.7-89.1l75.6-55.3 C409.497,204.503,403.797,187.103,390.197,187.003z M297.997,251.003c-4.9,3.6-7,9.9-5.1,15.7l18.6,57.9l-49.2-35.6 c-4.9-3.6-11.6-3.6-16.5,0l-49.3,35.6l18.6-57.9c1.9-5.8-0.2-12.1-5.1-15.7l-49.1-35.9l60.8-0.2c6.1,0,11.5-3.9,13.4-9.7l19-57.8 l19,57.8c1.9,5.8,7.3,9.7,13.4,9.7l60.8,0.2L297.997,251.003z"
+                        ></path>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+              <div class="w-1/5 bg-primary flex justify-center h-full rounded-lg">
+                <div class="font-sevenSegmentClock text-3xl timer text-black">00:00</div>
+            </div>
+              <button
+                class="btn btn-ghost btn-circle btn-outline p-1"
+                id="btnServer"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#ffffff"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M18 7H18.01M15 7H15.01M18 17H18.01M15 17H15.01M6 10H18C18.9319 10 19.3978 10 19.7654 9.84776C20.2554 9.64477 20.6448 9.25542 20.8478 8.76537C21 8.39782 21 7.93188 21 7C21 6.06812 21 5.60218 20.8478 5.23463C20.6448 4.74458 20.2554 4.35523 19.7654 4.15224C19.3978 4 18.9319 4 18 4H6C5.06812 4 4.60218 4 4.23463 4.15224C3.74458 4.35523 3.35523 4.74458 3.15224 5.23463C3 5.60218 3 6.06812 3 7C3 7.93188 3 8.39782 3.15224 8.76537C3.35523 9.25542 3.74458 9.64477 4.23463 9.84776C4.60218 10 5.06812 10 6 10ZM6 20H18C18.9319 20 19.3978 20 19.7654 19.8478C20.2554 19.6448 20.6448 19.2554 20.8478 18.7654C21 18.3978 21 17.9319 21 17C21 16.0681 21 15.6022 20.8478 15.2346C20.6448 14.7446 20.2554 14.3552 19.7654 14.1522C19.3978 14 18.9319 14 18 14H6C5.06812 14 4.60218 14 4.23463 14.1522C3.74458 14.3552 3.35523 14.7446 3.15224 15.2346C3 15.6022 3 16.0681 3 17C3 17.9319 3 18.3978 3.15224 18.7654C3.35523 19.2554 3.74458 19.6448 4.23463 19.8478C4.60218 20 5.06812 20 6 20Z"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+              <!-- company icon -->
+              <button
+                class="btn btn-ghost btn-circle btn-outline p-1"
+                id="btnCompany"
+              >
+                <svg
+                  viewBox="-102.4 -102.4 1228.80 1228.80"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#ffffff"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill="#ffffff"
+                      d="M192 128v704h384V128H192zm-32-64h448a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32z"
+                    ></path>
+                    <path
+                      fill="#ffffff"
+                      d="M256 256h256v64H256v-64zm0 192h256v64H256v-64zm0 192h256v64H256v-64zm384-128h128v64H640v-64zm0 128h128v64H640v-64zM64 832h896v64H64v-64z"
+                    ></path>
+                    <path
+                      fill="#ffffff"
+                      d="M640 384v448h192V384H640zm-32-64h256a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H608a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32z"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/cipher.js"></script>
+    <script type="text/javascript" src="js/stepManager.js"></script>
+    <script type="text/javascript" src="js/timer.js"></script>
+  </body>
+</html>

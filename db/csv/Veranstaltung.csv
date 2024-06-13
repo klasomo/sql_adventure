@@ -1,0 +1,51 @@
+Id,Ort,Datum,Uhrzeit,Personenanzahl,Veranstaltung
+1,Park,26.06.,19:00,500,Konzert
+2,Marktplatz,30.06.,10:00,300,Flohmarkt
+3,Kunsthalle,27.06.,18:00,300,Ausstellung
+4,Kirche,29.06.,9:00,100,Gottesdienst
+5,Gymnasium,02.07.,15:00,250,Tag der offenen Tür
+6,Begegnungsstätte,01.07.,20:00,50,Spieleabend
+7,Botanischer Garten,28.06.,11:00,250,Pilzausstellung
+8,Buchladen,30.06.,10:00,_abgesagt_,Wikingertreffen
+9,Hafenkneipe,28.06.,19:00,50,Tanzabend
+10,Universität,03.07.,17:00,500,Kunstausstellung
+11,Marktplatz,27.06.,12:00,1000,Wochenmarkt
+12,Stadtpark,27.06.,19:00,15000,Konzert
+13,Hafen,29.06.,10:00,30,Kajaktour
+14,Marktplatz,01.07.,13:00,400,Demonstration
+15,Strand,29.06.,10:00,100,Volleyballtunier
+16,Bauernhof,02.07.,12:00,80,Spargelessen
+17,Innenstadt,04.07.,16:00,30000,Stadtfest
+18,Theater,07.07.,20:00,180,Vorstellung
+19,Club,28.06.,21:00,500,Feiern
+20,CJD,27.06.,20:00,60,Night of Coding
+21,Theater,24.06.,20:00,180,Vorstellung
+22,Park,03.07.,19:00,7000,Open-Air-Konzert
+23,Zoo,05.07.,12:00,1500,Afrikaausstellung
+24,Theater,26.06.,20:00,180,Vorstellung
+25,Hafen,27.06.,14:00,400,Hochzeit
+26,Tanzschule,30.06.,19:00,100,Salsaabend
+27,Stadion,29.06.,13:00,12000,Fußballspiel
+28,Theater,28.06.,20:00,180,Vorstellung
+29,Schule,01.07.,19:00,200,Schulaufführung
+30,Kirche,25.06.,9:00,30,Bibeltreffen
+31,Hafen,27.06.,16:00,300,Zirkus
+32,Messehalle,29.06.,15:00,1000,Berufsmesse
+33,Schrebergarten,27.06.,12:00,120,Alljährliches Gärtnertreffen
+34,Museum,01.07.,10:00,1500,Schifffahrtsaustellung
+35,Innenstadt,08.07.,8:00,2000,Radrennen
+36,Theater,30.06.,18:00,180,Vorstellung
+37,Stadtwald,28.06.,11:00,70,Wald-Rallye
+38,Volkshochschule,02.07.,17:00,50,Kochkurs
+39,Innenstadt,04.07.,16:00,50,Bus-Rundfahrt
+40,Messehalle,27.06.,17:00,20000,Spielemesse
+41,Universität,29.06.,9:00,350,Samstagsvorlesungen
+42,Alten Kino,30.06.,16:00,50,Magic-Tunier
+43,Strand,28.06.,9:00,30,Yoga
+44,Kirche,30.06.,10:00,150,Gottesdienst
+45,Theater,01.07.,20:00,180,Vorstellung
+46,Strand,27.06.,18:00,3000,Sommerfest
+47,Club,29.06.,21:00,500,Feiern
+48,Bauernhof,27.06.,15:00,5000,Oldtimer Treffen
+49,Kunstschule,30.06.,14:00,50,Kunstkurs
+50,Theater,29.06.,18:00,180,Vorstellung

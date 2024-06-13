@@ -16,6 +16,14 @@
             "title": "To-Do",
             "tasks": [
                 {
+                    "text": "clear output and input field when background changed\nstore values and input it when next on this background",
+                    "id": "b255k81k3y9w0eccg5l6304e"
+                },
+                {
+                    "text": "Veranstaltungs DB hinzufügen\n",
+                    "id": "q2un0d7vr9um6dzenk9qskk0"
+                },
+                {
                     "text": "Code History Fixen\n",
                     "id": "pulg8oz8p21srnmuek8x38oc"
                 },
@@ -80,5 +88,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718222113989
+    "timestamp": 1718292508110
 }

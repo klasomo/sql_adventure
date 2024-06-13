@@ -158,6 +158,7 @@ btnServer.addEventListener("click", function(){
 
 btnMap.addEventListener("click", function(){
     changeBackgroundImage("./assets/images/background/cityillustration.png");
+    openDatabase('./db/veranstaltung.sqlite');
 });
 
  

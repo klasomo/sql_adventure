@@ -3,12 +3,7 @@
     "cols": [
         {
             "title": "Bugs",
-            "tasks": [
-                {
-                    "text": "Mit anderen auflösungen Testen:\nBreite: 1357 Höhe: 1004",
-                    "id": "sgcmuvkhgbwgp0gt23fll9p4"
-                }
-            ],
+            "tasks": [],
             "id": "ki3nts9bpilwej9j1xfjif2n",
             "color": "#eb144c"
         },
@@ -16,15 +11,15 @@
             "title": "To-Do",
             "tasks": [
                 {
+                    "text": "PDF Herunterladen wenn angeklickt\n",
+                    "id": "a80xvz52akvkvbh34fjndxj4"
+                },
+                {
                     "text": "clear output and input field when background changed\nstore values and input it when next on this background",
                     "id": "b255k81k3y9w0eccg5l6304e"
                 },
                 {
-                    "text": "Veranstaltungs DB hinzufügen\n",
-                    "id": "q2un0d7vr9um6dzenk9qskk0"
-                },
-                {
-                    "text": "Code History Fixen\n",
+                    "text": "Code History Fixen eigene History für jede view\n",
                     "id": "pulg8oz8p21srnmuek8x38oc"
                 },
                 {
@@ -80,6 +75,18 @@
                 {
                     "text": "Change db with Background change",
                     "id": "x6bq9zhqwpckyp6xekwx12l6"
+                },
+                {
+                    "text": "Veranstaltungs DB hinzufügen\n",
+                    "id": "q2un0d7vr9um6dzenk9qskk0"
+                },
+                {
+                    "text": "Mit anderen auflösungen Testen:\nBreite: 1357 Höhe: 1004",
+                    "id": "sgcmuvkhgbwgp0gt23fll9p4"
+                },
+                {
+                    "text": "Helles View im Browser Testen\n",
+                    "id": "tpdj7xwscsfned19a11ff3j3"
                 }
             ],
             "id": "cf7w66jpwx3ku4aeoi141zdl",
@@ -88,5 +95,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718292508110
+    "timestamp": 1718297567418
 }

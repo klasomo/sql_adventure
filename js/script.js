@@ -145,6 +145,7 @@ var btnPolice = document.getElementById("btnPolice");
 var btnServer = document.getElementById("btnServer");
 var btnBomb = document.getElementById("btnBomb");
 
+//index 0 = Police 1=Server 2=Map 3=Bomb
 const sqlInputCache = ["","","",""];
 var currentViewIndex = 0;
 
@@ -157,7 +158,7 @@ function saveAndLoadSqlCommand(viewIndex){
 
 btnPolice.addEventListener("click", function(){
     saveAndLoadSqlCommand(0);
-    changeBackgroundImage("./assets/images/background/pinboard2.png");
+    changeBackgroundImage("./assets/images/background/pinboard.png");
     openDatabase('./db/police.sqlite');
 });
 
@@ -170,7 +171,7 @@ btnServer.addEventListener("click", function(){
 
 btnMap.addEventListener("click", function(){
     saveAndLoadSqlCommand(2);
-    changeBackgroundImage("./assets/images/background/cityillustration.png");
+    changeBackgroundImage("./assets/images/background/map.png");
     openDatabase('./db/veranstaltung.sqlite');
 });
 
@@ -235,7 +236,7 @@ btnCommandHistory.addEventListener("click", function() {
 
 
 window.onload = function() {
-    changeBackgroundImage("./assets/images/background/pinboard2.png");
+    changeBackgroundImage("./assets/images/background/pinboard.png");
     openDatabase('./db/police.sqlite');
 };
 

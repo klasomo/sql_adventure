@@ -7,11 +7,8 @@ worker.postMessage({ action: "open" });
 var outputElm = document.getElementById("output");
 // Connect to the HTML element we 'print' to
 function print(text) {
-
-    outputElm.innerHTML = text.replace(/\n/g, "<br>");
+  outputElm.innerHTML = text.replace(/\n/g, "<br>");
 }
-
-
 
 var commandArray = [];
 
@@ -19,52 +16,53 @@ var queryOutput = "";
 
 // Modifizierte Execute-Funktion, um Ergebnisse in das angegebene Element einzufügen
 function execute(commands, outputElement) {
-    worker.onmessage = function(event) {
-        var results = event.data.results;
-        if (!results) {
-            error({ message: event.data.error });
-            commandArray.pop();
-            return;
-        }
-       
-        outputElement.innerHTML = "";  // Leeren des Output-Elements
+  worker.onmessage = function (event) {
+    var results = event.data.results;
+    if (!results) {
+      error({ message: event.data.error });
+      commandArray.pop();
+      return;
+    }
 
-        for (var i = 0; i < results.length; i++) {
-            outputElement.appendChild(tableCreate(results[i].columns, results[i].values));
-        }
-    };
-    worker.postMessage({ action: "exec", sql: commands });
-    outputElement.innerHTML = "Fetching results...";
+    outputElement.innerHTML = ""; // Leeren des Output-Elements
+
+    for (var i = 0; i < results.length; i++) {
+      outputElement.appendChild(
+        tableCreate(results[i].columns, results[i].values)
+      );
+    }
+  };
+  worker.postMessage({ action: "exec", sql: commands });
+  outputElement.innerHTML = "Fetching results...";
 }
 
 // Create an HTML table
-var tableCreate = (function() {
-    function valconcat(vals, tagName) {
-        if (vals.length === 0) return "";
-        var open = "<" + tagName + ">",
-            close = "</" + tagName + ">";
-        return open + vals.join(close + open) + close;
-    }
-    return function(columns, values) {
-        var tbl = document.createElement("table");
-        // Hinzufügen der Klassen "table" und "table-zebra"
-        tbl.classList.add("table", "table-zebra");
-        var html = "<thead>" + valconcat(columns, "th") + "</thead>";
-        var rows = values.map(function(v) {
-            return valconcat(v, "td");
-        });
-        html += "<tbody>" + valconcat(rows, "tr") + "</tbody>";
-        tbl.innerHTML = html;
-        return tbl;
-    };
+var tableCreate = (function () {
+  function valconcat(vals, tagName) {
+    if (vals.length === 0) return "";
+    var open = "<" + tagName + ">",
+      close = "</" + tagName + ">";
+    return open + vals.join(close + open) + close;
+  }
+  return function (columns, values) {
+    var tbl = document.createElement("table");
+    // Hinzufügen der Klassen "table" und "table-zebra"
+    tbl.classList.add("table", "table-zebra");
+    var html = "<thead>" + valconcat(columns, "th") + "</thead>";
+    var rows = values.map(function (v) {
+      return valconcat(v, "td");
+    });
+    html += "<tbody>" + valconcat(rows, "tr") + "</tbody>";
+    tbl.innerHTML = html;
+    return tbl;
+  };
 })();
-
 
 // Execute the commands when the button is clicked
 function execEditorContents() {
-    outputElm.innerHTML = "";
-    commandArray.push(sqlInput.getValue());
-    execute(sqlInput.getValue(), outputElm);
+  outputElm.innerHTML = "";
+  commandArray.push(sqlInput.getValue());
+  execute(sqlInput.getValue(), outputElm);
 }
 var execBtn = document.getElementById("execute");
 execBtn.addEventListener("click", execEditorContents, true);
@@ -74,17 +72,17 @@ execBtn.addEventListener("click", execEditorContents, true);
 var maxLines = 5;
 
 var sqlInput = CodeMirror.fromTextArea(document.getElementById("commands"), {
-    theme: '3024-night',
-    viewportMargin: 100,
-    lineNumbers: true,
-    lineWrapping: true,
-    extraKeys: {
-        Enter: function(cm) {
-            cm.replaceSelection("\n");
-        },
-        "Ctrl-Enter": execEditorContents,
-        "Ctrl-S": savedb,
+  theme: "3024-night",
+  viewportMargin: 100,
+  lineNumbers: true,
+  lineWrapping: true,
+  extraKeys: {
+    Enter: function (cm) {
+      cm.replaceSelection("\n");
     },
+    "Ctrl-Enter": execEditorContents,
+    "Ctrl-S": savedb,
+  },
 });
 
 // Set the initial size of the CodeMirror sqlInput
@@ -94,50 +92,50 @@ sqlInput.setSize(null, sqlInput.defaultTextHeight() + 10);
 sqlInput.on("change", checkAndUpdateHeight);
 
 function checkAndUpdateHeight() {
-    if (sqlInput.lineCount() < maxLines) {
-        sqlInput.setSize(null, "auto");
-    } else {
-        sqlInput.setSize(null, sqlInput.defaultTextHeight() * maxLines + 10);
-    }
+  if (sqlInput.lineCount() < maxLines) {
+    sqlInput.setSize(null, "auto");
+  } else {
+    sqlInput.setSize(null, sqlInput.defaultTextHeight() * maxLines + 10);
+  }
 }
 
 // Save the db to a file
 function savedb() {
-    worker.onmessage = function(event) {
-        var arraybuff = event.data.buffer;
-        var blob = new Blob([arraybuff]);
-        var a = document.createElement("a");
-        document.body.appendChild(a);
-        a.href = window.URL.createObjectURL(blob);
-        a.download = "sql.db";
-        a.onclick = function() {
-            setTimeout(function() {
-                window.URL.revokeObjectURL(a.href);
-            }, 1500);
-        };
-        a.click();
+  worker.onmessage = function (event) {
+    var arraybuff = event.data.buffer;
+    var blob = new Blob([arraybuff]);
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = window.URL.createObjectURL(blob);
+    a.download = "sql.db";
+    a.onclick = function () {
+      setTimeout(function () {
+        window.URL.revokeObjectURL(a.href);
+      }, 1500);
     };
-    worker.postMessage({ action: "export" });
+    a.click();
+  };
+  worker.postMessage({ action: "export" });
 }
 
 // Open the database
 function openDatabase(dbPath) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", dbPath, true);
-    xhr.responseType = "blob";
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", dbPath, true);
+  xhr.responseType = "blob";
 
-    xhr.onload = function(event) {
-        var blob = xhr.response;
-        var fileReader = new FileReader();
+  xhr.onload = function (event) {
+    var blob = xhr.response;
+    var fileReader = new FileReader();
 
-        fileReader.onload = function() {
-            var buffer = this.result;
-            worker.postMessage({ action: "open", buffer: buffer }, [buffer]);
-        };
-
-        fileReader.readAsArrayBuffer(blob);
+    fileReader.onload = function () {
+      var buffer = this.result;
+      worker.postMessage({ action: "open", buffer: buffer }, [buffer]);
     };
-    xhr.send();
+
+    fileReader.readAsArrayBuffer(blob);
+  };
+  xhr.send();
 }
 
 var btnMap = document.getElementById("btnMap");
@@ -146,141 +144,156 @@ var btnServer = document.getElementById("btnServer");
 var btnBomb = document.getElementById("btnBomb");
 
 //index 0 = Police 1=Server 2=Map 3=Bomb
-const sqlInputCache = ["","","",""];
+const sqlInputCache = ["", "", "", ""];
 var currentViewIndex = 0;
 
-
-function saveAndLoadSqlCommand(viewIndex){
-    sqlInputCache[currentViewIndex] = sqlInput.getValue();
-    currentViewIndex = viewIndex;
-    sqlInput.setValue(sqlInputCache[currentViewIndex]);
+function saveAndLoadSqlCommand(viewIndex) {
+  sqlInputCache[currentViewIndex] = sqlInput.getValue();
+  currentViewIndex = viewIndex;
+  sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
 
-btnPolice.addEventListener("click", function(){
-    saveAndLoadSqlCommand(0);
-    changeBackgroundImage("./assets/images/background/pinboard.png");
-    openDatabase('./db/police.sqlite');
+btnPolice.addEventListener("click", function () {
+  saveAndLoadSqlCommand(0);
+  changeBackgroundImage("./assets/images/background/pinboard.png");
+  openDatabase("./db/police.sqlite");
 });
 
-
-btnServer.addEventListener("click", function(){
-    saveAndLoadSqlCommand(1);
-    changeBackgroundImage("./assets/images/background/computer.png");
-    openDatabase('./db/firma.sqlite');
- });
-
-btnMap.addEventListener("click", function(){
-    saveAndLoadSqlCommand(2);
-    changeBackgroundImage("./assets/images/background/map.png");
-    openDatabase('./db/veranstaltung.sqlite');
+btnServer.addEventListener("click", function () {
+  saveAndLoadSqlCommand(1);
+  changeBackgroundImage("./assets/images/background/computer.png");
+  openDatabase("./db/firma.sqlite");
 });
 
- 
- btnBomb.addEventListener("click", function(){
-    saveAndLoadSqlCommand(3);
-     changeBackgroundImage("./assets/images/background/bombWorkbench.png");
- });
+btnMap.addEventListener("click", function () {
+  saveAndLoadSqlCommand(2);
+  changeBackgroundImage("./assets/images/background/map.png");
+  openDatabase("./db/veranstaltung.sqlite");
+});
+
+btnBomb.addEventListener("click", function () {
+  saveAndLoadSqlCommand(3);
+  changeBackgroundImage("./assets/images/background/bombWorkbench.png");
+  openDatabase("./db/bombe.sqlite");
+});
 
 function changeBackgroundImage(imagePath) {
-    document.body.style.backgroundImage = `url('${imagePath}')`;
+  document.body.style.backgroundImage = `url('${imagePath}')`;
 }
 
 var btnCommandHistory = document.getElementById("commandHistory");
 
-btnCommandHistory.addEventListener("click", function() {
-    outputElm.innerHTML = "";
+btnCommandHistory.addEventListener("click", function () {
+  outputElm.innerHTML = "";
 
-    // Erstellen eines Container-Divs für die Historie
-    var containerDiv = document.createElement('div');
-    containerDiv.classList.add('p-5');
+  // Erstellen eines Container-Divs für die Historie
+  var containerDiv = document.createElement("div");
+  containerDiv.classList.add("p-5");
 
-    for (var i = 0; i < commandArray.length; i++) {
-        // Erstellen des collapse-div
-        var collapseDiv = document.createElement('div');
-        collapseDiv.classList.add('collapse', 'bg-base-200', 'mb-2', 'collapse-arrow');
+  for (var i = 0; i < commandArray.length; i++) {
+    // Erstellen des collapse-div
+    var collapseDiv = document.createElement("div");
+    collapseDiv.classList.add(
+      "collapse",
+      "bg-base-200",
+      "mb-2",
+      "collapse-arrow"
+    );
 
-        // Erstellen des input-Elements
-        var input = document.createElement('input');
-        input.type = 'checkbox';
+    // Erstellen des input-Elements
+    var input = document.createElement("input");
+    input.type = "checkbox";
 
-        // Erstellen des collapse-title
-        var titleDiv = document.createElement('div');
-        titleDiv.classList.add('collapse-title', 'text-xl', 'font-medium');
-        titleDiv.textContent = commandArray[i];
+    // Erstellen des collapse-title
+    var titleDiv = document.createElement("div");
+    titleDiv.classList.add("collapse-title", "text-xl", "font-medium");
+    titleDiv.textContent = commandArray[i];
 
-        // Erstellen des collapse-content
-        var contentDiv = document.createElement('div');
-        contentDiv.classList.add('collapse-content');
-        contentDiv.innerHTML = "<p>Ergebnisse werden geladen...</p>";  // Platzhalter-Text
+    // Erstellen des collapse-content
+    var contentDiv = document.createElement("div");
+    contentDiv.classList.add("collapse-content");
+    contentDiv.innerHTML = "<p>Ergebnisse werden geladen...</p>"; // Platzhalter-Text
 
-        // Event-Listener zum Ausführen des SQL-Befehls beim ersten Öffnen des collapse-Elements
-        input.addEventListener('change', (function(cmd, contentElement, inputElement) {
-            return function() {
-                if (inputElement.checked && !contentElement.dataset.loaded) {
-                    execute(cmd, contentElement);
-                    contentElement.dataset.loaded = true;  // Markiere als geladen
-                }
-            };
-        })(commandArray[i], contentDiv, input));
+    // Event-Listener zum Ausführen des SQL-Befehls beim ersten Öffnen des collapse-Elements
+    input.addEventListener(
+      "change",
+      (function (cmd, contentElement, inputElement) {
+        return function () {
+          if (inputElement.checked && !contentElement.dataset.loaded) {
+            execute(cmd, contentElement);
+            contentElement.dataset.loaded = true; // Markiere als geladen
+          }
+        };
+      })(commandArray[i], contentDiv, input)
+    );
 
-        // Zusammenbauen der Elemente
-        collapseDiv.appendChild(input);
-        collapseDiv.appendChild(titleDiv);
-        collapseDiv.appendChild(contentDiv);
-        containerDiv.appendChild(collapseDiv);
-    }
+    // Zusammenbauen der Elemente
+    collapseDiv.appendChild(input);
+    collapseDiv.appendChild(titleDiv);
+    collapseDiv.appendChild(contentDiv);
+    containerDiv.appendChild(collapseDiv);
+  }
 
-    // Hinzufügen des Container-Divs zum Output-Element
-    outputElm.appendChild(containerDiv);
+  // Hinzufügen des Container-Divs zum Output-Element
+  outputElm.appendChild(containerDiv);
 });
 
-
-window.onload = function() {
-    changeBackgroundImage("./assets/images/background/pinboard.png");
-    openDatabase('./db/police.sqlite');
+window.onload = function () {
+  changeBackgroundImage("./assets/images/background/pinboard.png");
+  openDatabase("./db/police.sqlite");
 };
 
-
-window.onbeforeunload = function() {
-    //savedb();
+window.onbeforeunload = function () {
+  //savedb();
 };
-
 
 // Verhindert das Zoomen mit STRG + Mausrad
-document.addEventListener('wheel', function(event) {
+document.addEventListener(
+  "wheel",
+  function (event) {
     if (event.ctrlKey) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}, { passive: false });
+  },
+  { passive: false }
+);
 
 // Verhindert das Zoomen mit Gesten auf Touchscreen-Geräten
-document.addEventListener('touchstart', function(event) {
+document.addEventListener(
+  "touchstart",
+  function (event) {
     if (event.touches.length > 1) {
-        event.preventDefault();
+      event.preventDefault();
     }
-}, { passive: false });
+  },
+  { passive: false }
+);
 
 // Verhindert das Zoomen mit Tastaturkombinationen
-document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && (event.key === '+' || event.key === '-' || event.key === '0')) {
-        event.preventDefault();
-    }
+document.addEventListener("keydown", function (event) {
+  if (
+    event.ctrlKey &&
+    (event.key === "+" || event.key === "-" || event.key === "0")
+  ) {
+    event.preventDefault();
+  }
 });
 
 // Setzt den Zoom-Level zurück, falls er sich ändert
 const resetZoom = () => {
-    document.body.style.transform = 'scale(1)';
-    document.body.style.transformOrigin = '0 0';
+  document.body.style.transform = "scale(1)";
+  document.body.style.transformOrigin = "0 0";
 };
 
 //Überwacht Änderungen des Zoom-Levels
 const observer = new MutationObserver(resetZoom);
-observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ["style"],
+});
 
 // Überwacht Änderungen der Fenstergröße
-window.addEventListener('resize', resetZoom);
-
-
+window.addEventListener("resize", resetZoom);
 
 //FÜR ENTWICKLUNG AUSKOMMENTIERT
 
@@ -290,4 +303,3 @@ window.addEventListener('resize', resetZoom);
 //     // Chrome requires returnValue to be set
 //     e.returnValue = '';
 //   });
-

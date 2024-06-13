@@ -79,7 +79,17 @@
                 <div class="flex flex-col w-1/2">
                     <!-- Output field -->
                     <div class="flex items-center justify-center">
-                        <div class="bg-neutral rounded-box w-full h-[40vh] overflow-x-auto" id="output">
+                        <div class="bg-neutral rounded-box w-full h-[40vh]">
+                            <div class="p-5 hidden" id="errorAlert">
+                                <div role="alert" class="alert alert-warning">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                    <span id="errorMessage">Warning: Invalid email address!</span>
+                                  </div>
+                            </div>
+                            <div id="output" class="overflow-x-auto h-[40vh]">
+
+                            </div>
+ 
                             <!-- Table content -->
                         </div>
                     </div>
@@ -104,7 +114,11 @@
                     </div>
                 </div>
             </div>
-            <div class="bottom-0 w-full flex justify-center pb-10">
+            <!-- Bottom Navbar -->
+            <div class="bottom-0 w-full flex justify-between p-10">
+                <button class="btn btn-square h-full w-[64px] invisible">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                  </button>
                 <div class="w-1/4 min-w-[400px] navbar bg-neutral rounded-box justify-between">
                   <!-- Police Icon -->
                   <button class="btn btn-ghost btn-circle btn-outline p-2 " id="btnPolice">
@@ -176,6 +190,9 @@
                         </svg>
                     </button>
                 </div>
+                <button class="btn btn-square h-full w-[64px] p-2 btn-neutral" id="resetBtn">
+                    <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0 1 1 0 2.5 2.5)"> <path d="m3.98652376 1.07807068c-2.38377179 1.38514556-3.98652376 3.96636605-3.98652376 6.92192932 0 4.418278 3.581722 8 8 8s8-3.581722 8-8-3.581722-8-8-8"></path> <circle cx="8" cy="8" fill="#ffffff" r="2"></circle> <path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)"></path> </g> </g></svg>
+                  </button>
             </div>
         </div>
     </main>

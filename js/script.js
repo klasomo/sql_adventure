@@ -1,5 +1,6 @@
 // Start the worker in which sql.js will run
 var worker = new Worker("js/sqlite/worker.sql-wasm.js");
+worker.onerror = error;
 
 // Open a database
 worker.postMessage({ action: "open" });
@@ -10,31 +11,58 @@ function print(text) {
   outputElm.innerHTML = text.replace(/\n/g, "<br>");
 }
 
+function error(e) {
+    console.log(e); // Ausgabe des Fehlers in der Konsole (optional)
+    var errorAlert = document.getElementById("errorAlert");
+    var errorMessage = document.getElementById("errorMessage");
+    if (errorAlert && errorMessage) {
+        errorMessage.textContent = e.message || "An error occurred"; // Setze den Text der Fehlermeldung
+        errorAlert.classList.remove("hidden"); // Entferne die 'hidden'-Klasse, um das Element sichtbar zu machen
+    }
+}
+
+function noerror() {
+    var errorAlert = document.getElementById("errorAlert");
+    if (errorAlert) {
+        errorAlert.classList.add("hidden"); // Füge die 'hidden'-Klasse wieder hinzu, um das Element auszublenden
+    }
+}
+
 var commandArray = [];
+var commandHistories = {}; // Objekt zur Speicherung der Befehls-Historien für jede Datenbank
 
 var queryOutput = "";
 
-// Modifizierte Execute-Funktion, um Ergebnisse in das angegebene Element einzufügen
-function execute(commands, outputElement) {
-  worker.onmessage = function (event) {
-    var results = event.data.results;
-    if (!results) {
-      error({ message: event.data.error });
-      commandArray.pop();
+// Modified execute function to run commands on the selected database
+function execute(commands, outputElement, callback) {
+    if (!currentDatabase || !databases[currentDatabase]) {
+      console.error("No database selected or database not opened.");
+      outputElement.innerHTML = "Error: No database selected or database not opened.";
+      if (callback) callback(false);
       return;
     }
-
-    outputElement.innerHTML = ""; // Leeren des Output-Elements
-
-    for (var i = 0; i < results.length; i++) {
-      outputElement.appendChild(
-        tableCreate(results[i].columns, results[i].values)
-      );
-    }
-  };
-  worker.postMessage({ action: "exec", sql: commands });
-  outputElement.innerHTML = "Fetching results...";
-}
+  
+    var worker = databases[currentDatabase]; // Zugriff auf den Worker der aktuellen Datenbank
+  
+    worker.onmessage = function (event) {
+      var results = event.data.results;
+      if (!results) {
+        error({ message: event.data.error });
+        if (callback) callback(false);
+        return;
+      }
+  
+      outputElement.innerHTML = ""; // Leeren des Output-Elements
+  
+      for (var i = 0; i < results.length; i++) {
+        outputElement.appendChild(
+          tableCreate(results[i].columns, results[i].values)
+        );
+      }
+      if (callback) callback(true);
+    };
+    worker.postMessage({ action: "exec", sql: commands });
+  }
 
 // Create an HTML table
 var tableCreate = (function () {
@@ -60,10 +88,17 @@ var tableCreate = (function () {
 
 // Execute the commands when the button is clicked
 function execEditorContents() {
-  outputElm.innerHTML = "";
-  commandArray.push(sqlInput.getValue());
-  execute(sqlInput.getValue(), outputElm);
-}
+    outputElm.innerHTML = "";
+    execute(sqlInput.getValue(), outputElm, function(success) {
+      if (success) {
+        if (!commandHistories[currentDatabase]) {
+          commandHistories[currentDatabase] = []; // Initialisieren des Arrays, falls es noch nicht existiert
+        }
+        commandHistories[currentDatabase].push(sqlInput.getValue()); // Speichern des Befehls in der Historie der aktuellen Datenbank
+        noerror();
+      }
+    });
+  }
 var execBtn = document.getElementById("execute");
 execBtn.addEventListener("click", execEditorContents, true);
 
@@ -119,24 +154,39 @@ function savedb() {
 }
 
 // Open the database
-function openDatabase(dbPath) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", dbPath, true);
-  xhr.responseType = "blob";
+var databases = {}; // Objekt zur Speicherung der geöffneten Datenbanken
+var currentDatabase = null; // Variable zur Speicherung der aktuellen Datenbank
 
-  xhr.onload = function (event) {
-    var blob = xhr.response;
-    var fileReader = new FileReader();
+function openDatabase(dbPath, dbName) {
+    if (databases[dbName]) {
+      console.log(`Database ${dbName} already opened.`);
+      return;
+    }
 
-    fileReader.onload = function () {
-      var buffer = this.result;
-      worker.postMessage({ action: "open", buffer: buffer }, [buffer]);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", dbPath, true);
+    xhr.responseType = "blob";
+
+    xhr.onload = function (event) {
+      var blob = xhr.response;
+      var fileReader = new FileReader();
+
+      fileReader.onload = function () {
+        var buffer = this.result;
+        var worker = new Worker("js/sqlite/worker.sql-wasm.js");
+        worker.postMessage({ action: "open", buffer: buffer }, [buffer]);
+        databases[dbName] = worker; // Speichern des Workers in dem Objekt
+        if (!currentDatabase) {
+          currentDatabase = dbName; // Setze die erste geöffnete DB als aktuelle DB
+        }
+        console.log(`Database ${dbName} opened.`);
+        console.log(databases);
+      };
+
+      fileReader.readAsArrayBuffer(blob);
     };
-
-    fileReader.readAsArrayBuffer(blob);
-  };
-  xhr.send();
-}
+    xhr.send();
+  }
 
 var btnMap = document.getElementById("btnMap");
 var btnPolice = document.getElementById("btnPolice");
@@ -153,29 +203,68 @@ function saveAndLoadSqlCommand(viewIndex) {
   sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
 
-btnPolice.addEventListener("click", function () {
-  saveAndLoadSqlCommand(0);
-  changeBackgroundImage("./assets/images/background/pinboard.png");
-  openDatabase("./db/police.sqlite");
-});
+function openDatabaseFromDbName(dbName){
+    var dbPath = "";
+    switch(dbName){
+        case "police":
+            dbPath = "./db/police.sqlite"
+            break;
+        case "server":
+             dbPath = "./db/firma.sqlite"
+            break;
+        case "map":
+             dbPath = "./db/veranstaltung.sqlite"
+            break;
+        case "bomb":
+             dbPath = "./db/bombe.sqlite"
+            break;
+    }
+    openDatabase(dbPath, dbName);
+}
 
-btnServer.addEventListener("click", function () {
-  saveAndLoadSqlCommand(1);
-  changeBackgroundImage("./assets/images/background/computer.png");
-  openDatabase("./db/firma.sqlite");
-});
 
-btnMap.addEventListener("click", function () {
-  saveAndLoadSqlCommand(2);
-  changeBackgroundImage("./assets/images/background/map.png");
-  openDatabase("./db/veranstaltung.sqlite");
-});
+// Function to handle button clicks and open databases
+function handleButtonClick(viewIndex, dbName, backgroundImage) {
+    saveAndLoadSqlCommand(viewIndex);
+    changeBackgroundImage(backgroundImage);
+    openDatabaseFromDbName(dbName);
+    currentDatabase = dbName; // Set the current database when button is clicked
+    console.log(`Current database set to ${dbName}`);
+  }
 
-btnBomb.addEventListener("click", function () {
-  saveAndLoadSqlCommand(3);
-  changeBackgroundImage("./assets/images/background/bombWorkbench.png");
-  openDatabase("./db/bombe.sqlite");
-});
+  function loadPoliceView(){
+    handleButtonClick(0, "police", "./assets/images/background/pinboard.png");
+  }
+
+  function loadServerView(){
+    handleButtonClick(1, "server", "./assets/images/background/computer.png");
+  }
+
+  function loadMapView(){
+    handleButtonClick(2, "map", "./assets/images/background/map.png");
+  }
+
+  function loadBombView(){
+    handleButtonClick(3, "./assets/images/background/bombWorkbench.png");
+  }
+  
+  // Example of opening databases
+  btnPolice.addEventListener("click", function () {
+    loadPoliceView();
+  });
+  
+  btnServer.addEventListener("click", function () {
+    loadServerView();
+  });
+    
+  
+  btnMap.addEventListener("click", function () {
+    loadMapView();
+  });
+  
+  btnBomb.addEventListener("click", function () {
+    loadBombView();
+  });
 
 function changeBackgroundImage(imagePath) {
   document.body.style.backgroundImage = `url('${imagePath}')`;
@@ -184,63 +273,68 @@ function changeBackgroundImage(imagePath) {
 var btnCommandHistory = document.getElementById("commandHistory");
 
 btnCommandHistory.addEventListener("click", function () {
-  outputElm.innerHTML = "";
-
-  // Erstellen eines Container-Divs für die Historie
-  var containerDiv = document.createElement("div");
-  containerDiv.classList.add("p-5");
-
-  for (var i = 0; i < commandArray.length; i++) {
-    // Erstellen des collapse-div
-    var collapseDiv = document.createElement("div");
-    collapseDiv.classList.add(
-      "collapse",
-      "bg-base-200",
-      "mb-2",
-      "collapse-arrow"
-    );
-
-    // Erstellen des input-Elements
-    var input = document.createElement("input");
-    input.type = "checkbox";
-
-    // Erstellen des collapse-title
-    var titleDiv = document.createElement("div");
-    titleDiv.classList.add("collapse-title", "text-xl", "font-medium");
-    titleDiv.textContent = commandArray[i];
-
-    // Erstellen des collapse-content
-    var contentDiv = document.createElement("div");
-    contentDiv.classList.add("collapse-content");
-    contentDiv.innerHTML = "<p>Ergebnisse werden geladen...</p>"; // Platzhalter-Text
-
-    // Event-Listener zum Ausführen des SQL-Befehls beim ersten Öffnen des collapse-Elements
-    input.addEventListener(
-      "change",
-      (function (cmd, contentElement, inputElement) {
-        return function () {
-          if (inputElement.checked && !contentElement.dataset.loaded) {
-            execute(cmd, contentElement);
-            contentElement.dataset.loaded = true; // Markiere als geladen
-          }
-        };
-      })(commandArray[i], contentDiv, input)
-    );
-
-    // Zusammenbauen der Elemente
-    collapseDiv.appendChild(input);
-    collapseDiv.appendChild(titleDiv);
-    collapseDiv.appendChild(contentDiv);
-    containerDiv.appendChild(collapseDiv);
-  }
-
-  // Hinzufügen des Container-Divs zum Output-Element
-  outputElm.appendChild(containerDiv);
-});
+    outputElm.innerHTML = "";
+  
+    // Erstellen eines Container-Divs für die Historie
+    var containerDiv = document.createElement("div");
+    containerDiv.classList.add("p-5");
+  
+    // Überprüfen, ob es eine Historie für die aktuelle Datenbank gibt
+    if (!commandHistories[currentDatabase]) {
+      commandHistories[currentDatabase] = []; // Initialisieren des Arrays, falls es noch nicht existiert
+    }
+  
+    // Iteriere über die Befehlshistorie der aktuellen Datenbank
+    for (var i = 0; i < commandHistories[currentDatabase].length; i++) {
+      // Erstellen des collapse-div
+      var collapseDiv = document.createElement("div");
+      collapseDiv.classList.add(
+        "collapse",
+        "bg-base-200",
+        "mb-2",
+        "collapse-arrow"
+      );
+  
+      // Erstellen des input-Elements
+      var input = document.createElement("input");
+      input.type = "checkbox";
+  
+      // Erstellen des collapse-title
+      var titleDiv = document.createElement("div");
+      titleDiv.classList.add("collapse-title", "text-xl", "font-medium");
+      titleDiv.textContent = commandHistories[currentDatabase][i];
+  
+      // Erstellen des collapse-content
+      var contentDiv = document.createElement("div");
+      contentDiv.classList.add("collapse-content");
+      contentDiv.innerHTML = "<p>Ergebnisse werden geladen...</p>"; // Platzhalter-Text
+  
+      // Event-Listener zum Ausführen des SQL-Befehls beim ersten Öffnen des collapse-Elements
+      input.addEventListener(
+        "change",
+        (function (cmd, contentElement, inputElement) {
+          return function () {
+            if (inputElement.checked && !contentElement.dataset.loaded) {
+              execute(cmd, contentElement);
+              contentElement.dataset.loaded = true; // Markiere als geladen
+            }
+          };
+        })(commandHistories[currentDatabase][i], contentDiv, input)
+      );
+  
+      // Zusammenbauen der Elemente
+      collapseDiv.appendChild(input);
+      collapseDiv.appendChild(titleDiv);
+      collapseDiv.appendChild(contentDiv);
+      containerDiv.appendChild(collapseDiv);
+    }
+  
+    // Hinzufügen des Container-Divs zum Output-Element
+    outputElm.appendChild(containerDiv);
+  });
 
 window.onload = function () {
-  changeBackgroundImage("./assets/images/background/pinboard.png");
-  openDatabase("./db/police.sqlite");
+    loadPoliceView();
 };
 
 window.onbeforeunload = function () {
@@ -303,3 +397,21 @@ window.addEventListener("resize", resetZoom);
 //     // Chrome requires returnValue to be set
 //     e.returnValue = '';
 //   });
+
+
+
+document.getElementById('resetBtn').addEventListener('click', function() {
+    if (confirm('Möchten Sie die Datenbank wirklich neu laden? Alle Änderungen gehen verloren.')) {
+      removeFromDatabases(currentDatabase);
+      openDatabaseFromDbName(currentDatabase);
+    }
+  });
+
+  function removeFromDatabases(dbName) {
+    if (databases[dbName]) {
+      delete databases[dbName];
+      console.log(`Database ${dbName} removed from databases.`);
+    } else {
+      console.log(`Database ${dbName} not found in databases.`);
+    }
+  }

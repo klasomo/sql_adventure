@@ -3,7 +3,12 @@
     "cols": [
         {
             "title": "Bugs",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Ungültiger Command + Gültiger Command ergibt keine Fehlermeldung",
+                    "id": "ibkcmesl9euxnrb307jr0qj5"
+                }
+            ],
             "id": "ki3nts9bpilwej9j1xfjif2n",
             "color": "#eb144c"
         },
@@ -11,32 +16,24 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "PDF Herunterladen wenn angeklickt\n",
-                    "id": "a80xvz52akvkvbh34fjndxj4"
-                },
-                {
-                    "text": "clear output and input field when background changed\nstore values and input it when next on this background",
-                    "id": "b255k81k3y9w0eccg5l6304e"
-                },
-                {
-                    "text": "Code History Fixen eigene History für jede view\n",
-                    "id": "pulg8oz8p21srnmuek8x38oc"
-                },
-                {
-                    "text": "add Allert and Warning in Table Output ",
-                    "id": "n93ud4nga1u2bjdfa6yd252k"
-                },
-                {
-                    "text": "Step Modal Input Hinzufügen",
-                    "id": "moznvs8vitsmx6ybir8eai97"
+                    "text": "PC Login anlegen",
+                    "id": "cac6pe4di61p20gq5djt79yz"
                 },
                 {
                     "text": "Türprotkolle DB erstellen",
                     "id": "dnku1fab1ptrh3lqti34sf0m"
                 },
                 {
-                    "text": "PC Login anlegen",
-                    "id": "cac6pe4di61p20gq5djt79yz"
+                    "text": "Step Modal Input Hinzufügen",
+                    "id": "moznvs8vitsmx6ybir8eai97"
+                },
+                {
+                    "text": "Datenbanken mit mehr dummy Daten Füllen",
+                    "id": "op63vg7o4n5eszwynu1bascs"
+                },
+                {
+                    "text": "PDF Herunterladen wenn angeklickt\n",
+                    "id": "a80xvz52akvkvbh34fjndxj4"
                 }
             ],
             "id": "sh9jhul7cesngtxuqc60vhsl",
@@ -87,6 +84,26 @@
                 {
                     "text": "Helles View im Browser Testen\n",
                     "id": "tpdj7xwscsfned19a11ff3j3"
+                },
+                {
+                    "text": "clear output and input field when background changed\nstore values and input it when next on this background",
+                    "id": "b255k81k3y9w0eccg5l6304e"
+                },
+                {
+                    "text": "Alle datenbanken gleichzeitig offen haben damit änderungen wie delete und update gespeichert bleiben",
+                    "id": "i4ytxgrc7qafg09ptdazrd1i"
+                },
+                {
+                    "text": "Code History Fixen eigene History für jede view\n",
+                    "id": "pulg8oz8p21srnmuek8x38oc"
+                },
+                {
+                    "text": "add Allert and Warning in Table Output ",
+                    "id": "n93ud4nga1u2bjdfa6yd252k"
+                },
+                {
+                    "text": "Reset Button Datenbank neu laden wie Orginal db stand vom aktuellen fenstern button unten rechts mit zusätzlicher bestätigung wenn geklickt wird",
+                    "id": "q101nfse575lesxg3d8c83gd"
                 }
             ],
             "id": "cf7w66jpwx3ku4aeoi141zdl",
@@ -95,5 +112,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718297567418
+    "timestamp": 1718316193547
 }

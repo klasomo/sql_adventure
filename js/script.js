@@ -145,24 +145,38 @@ var btnPolice = document.getElementById("btnPolice");
 var btnServer = document.getElementById("btnServer");
 var btnBomb = document.getElementById("btnBomb");
 
+const sqlInputCache = ["","","",""];
+var currentViewIndex = 0;
+
+
+function saveAndLoadSqlCommand(viewIndex){
+    sqlInputCache[currentViewIndex] = sqlInput.getValue();
+    currentViewIndex = viewIndex;
+    sqlInput.setValue(sqlInputCache[currentViewIndex]);
+}
+
 btnPolice.addEventListener("click", function(){
+    saveAndLoadSqlCommand(0);
     changeBackgroundImage("./assets/images/background/pinboard2.png");
     openDatabase('./db/police.sqlite');
 });
 
 
 btnServer.addEventListener("click", function(){
+    saveAndLoadSqlCommand(1);
     changeBackgroundImage("./assets/images/background/computer.png");
     openDatabase('./db/firma.sqlite');
  });
 
 btnMap.addEventListener("click", function(){
+    saveAndLoadSqlCommand(2);
     changeBackgroundImage("./assets/images/background/cityillustration.png");
     openDatabase('./db/veranstaltung.sqlite');
 });
 
  
  btnBomb.addEventListener("click", function(){
+    saveAndLoadSqlCommand(3);
      changeBackgroundImage("./assets/images/background/bombWorkbench.png");
  });
 

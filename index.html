@@ -43,7 +43,7 @@
     <!-- Bottom Navbar -->
     </div>
     <div class="fixed bottom-0 w-full flex justify-center pb-10 bottom-0">
-        <div class="w-1/4 navbar bg-neutral rounded-box justify-between">
+        <div class="w-1/4 min-w-[400px] navbar bg-neutral rounded-box justify-between">
             <button class="btn btn-ghost btn-circle btn-outline p-2 btn-disabled" id="btnPolice">
                 <svg fill="#777777" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 508.053 508.053" xml:space="preserve">
@@ -79,10 +79,17 @@
                 </svg>
             </button>
 
-            <div class="w-1/5">
-                <button class="btn btn-primary w-full text-xl font-sevenSegment" onclick="startGame()">S T A R
-                    T</button>
-            </div>
+            <style>
+                .fit-text {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            </style>
+              
+              <div class="w-1/4">
+                  <button class="btn btn-primary w-full font-sevenSegment fit-text overflow-hidden whitespace-nowrap text-ellipsis text-xl" onclick="startGame()">S T A R T</button>
+              </div>
 
             <script>
                 function startGame() {

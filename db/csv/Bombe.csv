@@ -1,51 +1,51 @@
 Id,Modellnummer,Hersteller,Batterieanzahl,Lampenanzahl,Deaktivieren
-1,M4PK23D,PanDa,3,2,
-2,P9LK42D,_unknown_,4,3,
-3,P6PK28X,Ann0nYm,2,1,
-4,Q4PU91F,Meyer,5,2,
-5,R7LT93X,T&T,1,2,
-6,W4RF43R,warfarer,4,3,
-7,M3PK23E,PanDa,4,1,
-8,P1PK28H,Ann0nYm,2,3,
-9,A8JL28H,_unknown_,1,2,
-10,UY59GT3,Meyer,3,3,
-11,HU39JU6,T&T,5,1,
-12,W4RF42R,warfarer,3,2,
-13,IA34SM0,B,2,1,
-14,KA74BM0,_unknown_,5,1,
-15,HI29JU6,T&T,1,2,
-16,W4RF41R,warfarer,4,3,
-17,M2PK22D,PanDa,5,2,
-18,HE19JU6,T&T,2,3,
-19,KT74BM6,T&T,1,1,
-20,IA45SM0,B,3,2,
-21,P2PR33H,Ann0nYm,5,1,
-22,HA49JU6,T&T,1,3,
-23,W4RF44R,warfarer,2,2,
-24,JZ73RG1,_unknown_,1,1,
-25,HH59JU6,T&T,3,2,
-26,IA78SM0,B,4,2,
-27,HK69JU6,T&T,1,3,
-28,IA67SM0,B,5,1,
-29,M6FK23F,PanDa,3,3,
-30,M1PK35A,PanDa,1,1,
-31,P3PK45C,Ann0nYm,2,2,
-32,P1U9H75,_unknown_,5,1,
-33,HC79JU6,T&T,4,3,
-34,P4ZK67W,Ann0nYm,2,3,
-35,P5XY27L,Ann0nYm,3,2,
-36,D1F3GG2,Meyer,1,1,
-37,W4RF45R,warfarer,4,3,
-38,IA56SM0,B,4,2,
-39,HP79JU6,T&T,3,2,
-40,HZ7FC42,_unknown_,1,1,
-41,MWGTE4G,_unknown_,5,3,
-42,E2ZE61D,Ann0nYm,2,2,
-43,GDJE786,_unknown_,5,1,
-44,HN89JU6,T&T,1,3,
-45,HG5FV6G,_unknown_,2,2,
-46,E1AK64P,Ann0nYm,3,3,
-47,M5GG12E,PanDa,4,1,
-48,PSE74T8,_unknown_,5,2,
-49,M7PK55D,PanDa,1,1,
-50,M8PX89S,PanDa,1,3,
+1,M4PK23D,PanDa,3,2,Gelbes Kabel durchschneiden
+2,P9LK42D,_unknown_,4,3,Rotes Kabel durchschneiden
+3,P6PK28X,Ann0nYm,2,1,Blaues Kabel durchschneiden
+4,Q4PU91F,Meyer,5,2,Lila Kabel durchschneiden
+5,R7LT93X,T&T,1,2,Gelbes Kabel durchschneiden
+6,W4RF43R,warfarer,4,3,Grünes Kabel durchschneiden
+7,M3PK23E,PanDa,4,1,Blaues Kabel durchschneiden
+8,P1PK28H,Ann0nYm,2,3,Oranges Kabel durchschneiden
+9,A8JL28H,_unknown_,1,2,Lila Kabel durchschneiden
+10,UY59GT3,Meyer,3,3,Gelbes Kabel durchschneiden
+11,HU39JU6,T&T,5,1,Blaues Kabel durchschneiden
+12,W4RF42R,warfarer,3,2,Grünes Kabel durchschneiden
+13,IA34SM0,B,2,1,Rotes Kabel durchschneiden
+14,KA74BM0,_unknown_,2,3,Lila Kabel durchschneiden
+15,HI29JU6,T&T,1,2,Oranges Kabel durchschneiden
+16,W4RF41R,warfarer,4,3,Grünes Kabel durchschneiden
+17,M2PK22D,PanDa,5,2,Oranges Kabel durchschneiden
+18,HE19JU6,T&T,2,3,Gelbes Kabel durchschneiden
+19,KT74BM6,T&T,1,1,Blaues Kabel durchschneiden
+20,IA45SM0,B,3,2,Rotes Kabel durchschneiden
+21,P2PR33H,Ann0nYm,5,1,Grünes Kabel durchschneiden
+22,HA49JU6,T&T,1,3,Lila Kabel durchschneiden
+23,W4RF44R,warfarer,2,2,Gelbes Kabel durchschneiden
+24,JZ73RG1,_unknown_,1,1,Oranges Kabel durchschneiden
+25,HH59JU6,T&T,3,2,Blaues Kabel durchschneiden
+26,IA78SM0,B,4,2,Grünes Kabel durchschneiden
+27,HK69JU6,T&T,1,3,Rotes Kabel durchschneiden
+28,IA67SM0,B,5,1,Lila Kabel durchschneiden
+29,M6FK23F,PanDa,3,3,Oranges Kabel durchschneiden
+30,M1PK35A,PanDa,1,1,Blaues Kabel durchschneiden
+31,P3PK45C,Ann0nYm,2,2,Gelbes Kabel durchschneiden
+32,P1U9H75,_unknown_,5,1,Lila Kabel durchschneiden
+33,HC79JU6,T&T,4,3,Grünes Kabel durchschneiden
+34,P4ZK67W,Ann0nYm,2,3,Blaues Kabel durchschneiden
+35,P5XY27L,Ann0nYm,3,2,Oranges Kabel durchschneiden
+36,D1F3GG2,Meyer,1,1,Gelbes Kabel durchschneiden
+37,W4RF45R,warfarer,4,3,Lila Kabel durchschneiden
+38,IA56SM0,B,4,2,Rotes Kabel durchschneiden
+39,HP79JU6,T&T,3,2,Blaues Kabel durchschneiden
+40,HZ7FC42,_unknown_,1,1,Oranges Kabel durchschneiden
+41,MWGTE4G,_unknown_,5,3,Grünes Kabel durchschneiden
+42,E2ZE61D,Ann0nYm,2,2,Gelbes Kabel durchschneiden
+43,GDJE786,_unknown_,5,1,Blaues Kabel durchschneiden
+44,HN89JU6,T&T,1,3,Oranges Kabel durchschneiden
+45,HG5FV6G,_unknown_,2,2,Lila Kabel durchschneiden
+46,E1AK64P,Ann0nYm,3,3,Rotes Kabel durchschneiden
+47,M5GG12E,PanDa,4,1,Grünes Kabel durchschneiden
+48,PSE74T8,_unknown_,5,2,Blaues Kabel durchschneiden
+49,M7PK55D,PanDa,1,1,Gelbes Kabel durchschneiden
+50,M8PX89S,PanDa,1,3,Rotes Kabel durchschneiden

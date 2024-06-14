@@ -245,7 +245,7 @@ function handleButtonClick(viewIndex, dbName, backgroundImage) {
   }
 
   function loadBombView(){
-    handleButtonClick(3, "./assets/images/background/bombWorkbench.png");
+    handleButtonClick(3, "bomb","./assets/images/background/bombWorkbench.png");
   }
   
   // Example of opening databases

@@ -199,6 +199,8 @@ var currentViewIndex = 0;
 
 function saveAndLoadSqlCommand(viewIndex) {
   sqlInputCache[currentViewIndex] = sqlInput.getValue();
+  outputElm.innerHTML = "";
+  noerror();
   currentViewIndex = viewIndex;
   sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
@@ -257,7 +259,6 @@ function handleButtonClick(viewIndex, dbName, backgroundImage) {
     loadServerView();
   });
     
-  
   btnMap.addEventListener("click", function () {
     loadMapView();
   });

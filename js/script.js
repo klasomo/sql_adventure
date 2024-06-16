@@ -239,7 +239,17 @@ function handleButtonClick(viewIndex, dbName, backgroundImage) {
   }
 
   function loadServerView(){
-    handleButtonClick(1, "server", "./assets/images/background/computer.png");
+    if(isPcUnlocked){
+      handleButtonClick(1, "server", "./assets/images/background/computer.png");
+      hideLoginDiv(true);
+      hideSqlDiv(false);
+    }
+    else{
+      handleButtonClick(1, "server", "./assets/images/background/computer_login.png");
+      hideLoginDiv(false);
+      hideSqlDiv(true);
+    }
+
   }
 
   function loadMapView(){
@@ -416,3 +426,43 @@ document.getElementById('resetBtn').addEventListener('click', function() {
       console.log(`Database ${dbName} not found in databases.`);
     }
   }
+
+
+let isPcUnlocked = false;
+let pcPassword = "qtr-Ch3n-wy";
+let pcUsername = "admin";
+
+
+function hideSqlDiv(isVisible) {
+  const sqlDiv = document.getElementById('sqlDiv');
+  if (isVisible) {
+    sqlDiv.classList.add('hidden');
+  } else {
+    sqlDiv.classList.remove('hidden');
+  }
+}
+
+function hideLoginDiv(isVisible){
+  const pcLogin = document.getElementById('pcLogin');
+  if(isVisible){
+    pcLogin.classList.add('hidden');
+  }else{
+    pcLogin.classList.remove('hidden');
+  }
+}
+
+
+document.getElementById('btnLogin').addEventListener('click', function(){
+  console.log("login btn clicked");
+  var inputUsername = document.getElementById("inputUsername").value;
+  var inputPassword = document.getElementById("inputPassword").value;
+
+
+
+  if(inputUsername == pcUsername && inputPassword == pcPassword){
+    isPcUnlocked = true;
+    loadServerView();
+  }
+});
+
+

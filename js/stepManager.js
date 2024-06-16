@@ -1,64 +1,93 @@
 
 let currentStep = 3;
 
-const modal = document.getElementById('step_modal');
-
-
-
-const steps = [
-    { id: 'step1', message: 'step1 wurde geklickt!' },
-    { id: 'step2', message: 'step2 wurde geklickt!' },
-    { id: 'step3', message: 'step3 wurde geklickt!' },
-    { id: 'step4', message: 'step4 wurde geklickt!' },
-    { id: 'step5', message: 'step5 wurde geklickt!' },
-    { id: 'step6', message: 'step6 wurde geklickt!' },
-    { id: 'step7', message: 'step7 wurde geklickt!' },
+const stepsNames = [
+    { id: 'step1', message: 'Step1' },
+    { id: 'step2', message: 'Step2' },
+    { id: 'step3', message: 'Step3' },
+    { id: 'step4', message: 'Step4' },
+    { id: 'step5', message: 'Step5' },
+    { id: 'step6', message: 'Standort Lokalisieren' },
+    { id: 'step7', message: 'Bombe entschärfen' },
 ];
+
+
+const modal = document.getElementById('step_modal');
 
 document.addEventListener('DOMContentLoaded', () => {    
     updateProgressBar();
     setStepClickEvent();
 });
 
-// Progressbar 
 function updateProgressBar(){
     var steps = document.querySelectorAll('.steps .step');
     
     for(var i = 0; i < steps.length; i++){
         if ( i < currentStep+1){
             steps[i].classList.add('step-primary', 'text-primary');
+            steps[i].textContent = stepsNames[i].message;
         }else{
             steps[i].classList.remove('step-primary', 'text-primary');
+            steps[i].textContent = "? ? ?";
+            console.log(steps[i]);
         }
     }
 }
 
-function removeClickEvent(){
-
-}
-
-function addClickEvent(){
-
-}
-
 function setStepClickEvent(){
-    steps.forEach((step, index) => { // Hier füge ich 'index' als zweites Argument hinzu
+    stepsNames.forEach((step, index) => {
         const element = document.getElementById(step.id);
         if(index < currentStep){
-            //klickbar aber not editable
-        }
-        if(index === currentStep){
-            //klickbar und editable
+            // Klickbar
             element.addEventListener('click', () => {
                 // Öffne das Modal
                 modal.showModal();
                 
-                // Optionale Anpassung des Modalinhalts
-                const modalTitle = modal.querySelector('.modal-box h3');
-                const modalContent = modal.querySelector('.modal-box p');
-                modalTitle.textContent = `Hallo! ${step.message}`;
-                modalContent.textContent = `Sie haben Schritt ${index + 1} geklickt.`; // Hier verwende ich den Index
+                // Füge das spezifische Template ein
+                const modalContent = modal.querySelector('.modal-box');
+                const template = document.getElementById(`${step.id}-template`);
+                
+                // Lösche vorherigen Inhalt
+                modalContent.innerHTML = '';
+
+                // Füge neuen Inhalt hinzu
+                const clonedTemplate = template.cloneNode(true);
+                modalContent.appendChild(clonedTemplate);
+                modalContent.style.display = 'block';
+                clonedTemplate.style.display = 'block';
+
+                // Deaktiviere Eingaben und Buttons, wenn index < currentStep
+                if (index < currentStep) {
+                    const inputs = clonedTemplate.querySelectorAll('input, textarea, select, button');
+                    inputs.forEach(input => {
+                        input.disabled = true;
+                    });
+                }
             });
+        }
+        if(index === currentStep){
+            
+            element.addEventListener('click', () => {
+                // Öffne das Modal
+                modal.showModal();
+                
+                // Füge das spezifische Template ein
+                const modalContent = modal.querySelector('.modal-box');
+                const template = document.getElementById(`${step.id}-template`);
+                console.log(template);
+                
+                // Lösche vorherigen Inhalt
+                modalContent.innerHTML = '';
+
+                // Füge neuen Inhalt hinzu
+                modalContent.appendChild(template.cloneNode(true));
+
+                
+                modalContent.style.display = 'block';
+                modalContent.querySelector('div').style.display = 'block';
+                console.log(modalContent);
+            });
+
         }
         if(index > currentStep){
             //nicht klickbar

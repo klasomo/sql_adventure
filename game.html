@@ -37,6 +37,99 @@
         <button>close</button>
     </form>
 </dialog>
+
+
+<!-- Template für Schritt 1 -->
+<div id="step1-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 1</h3>
+    <p class="py-4">Sie haben Schritt 1 geklickt.</p>
+    <input type="text" placeholder="Eingabe für Schritt 1" class="input input-bordered w-full max-w-xs">
+    <button class="btn btn-primary mt-4">Speichern</button>
+</div>
+
+<!-- Template für Schritt 2 -->
+<div id="step2-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 2</h3>
+    <p class="py-4">Sie haben Schritt 2 geklickt.</p>
+    <textarea placeholder="Eingabe für Schritt 2" class="textarea textarea-bordered w-full max-w-xs"></textarea>
+    <button class="btn btn-primary mt-4">Weiter</button>
+</div>
+
+<!-- Template für Schritt 3 -->
+<div id="step3-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 3</h3>
+    <p class="py-4">Sie haben Schritt 3 geklickt.</p>
+    <select class="select select-bordered w-full max-w-xs">
+        <option disabled selected>Option auswählen</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+    </select>
+    <button class="btn btn-primary mt-4">Weiter</button>
+</div>
+
+<!-- Template für Schritt 4 -->
+<div id="step4-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 4</h3>
+    <p class="py-4">Sie haben Schritt 4 geklickt..</p>
+    <div class="flex space-x-4">
+        <button class="btn">Option 1</button>
+        <button class="btn">Option 2</button>
+    </div>
+</div>
+
+<!-- Template für Schritt 5 -->
+<div id="step5-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 5</h3>
+    <p class="py-4">Sie haben Schritt 5 geklickt.</p>
+    <div class="form-control">
+        <label class="cursor-pointer label">
+            <span class="label-text">Option 1</span>
+            <input type="checkbox" class="checkbox checkbox-primary">
+        </label>
+        <label class="cursor-pointer label">
+            <span class="label-text">Option 2</span>
+            <input type="checkbox" class="checkbox checkbox-primary">
+        </label>
+    </div>
+    <button class="btn btn-primary mt-4">Weiter</button>
+</div>
+
+<!-- Template für Schritt 6 -->
+<div id="step6-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 6</h3>
+    <p class="py-4">Sie haben Schritt 6 geklickt.</p>
+    <div class="form-control">
+        <label class="label">
+            <span class="label-text">Benutzername</span>
+        </label>
+        <input type="text" placeholder="Benutzername eingeben" class="input input-bordered w-full max-w-xs">
+    </div>
+    <div class="form-control mt-4">
+        <label class="label">
+            <span class="label-text">Passwort</span>
+        </label>
+        <input type="password" placeholder="Passwort eingeben" class="input input-bordered w-full max-w-xs">
+    </div>
+    <button class="btn btn-primary mt-4">Weiter</button>
+</div>
+
+<!-- Template für Schritt 7 -->
+<div id="step7-template" style="display: none;">
+    <h3 class="font-bold text-lg">Schritt 7</h3>
+    <p class="py-4">Sie haben Schritt 7 geklickt.</p>
+    <div class="alert alert-success">
+        <div class="flex-1">
+            <label>Herzlichen Glückwunsch! Sie haben alle Schritte abgeschlossen.</label>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-4">Fertig</button>
+</div>
+
+
+
+
+
 <div class="modal" role="dialog">
     <div class="modal-box flex justify-center items-center flex-col w-1/2">
         <div class="modal-box flex justify-center items-center relative">
@@ -74,6 +167,7 @@
             <!-- Output and Input Field -->
             <div class="flex justify-center">
                 <div class="flex flex-col w-1/2">
+                    <div class="" id="sqlDiv">
                     <!-- Output field -->
                     <div class="flex items-center justify-center">
                         <div class="bg-neutral rounded-box w-full h-[40vh]">
@@ -82,20 +176,6 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                                     <span id="errorMessage">Warning: Invalid email address!</span>
                                   </div>
-                            </div>
-                            <div class="m-10 flex justify-center hidden">
-                                <div class="w-1/2">
-                                    <label class="input input-bordered flex items-center my-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70 mr-2">
-                                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-                                        </svg>
-                                        <input type="text" class="grow w-full" placeholder="Nutzername" />
-                                    </label>
-                                    <label class="input input-bordered flex items-center my-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70 mr-2"><path fill-rule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clip-rule="evenodd" /></svg>
-                                        <input type="password" class="grow" placeholder="Passwort" />
-                                    </label>
-                                </div>
                             </div>
                             <div id="output" class="overflow-x-auto h-[40vh]">
                                 <!-- Table content -->   
@@ -121,7 +201,24 @@
                             <button id="execute" class="btn h-px h-30 ml-10">Run</button>
                         </div>
                     </div>
+                    </div>
+                    <div class="m-10 flex justify-center hidden" id="pcLogin">
+                        <div class="w-1/2">
+                            <label class="input input-bordered flex items-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70 mr-2">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+                                </svg>
+                                <input type="text" class="grow w-full" id="inputUsername" placeholder="Nutzername" />
+                            </label>
+                            <label class="input input-bordered flex items-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70 mr-2"><path fill-rule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clip-rule="evenodd" /></svg>
+                                <input type="password" class="grow" id="inputPassword" placeholder="Passwort" />
+                            </label>
+                            <button class="btn btn-primary w-full" id="btnLogin">Login</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <!-- Bottom Navbar -->
             <div class="bottom-0 w-full flex justify-between pb-5 px-5">

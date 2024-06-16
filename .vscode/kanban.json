@@ -11,16 +11,16 @@
             "title": "To-Do",
             "tasks": [
                 {
+                    "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
+                    "id": "wh6uz0jmjuwmhy2ugqi4mo7d"
+                },
+                {
                     "text": "Einstieg Hinzufügen mit pfeilen",
                     "id": "r7cosm6e4em0j63bn0qsg7wr"
                 },
                 {
                     "text": "Türprotkolle DB erstellen",
                     "id": "dnku1fab1ptrh3lqti34sf0m"
-                },
-                {
-                    "text": "Step Modal Input Hinzufügen",
-                    "id": "moznvs8vitsmx6ybir8eai97"
                 },
                 {
                     "text": "Datenbanken mit mehr dummy Daten Füllen",
@@ -41,10 +41,6 @@
         {
             "title": "Doing",
             "tasks": [
-                {
-                    "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
-                    "id": "af0ms3l0ljvi6yr18h33cdbk"
-                },
                 {
                     "text": "PDF Herunterladen wenn angeklickt\n",
                     "id": "a80xvz52akvkvbh34fjndxj4"
@@ -115,6 +111,14 @@
                 {
                     "text": "Ungültiger Command + Gültiger Command ergibt keine Fehlermeldung",
                     "id": "ibkcmesl9euxnrb307jr0qj5"
+                },
+                {
+                    "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
+                    "id": "af0ms3l0ljvi6yr18h33cdbk"
+                },
+                {
+                    "text": "Step Modal Input Hinzufügen",
+                    "id": "moznvs8vitsmx6ybir8eai97"
                 }
             ],
             "id": "cf7w66jpwx3ku4aeoi141zdl",
@@ -123,5 +127,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718390152517
+    "timestamp": 1718542303793
 }

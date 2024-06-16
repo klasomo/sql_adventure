@@ -9,7 +9,7 @@ select * from Zeugenaussagen where Ermittler is "Alexander Wolf" and Datum is "2
 
 
 DB Mitarbeiter
-select name from Mitarbeiter where Arbeitsplatz is "404-03";
+select name from Mitarbeiter where Arbeitsplatz is "204-03";
 --> "Max Brandt"
 
 "select *" blockieren aus datenschutzgründen Freie Informationen "name"

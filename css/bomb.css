@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
+* {
+  box-sizing: border-box;
+} 
+
+#img {
+  display: none;
+}
+
+canvas_bomb {}
+
+article {
+  width: 100%;
+  display:block;
+  margin:0 auto;
+}
+article p{padding:1em 0 0 0; line-height:2em;}
+
+.viewColor {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgb(124, 177, 26);
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.swatch {
+  width: 50%;
+  height: 105px;
+  padding: 15px 30px;
+  line-height: 25px;
+}
+.swatch:nth-child(5n){ margin-right: 0;}
+
+

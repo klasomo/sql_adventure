@@ -227,6 +227,8 @@ function openDatabaseFromDbName(dbName){
 
 // Function to handle button clicks and open databases
 function handleButtonClick(viewIndex, dbName, backgroundImage) {
+    hideLoginDiv(true);
+    hideSqlDiv(false);
     saveAndLoadSqlCommand(viewIndex);
     changeBackgroundImage(backgroundImage);
     openDatabaseFromDbName(dbName);
@@ -238,18 +240,19 @@ function handleButtonClick(viewIndex, dbName, backgroundImage) {
     handleButtonClick(0, "police", "./assets/images/background/pinboard.png");
   }
 
+
+
   function loadServerView(){
-    if(isPcUnlocked){
+    //if(isPcUnlocked){
+    if(true){
       handleButtonClick(1, "server", "./assets/images/background/computer.png");
-      hideLoginDiv(true);
-      hideSqlDiv(false);
+
     }
     else{
       handleButtonClick(1, "server", "./assets/images/background/computer_login.png");
       hideLoginDiv(false);
       hideSqlDiv(true);
     }
-
   }
 
   function loadMapView(){
@@ -430,7 +433,7 @@ document.getElementById('resetBtn').addEventListener('click', function() {
 
 let isPcUnlocked = false;
 let pcPassword = "qtr-Ch3n-wy";
-let pcUsername = "admin";
+let pcUsername = "max.brandt";
 
 
 function hideSqlDiv(isVisible) {
@@ -454,7 +457,7 @@ function hideLoginDiv(isVisible){
 
 document.getElementById('btnLogin').addEventListener('click', function(){
   console.log("login btn clicked");
-  var inputUsername = document.getElementById("inputUsername").value;
+  var inputUsername = document.getElementById("inputUsername").value.toLowerCase() ;
   var inputPassword = document.getElementById("inputPassword").value;
 
 
@@ -464,5 +467,4 @@ document.getElementById('btnLogin').addEventListener('click', function(){
     loadServerView();
   }
 });
-
 

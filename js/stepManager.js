@@ -1,5 +1,5 @@
 
-let currentStep = 3;
+let currentStep = 6;
 
 const stepsNames = [
     { id: 'step1', message: 'Step1' },
@@ -13,6 +13,7 @@ const stepsNames = [
 
 
 const modal = document.getElementById('step_modal');
+const modal_checkbox = document.getElementById("step_modal_checkbox");
 
 document.addEventListener('DOMContentLoaded', () => {    
     updateProgressBar();
@@ -41,7 +42,7 @@ function setStepClickEvent(){
             // Klickbar
             element.addEventListener('click', () => {
                 // Öffne das Modal
-                modal.showModal();
+                modal_checkbox.checked = true;
                 
                 // Füge das spezifische Template ein
                 const modalContent = modal.querySelector('.modal-box');
@@ -55,7 +56,7 @@ function setStepClickEvent(){
                 modalContent.appendChild(clonedTemplate);
                 modalContent.style.display = 'block';
                 clonedTemplate.style.display = 'block';
-
+                
                 // Deaktiviere Eingaben und Buttons, wenn index < currentStep
                 if (index < currentStep) {
                     const inputs = clonedTemplate.querySelectorAll('input, textarea, select, button');
@@ -69,7 +70,7 @@ function setStepClickEvent(){
             
             element.addEventListener('click', () => {
                 // Öffne das Modal
-                modal.showModal();
+                modal_checkbox.checked = true;
                 
                 // Füge das spezifische Template ein
                 const modalContent = modal.querySelector('.modal-box');
@@ -84,7 +85,11 @@ function setStepClickEvent(){
 
                 
                 modalContent.style.display = 'block';
-                modalContent.querySelector('div').style.display = 'block';
+                modalContent.querySelector('div').style.display = 'block';;
+                if(currentStep + 1 == stepsNames.length){
+                    console.log("init Bomb color picker");
+                    initColorPicker();
+                }
                 console.log(modalContent);
             });
 
@@ -94,3 +99,6 @@ function setStepClickEvent(){
         }
     });
 }
+
+
+// Step 1:

@@ -1,6 +1,6 @@
 
 DB Tatortbericht
-select * from Tatortbericht where ort is "SYMMEX";
+select * from Tatortbericht where ort is "Symmex";
 --> Bericht mit Informationen: Ermittler des Berichts (Alexander Wolf)
 DB Zeugenaussagen
 select * from Zeugenaussagen where Ermittler is "Alexander Wolf" and Datum is "27.06.2024";
@@ -8,17 +8,32 @@ select * from Zeugenaussagen where Ermittler is "Alexander Wolf" and Datum is "2
 --> Sophie Schmidt: Verdächtigte Person aus der IT Abteilung gesehen
 
 
-DB Mitarbeiter
+STEP1:
+Abteilung: Dropdown -> IT
+Raum: 404 (Nur Nummern eingaben akzeptieren)
+
+
+
+
+
+DB Mitarbeiter:
+
+
+Gast User:
+bei select * Hinweis ausgeben das gast nur zugriff auf Mitarbeiter_id, Name und Arbeitsplatz hat Select befehl konkretisieren oder Anmelden
 select name from Mitarbeiter where Arbeitsplatz is "204-03";
 --> "Max Brandt"
 
-"select *" blockieren aus datenschutzgründen Freie Informationen "name"
+
+--> Login am PC als Max Brandt
+dadurch berechtiung die Zugangsberechtigung zu Ändern
+
+
+Step 2:
+Erfolgreich einloggen als max brandt keine eingabe nötig 
 
 
 
---> Login am PC 
---> Benutzername auf Stickynote wie er sich zusammensetzt wird + Informationen aus select query
---> Password auf Stickynote
 
 <----------Eingeschränkter PC Modus------------->
 
@@ -27,20 +42,24 @@ DB Türprotokoll
 select count(*) from Türprotokoll where Raum_Nr is "404";
 --> Anzahl der Verdächtigen Personen
 
-??? Ideen:  1. Kamera Offline Zeiten Checken dafür wird neue DB benötigt
-            2. Aussage über Verdächtige Person mit Log daten verknüpfen um einzugrenzen
+
+STEP 3:
+Eingabe: Wer ist der Täter der die bombe gelegt hat:
+
+select count(*) Anzahl, * from Türprotokoll group by mitarbeiter_id;
+--> Täter wird zurückgegeben Paul Huber
 
 
+
+
+STEP 4:
 update Mitarbeiter set Zugangsberechtigung = 5 where Name is "Max Brandt";
-
 
 
 
 <----------Uneingeschränkter PC Modus------------->
 
-select * from Türprotokoll where Raum_Nr is "404" join Mitarbeiter on Mitarbeiter_Id;
---> Täter wird zurückgegeben Paul Huber
-
+STEP 5:
 select * from Email where Absender is "p.Huber@symmex.it" or Empfänger is "p.Huber@symmex.it"
 --> Email entschlüsseln durch Programm auf dem Desktop
     --> AnschlagenOrt Eckdaten z.B. mehr 
@@ -64,6 +83,12 @@ Bombe Enschräfen mit neue Table jedoch Bombnummer nicht vollständig lesbar "is
 
 !!!!!!!!!!!!!!!!!!!!----------- IDEEN ------------!!!!!!!!!!!!!!!!!!!!!!!
 Schüler müssen eigenen Tabelle mit DetektivNamen etc... Anlegen am ende vllt noch mit Update bearbeiten
+
+
+
+
+
+
 
 
 

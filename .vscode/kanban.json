@@ -3,7 +3,12 @@
     "cols": [
         {
             "title": "Bugs",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Console.log entfernen\n",
+                    "id": "fw6umidieftroq41jepbku0z"
+                }
+            ],
             "id": "ki3nts9bpilwej9j1xfjif2n",
             "color": "#eb144c"
         },
@@ -11,8 +16,20 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
-                    "id": "wh6uz0jmjuwmhy2ugqi4mo7d"
+                    "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
+                    "id": "yrya669wtbbefku0qnuosr6o"
+                },
+                {
+                    "text": "Zuätzliche Firmen Datanbank\n",
+                    "id": "qfmev6673cwvlx246g1jke4x"
+                },
+                {
+                    "text": "Gast Login Button Hinzufügen\n",
+                    "id": "yb7vkazv6k1rwyy7hw08inex"
+                },
+                {
+                    "text": "Wrong Login allert oder info ausgeben ",
+                    "id": "lrkks4ch5p4g4s3rz3qg0erf"
                 },
                 {
                     "text": "Einstieg Hinzufügen mit pfeilen",
@@ -23,8 +40,8 @@
                     "id": "dnku1fab1ptrh3lqti34sf0m"
                 },
                 {
-                    "text": "Datenbanken mit mehr dummy Daten Füllen",
-                    "id": "op63vg7o4n5eszwynu1bascs"
+                    "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
+                    "id": "wh6uz0jmjuwmhy2ugqi4mo7d"
                 },
                 {
                     "text": "--------------------NICHT HOCH PRIOR------------------------",
@@ -127,5 +144,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718542303793
+    "timestamp": 1718727797510
 }

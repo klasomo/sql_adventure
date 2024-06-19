@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/codeMirror.css" />
     <link rel="stylesheet" href="css/testing.css" />
+    <link rel="stylesheet" href="css/bomb.css"/>
 
     <!--CodeMirror-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css" />
@@ -25,24 +26,35 @@
     <!-- Daisy UI-->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- Einbinden von jQuery über ein CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
-<input type="checkbox" id="decrypt" class="modal-toggle" />
 <!-- DaisyUI Modal -->
+<input type="checkbox" id="step_modal_checkbox" class="modal-toggle" />
 <dialog id="step_modal" class="modal">
-    <div class="modal-box">
+    <div class="modal-box w-8/12 max-w-5xl">
         <h3 class="font-bold text-lg">Hello!</h3>
         <p class="py-4">Press ESC key or click outside to close</p>
     </div>
-    <form method="dialog" class="modal-backdrop">
-        <button>close</button>
-    </form>
+    <label class="modal-backdrop" for="step_modal_checkbox">Close</label>
 </dialog>
 
+<input type="checkbox" id="my_modal_7" class="modal-toggle" />
+<div class="modal" role="dialog">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">This modal works with a hidden checkbox!</p>
+  </div>
+  <label class="modal-backdrop" for="my_modal_7">Close</label>
+</div>
 
+
+<!-- Input Raumnummer und Dropdown Abteilung -->
 <!-- Template für Schritt 1 -->
 <div id="step1-template" style="display: none;">
     <h3 class="font-bold text-lg">Schritt 1</h3>
-    <p class="py-4">Sie haben Schritt 1 geklickt.</p>
+    
     <input type="text" placeholder="Eingabe für Schritt 1" class="input input-bordered w-full max-w-xs">
     <button class="btn btn-primary mt-4">Speichern</button>
 </div>
@@ -114,20 +126,17 @@
     <button class="btn btn-primary mt-4">Weiter</button>
 </div>
 
+
 <!-- Template für Schritt 7 -->
 <div id="step7-template" style="display: none;">
-    <h3 class="font-bold text-lg">Schritt 7</h3>
-    <p class="py-4">Sie haben Schritt 7 geklickt.</p>
-    <div class="alert alert-success">
-        <div class="flex-1">
-            <label>Herzlichen Glückwunsch! Sie haben alle Schritte abgeschlossen.</label>
+    <article class="flex flex-col items-center">
+        <img id="img" src="/assets/images/bomb_uncut.png" />
+        <div class="viewColor">current color</div>
+        <canvas id="canvas_bomb"></canvas>
+        <div class="palette">
         </div>
-    </div>
-    <button class="btn btn-primary mt-4">Fertig</button>
+    </article>
 </div>
-
-
-
 
 
 <div class="modal" role="dialog">
@@ -251,7 +260,8 @@
                     </svg>
                 </button>
                 <!-- Server Icon -->
-                <button class="btn btn-ghost btn-circle btn-outline p-1 " id="btnServer">
+
+                <button class="btn btn-ghost btn-circle btn-outline p-1" id="btnServer">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -261,6 +271,7 @@
                                 stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
                         </g>
                     </svg>
+                
                 </button>
                     <div class="w-1/4 bg-primary flex justify-center h-full rounded-lg">
                         <div class="font-sevenSegmentClock text-3xl timer text-black">00:00</div>
@@ -301,13 +312,18 @@
                   </button>
             </div>
         </div>
+        <div class="custom-cursor-body hidden">
+            <img src="/assets/images/mouseIcon/plier-construction-svgrepo-com.svg">
+        </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>
 
+    <script type="text/javascript" src="js/bomb.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/cipher.js"></script>
     <script type="text/javascript" src="js/stepManager.js"></script>
     <script type="text/javascript" src="js/timer.js"></script>
+
 </body>
 
 </html>

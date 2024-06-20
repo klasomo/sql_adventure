@@ -54,57 +54,54 @@
 <!-- Template für Schritt 1 -->
 <div id="step1-template" style="display: none;">
     <h3 class="font-bold text-lg">Schritt 1</h3>
-    
-    <input type="text" placeholder="Eingabe für Schritt 1" class="input input-bordered w-full max-w-xs">
-    <button class="btn btn-primary mt-4">Speichern</button>
+    <input id="step1_input" type="text" placeholder="Raum Nr." class="input input-bordered w-full max-w-xs">
+    <select class="select select-bordered w-full max-w-xs">
+        <option disabled selected>Welche Abteilung</option>
+        <option>Buchhaltung</option>
+        <option>Geschäftsleitung</option>
+        <option>IT</option>
+        <option>Management</option>
+        <option>Marketing</option>
+        <option>Personal</option>
+        <option>Reinigungskraft</option>
+        <option>Sekretärin</option>
+      </select>
+    <button class="btn btn-primary mt-4">Überprüfen</button>
 </div>
 
 <!-- Template für Schritt 2 -->
 <div id="step2-template" style="display: none;">
-    <h3 class="font-bold text-lg">Schritt 2</h3>
-    <p class="py-4">Sie haben Schritt 2 geklickt.</p>
-    <textarea placeholder="Eingabe für Schritt 2" class="textarea textarea-bordered w-full max-w-xs"></textarea>
-    <button class="btn btn-primary mt-4">Weiter</button>
+    <h3 class="font-bold text-lg">Am Computer Einloggen</h3>
 </div>
 
 <!-- Template für Schritt 3 -->
 <div id="step3-template" style="display: none;">
-    <h3 class="font-bold text-lg">Schritt 3</h3>
-    <p class="py-4">Sie haben Schritt 3 geklickt.</p>
-    <select class="select select-bordered w-full max-w-xs">
-        <option disabled selected>Option auswählen</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-    </select>
-    <button class="btn btn-primary mt-4">Weiter</button>
-</div>
+    <div>
+        <div class="label">
+            <span class="label-text">Wer hat die Bombe gelegt?</span>
+          </div>
+        <input type="text" placeholder="Täter" id="step3_input" class="input input-bordered w-full max-w-xs">
+        <button class="btn btn-primary mt-4">Überprüfen</button>
+    </div>
+</div> 
 
 <!-- Template für Schritt 4 -->
 <div id="step4-template" style="display: none;">
-    <h3 class="font-bold text-lg">Schritt 4</h3>
-    <p class="py-4">Sie haben Schritt 4 geklickt..</p>
-    <div class="flex space-x-4">
-        <button class="btn">Option 1</button>
-        <button class="btn">Option 2</button>
-    </div>
+    <h3 class="font-bold text-lg">Zugangsberechtigung erhöhen</h3>
 </div>
 
 <!-- Template für Schritt 5 -->
 <div id="step5-template" style="display: none;">
-    <h3 class="font-bold text-lg">Schritt 5</h3>
-    <p class="py-4">Sie haben Schritt 5 geklickt.</p>
-    <div class="form-control">
-        <label class="cursor-pointer label">
-            <span class="label-text">Option 1</span>
-            <input type="checkbox" class="checkbox checkbox-primary">
-        </label>
-        <label class="cursor-pointer label">
-            <span class="label-text">Option 2</span>
-            <input type="checkbox" class="checkbox checkbox-primary">
-        </label>
+    <div class="flex justify-center">
+        <p class="text-2xl text-primary">33%</p>
     </div>
-    <button class="btn btn-primary mt-4">Weiter</button>
+         <progress class="progress progress-primary w-full mb-5" value="33" max="100"></progress>
+        <textarea class="textarea textarea-primary w-full h-[40vh] codedText text-2xl font-bold mx-auto px-0"
+            id="encryptedText" placeholder="Encrypted Text"></textarea>
+
+    <button class="btn btn-primary w-full mt-5" id="decryptBtn">
+        Decrypt
+    </button>
 </div>
 
 <!-- Template für Schritt 6 -->

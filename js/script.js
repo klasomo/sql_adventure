@@ -12,7 +12,7 @@ function print(text) {
 }
 
 function error(e) {
-    console.log(e); // Ausgabe des Fehlers in der Konsole (optional)
+    console.log(e);
     var errorAlert = document.getElementById("errorAlert");
     var errorMessage = document.getElementById("errorMessage");
     if (errorAlert && errorMessage) {
@@ -456,7 +456,6 @@ function hideLoginDiv(isVisible){
 
 
 document.getElementById('btnLogin').addEventListener('click', function(){
-  console.log("login btn clicked");
   var inputUsername = document.getElementById("inputUsername").value.toLowerCase() ;
   var inputPassword = document.getElementById("inputPassword").value;
 

@@ -22,20 +22,132 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .container {
+            position: relative;
+        }
 
+        .image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
 
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            grid-template-rows: repeat(9, 1fr);
+        }
+
+        .grid div {
+            border: 1px solid rgba(0, 0, 0, 0.2); /* Gitterlinien */
+            position: relative;
+        }
+
+        .grid button {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
-    <article>
+    <div class="container">
+        <img src="/assets/images/map_grit.png" alt="Bild" class="image">
+        <div class="grid">
+            <!-- Grid-Felder werden hier dynamisch durch JavaScript hinzugefügt -->
+        </div>
+    </div>
 
-        </article>
+    <script>
+        var selectedCell = [null, null];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.querySelector('.grid');
+            const columns = 16;
+            const rows = 9;
+
+            const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+                  'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < columns; col++) {
+
+                    const gridCell = document.createElement('div');
+                    const button = document.createElement('button');
+
+                    button.classList.add('relative', 'flex', 'items-center', 'justify-center');
+
+                    if(row == 0){
+                        //Buchstaben oben mittig
+                        const rowLabel = document.createElement('span');
+                        rowLabel.textContent = alphabet[col]
+                        rowLabel.classList.add('absolute', 'top-0', 'text-center', 'w-full', 'font-bold');
+                        button.append(rowLabel);
+                    }
+                    if(col == 0){
+                        //Zahl links mittig
+                        const colLabel = document.createElement('span');
+                        colLabel.textContent = row + 1;
+                        colLabel.classList.add('absolute', 'left-0', 'transform', 'translate-x-1/2', 'font-bold');
+                        button.append(colLabel);
+                    }
+                    
+                    button.id = row + "," + col;
+                    
+                    button.addEventListener('click', () => {
+
+                        clearCell(selectedCell);
+                        selectedCell[0] = row;
+                        selectedCell[1] = col;
+
+                        button.style.backgroundImage = 'url("/assets/images/Crosshair_svg.svg")';
+                        button.style.backgroundSize = 'contain';
+                        button.style.backgroundRepeat = 'no-repeat';
+                    });
+                    
+                    gridCell.appendChild(button);
+                    grid.appendChild(gridCell);
+                }
+            }
+        });
+
+
+        function clearCell(cellCords) {
+            if (cellCords[0] != null) {
+                const cellId = cellCords[0] + "," + cellCords[1];
+                const cell = document.getElementById(cellId);
         
+                if (cell) { // Überprüfen, ob das Element gefunden wurde
+                    cell.style.backgroundImage = "";
+                    console.log("remove background image");
+                    console.log(cell);
+                } else {
+                    console.warn(`Element with ID '${cellId}' not found.`);
+                }
+            } else {
+                console.warn("cellCords parameter is null or undefined.");
+            }
+        }
+       
 
-
-        <script>
-
-        </script>
+    </script>
 </body>

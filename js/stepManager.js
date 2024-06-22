@@ -1,19 +1,19 @@
 
-let currentStep = 5;
+let currentStep = 2;
 
 const stepsNames = [
-    { id: 'step1', message: 'Fall Übersicht' },
-    { id: 'step2', message: 'Am PC anmelden' },
-    { id: 'step3', message: 'Täter' },
-    { id: 'step4', message: 'Zugangsberechtigung erhöhen' },
-    { id: 'step5', message: 'Step5' },
-    { id: 'step6', message: 'Standort Lokalisieren' },
-    { id: 'step7', message: 'Bombe entschärfen' },
+    { id: 'step1', message: 'Tatortbericht' },
+    { id: 'step2', message: 'Login' },
+    { id: 'step3', message: 'Türprotokoll' },
+    { id: 'step4', message: 'Zugangsrechte' },
+    { id: 'step5', message: 'Email' },
+    { id: 'step6', message: 'Veranstaltung' },
+    { id: 'step7', message: 'Bombe' },
 ];
 
 
-const modal = document.getElementById('step_modal');
-const modal_checkbox = document.getElementById("step_modal_checkbox");
+const step_modal = document.getElementById('step_modal');
+const step_modal_checkbox = document.getElementById("step_modal_checkbox");
 
 document.addEventListener('DOMContentLoaded', () => {    
     updateProgressBar();
@@ -32,6 +32,8 @@ function updateProgressBar(){
             steps[i].textContent = "? ? ?";
         }
     }
+    setStepClickEvent();
+    notifyHintManager();
 }
 
 function setStepClickEvent(){
@@ -41,10 +43,10 @@ function setStepClickEvent(){
             // Klickbar
             element.addEventListener('click', () => {
                 // Öffne das Modal
-                modal_checkbox.checked = true;
+                step_modal_checkbox.checked = true;
                 
                 // Füge das spezifische Template ein
-                const modalContent = modal.querySelector('.modal-box');
+                const modalContent = step_modal.querySelector('.modal-box');
                 const template = document.getElementById(`${step.id}-template`);
                 
                 // Lösche vorherigen Inhalt
@@ -69,10 +71,10 @@ function setStepClickEvent(){
             
             element.addEventListener('click', () => {
                 // Öffne das Modal
-                modal_checkbox.checked = true;
+                step_modal_checkbox.checked = true;
                 
                 // Füge das spezifische Template ein
-                const modalContent = modal.querySelector('.modal-box');
+                const modalContent = step_modal.querySelector('.modal-box');
                 const template = document.getElementById(`${step.id}-template`);
                 console.log(template);
                 
@@ -120,9 +122,8 @@ function initStep(step){
 }
 
 function closeModal(){
-    modal_checkbox.checked = false;
+    step_modal_checkbox.checked = false;
 }
-
 
 
 // Step 1:

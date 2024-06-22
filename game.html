@@ -30,7 +30,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
-<!-- DaisyUI Modal -->
+<!-- Step Modal -->
 <input type="checkbox" id="step_modal_checkbox" class="modal-toggle" />
 <dialog id="step_modal" class="modal">
     <div class="modal-box w-8/12 max-w-5xl">
@@ -40,15 +40,16 @@
     <label class="modal-backdrop" for="step_modal_checkbox">Close</label>
 </dialog>
 
-<input type="checkbox" id="my_modal_7" class="modal-toggle" />
-<div class="modal" role="dialog">
-  <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">This modal works with a hidden checkbox!</p>
-  </div>
-  <label class="modal-backdrop" for="my_modal_7">Close</label>
-</div>
 
+<!-- Hint Modal -->
+<input type="checkbox" id="hint_modal_checkbox" class="modal-toggle" />
+<dialog id="hint_modal" class="modal">
+  <div class="modal-box ">
+    <h3 class="font-bold text-lg">Hello!</h3>
+    <p class="py-4">Press ESC key or click outside to close</p>
+  </div>
+  <label class="modal-backdrop" for="hint_modal_checkbox">Close</label>
+</dialog>
 
 <!-- Input Raumnummer und Dropdown Abteilung -->
 <!-- Template für Schritt 1 -->
@@ -65,7 +66,7 @@
         <option>Personal</option>
         <option>Reinigungskraft</option>
         <option>Sekretärin</option>
-      </select>
+    </select>
     <button class="btn btn-primary mt-4">Überprüfen</button>
 </div>
 
@@ -153,15 +154,25 @@
 <body>
         <div class="flex flex-col justify-between" style="height: 100vh">
             <!-- Progressbar -->
-            <ul class="steps bg-neutral py-5 min-h-[100px]">
-                <li id="step1" class="step text-xl font-typewriter">Case Overview</li>
-                <li id="step2" class="step text-xl font-typewriter">Victim & Time</li>
-                <li id="step3" class="step text-xl font-typewriter">Get Access</li>
-                <li id="step4" class="step text-xl font-typewriter">Logs & Footage</li>
-                <li id="step5" class="step text-xl font-typewriter">Suspects & Alibis</li>
-                <li id="step6" class="step text-xl font-typewriter">Prevent Next Crime</li>
-                <li id="step7" class="step text-xl font-typewriter">Catch Perpetrator</li>
-            </ul>
+             <div class="w-full">
+                <ul class="steps bg-neutral py-5 min-h-[100px] w-full">
+                    <li id="step1" class="step text-xl font-typewriter">Case Overview</li>
+                    <li id="step2" class="step text-xl font-typewriter">Victim & Time</li>
+                    <li id="step3" class="step text-xl font-typewriter">Get Access</li>
+                    <li id="step4" class="step text-xl font-typewriter">Logs & Footage</li>
+                    <li id="step5" class="step text-xl font-typewriter">Suspects & Alibis</li>
+                    <li id="step6" class="step text-xl font-typewriter">Prevent Next Crime</li>
+                    <li id="step7" class="step text-xl font-typewriter">Catch Perpetrator</li>
+                </ul>
+                <div class="m-5 flex justify-end">
+                    <div class="tooltip tooltip-bottom" data-tip="Get Hint">
+                        <button class="btn btn-square h-[64px] w-[64px] p-3 btn-neutral" id="btn_hint">
+                            <svg fill="#ffffff" viewBox="-2 0 15.998 15.998" id="light-bulb-16px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="Path_81" data-name="Path 81" d="M-10.217,1.343A6.039,6.039,0,0,0-15.284.134a5.979,5.979,0,0,0-4.6,4.673A5.967,5.967,0,0,0-18,10.472V10.5a2.488,2.488,0,0,0,1,1.989l0,.011v1A1.5,1.5,0,0,0-15.5,15h.355A1.168,1.168,0,0,0-14,16a1.168,1.168,0,0,0,1.145-1h.355A1.5,1.5,0,0,0-11,13.5v-1l0-.011A2.488,2.488,0,0,0-10,10.5v-.028A5.982,5.982,0,0,0-8,6,5.979,5.979,0,0,0-10.217,1.343ZM-12,13v.5a.5.5,0,0,1-.5.5h-3a.5.5,0,0,1-.5-.5V13h4Zm1.182-3.143a.5.5,0,0,0-.182.386V10.5A1.5,1.5,0,0,1-12.5,12h-3A1.5,1.5,0,0,1-17,10.5v-.257a.5.5,0,0,0-.182-.386A4.981,4.981,0,0,1-18.9,5a4.968,4.968,0,0,1,3.821-3.884A5.267,5.267,0,0,1-14.012,1a5,5,0,0,1,3.164,1.117A4.983,4.983,0,0,1-9,6,4.988,4.988,0,0,1-10.818,9.857ZM-13.5,3.5A.5.5,0,0,1-14,4a2,2,0,0,0-2,2,.5.5,0,0,1-.5.5A.5.5,0,0,1-17,6a3,3,0,0,1,3-3A.5.5,0,0,1-13.5,3.5Z" transform="translate(20.002 -0.002)"></path> </g></svg>
+                        </button>
+                    </div>
+                </div>
+             </div>
+
             <!-- Output and Input Field -->
             <div class="flex justify-center">
                 <div class="flex flex-col w-1/2">
@@ -184,6 +195,7 @@
                     <!-- SQL input and run button -->
                     <div class="flex items-center justify-center mb-5">
                         <div class="p-2 bg-neutral rounded-box w-full inline-flex justify-between">
+                            <div class="tooltip" data-tip="Befehlsverlauf">
                             <button id="commandHistory" class="btn btn-square p-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 24 24">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -195,6 +207,7 @@
                                     </g>
                                 </svg>
                             </button>
+                            </div>
                             <textarea class="flex-auto w-80 textarea" id="commands"></textarea>
                             <button id="execute" class="btn h-px h-30 ml-10">Run</button>
                         </div>
@@ -296,17 +309,23 @@
                         </svg>
                     </button>
                 </div>
+                <div class="tooltip" data-tip="Reset DB">
                 <button class="btn btn-square h-full w-[64px] p-2 btn-neutral" id="resetBtn">
                     <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g fill="none" fill-rule="evenodd" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="matrix(0 1 1 0 2.5 2.5)"> <path d="m3.98652376 1.07807068c-2.38377179 1.38514556-3.98652376 3.96636605-3.98652376 6.92192932 0 4.418278 3.581722 8 8 8s8-3.581722 8-8-3.581722-8-8-8"></path> <circle cx="8" cy="8" fill="#ffffff" r="2"></circle> <path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)"></path> </g> </g></svg>
                   </button>
+
+                </div>
             </div>
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/sql/sql.min.js"></script>
+    
+    <script type="text/javascript" src="js/stepManager.js"></script>
+    <script type="text/javascript" src="js/hintManager.js"></script>
 
     <script type="text/javascript" src="js/bomb.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/cipher.js"></script>
-    <script type="text/javascript" src="js/stepManager.js"></script>
+
     <script type="text/javascript" src="js/timer.js"></script>
 
 </body>

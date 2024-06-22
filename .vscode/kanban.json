@@ -16,16 +16,12 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Hint Button",
-                    "id": "g9fxuvwmvznuv3wmogu035xk"
+                    "text": "PDF Herunterladen wenn angeklickt\n",
+                    "id": "a80xvz52akvkvbh34fjndxj4"
                 },
                 {
                     "text": "Entschlüsselung von Email Input ungleich den Output",
                     "id": "el9g9okyu49cx6sqqa9jngyo"
-                },
-                {
-                    "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
-                    "id": "yrya669wtbbefku0qnuosr6o"
                 },
                 {
                     "text": "Zuätzliche Firmen Datanbank\n",
@@ -44,8 +40,8 @@
                     "id": "r7cosm6e4em0j63bn0qsg7wr"
                 },
                 {
-                    "text": "Türprotkolle DB erstellen",
-                    "id": "dnku1fab1ptrh3lqti34sf0m"
+                    "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
+                    "id": "yrya669wtbbefku0qnuosr6o"
                 },
                 {
                     "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
@@ -65,16 +61,7 @@
         },
         {
             "title": "Doing",
-            "tasks": [
-                {
-                    "text": "PDF Herunterladen wenn angeklickt\n",
-                    "id": "a80xvz52akvkvbh34fjndxj4"
-                },
-                {
-                    "text": "PC Login anlegen",
-                    "id": "cac6pe4di61p20gq5djt79yz"
-                }
-            ],
+            "tasks": [],
             "id": "ttux46kf65fq8hkfchvfpmiq",
             "color": "#0693e3"
         },
@@ -138,8 +125,20 @@
                     "id": "ibkcmesl9euxnrb307jr0qj5"
                 },
                 {
+                    "text": "Hint Button",
+                    "id": "g9fxuvwmvznuv3wmogu035xk"
+                },
+                {
+                    "text": "Türprotkolle DB erstellen",
+                    "id": "dnku1fab1ptrh3lqti34sf0m"
+                },
+                {
                     "text": "Step nur klickbar wenn aktive oder bereits gelöst\nbereits gelöste stepps können nur noch angeschaut werden aber nicht bearbeitet",
                     "id": "af0ms3l0ljvi6yr18h33cdbk"
+                },
+                {
+                    "text": "PC Login anlegen",
+                    "id": "cac6pe4di61p20gq5djt79yz"
                 },
                 {
                     "text": "Step Modal Input Hinzufügen",
@@ -152,5 +151,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1718895811830
+    "timestamp": 1719056308895
 }

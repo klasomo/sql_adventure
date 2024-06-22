@@ -21,6 +21,25 @@ function error(e) {
     }
 }
 
+function serverViewError() {
+  // Fehlermeldung und zugehörige Elemente abrufen
+  const errorAlert = document.getElementById("errorAlert");
+  const errorMessage = document.getElementById("errorMessage");
+
+  // Fehlermeldungstext setzen
+  errorMessage.innerHTML = `Als Gastbenutzer können Sie nur auf die Spalten 'Mitarbeiter_id', 'Name' und 'Arbeitsplatz' zugreifen. Um mehr Daten abzurufen, geben Sie bitte Ihren SELECT-Befehl präziser an <span class="underline text-blue-500 cursor-pointer">oder loggen Sie sich mit entsprechenden Berechtigungen ein</span>.`;
+
+  // Event Listener für den klickbaren Text hinzufügen
+  const clickableText = errorMessage.querySelector(".underline");
+  clickableText.addEventListener("click", function() {
+    pcState = PcState.LOCKED;
+    loadServerView();
+  });
+
+  // Fehlermeldung anzeigen, indem die Klasse 'hidden' entfernt wird
+  errorAlert.classList.remove("hidden");
+}
+
 function noerror() {
     var errorAlert = document.getElementById("errorAlert");
     if (errorAlert) {
@@ -33,36 +52,86 @@ var commandHistories = {}; // Objekt zur Speicherung der Befehls-Historien für 
 
 var queryOutput = "";
 
-// Modified execute function to run commands on the selected database
+// Funktion zur Validierung der SQL-Befehle für die eingeschränkte Tabelle
+function validateSQL(sql, restrictedTable, allowedColumns) {
+  const allowedColumnsLowerCase = allowedColumns.map(col => col.toLowerCase());
+
+  const selectPattern = new RegExp(`select\\s+(.*)\\s+from\\s+${restrictedTable}`, 'i');
+  const updatePattern = new RegExp(`update\\s+${restrictedTable}\\s+set\\s+(.*)`, 'i');
+  const deletePattern = new RegExp(`delete\\s+from\\s+${restrictedTable}`, 'i');
+
+  // Blockiert die Tabelle "EMAIL" komplett
+  const emailTablePattern = new RegExp(`\\bemail\\b`, 'i');
+
+  if (emailTablePattern.test(sql)) {
+    return false; // Blockiert den Befehl vollständig
+  }
+
+  if (selectPattern.test(sql)) {
+    const columns = selectPattern.exec(sql)[1].split(',').map(col => col.trim());
+    return columns.every(col => allowedColumnsLowerCase.includes(col.toLowerCase()));
+  } else if (updatePattern.test(sql)) {
+    const setClauses = updatePattern.exec(sql)[1].split(',').map(clause => clause.split('=')[0].trim());
+    return setClauses.every(col => allowedColumnsLowerCase.includes(col.toLowerCase()));
+  } else if (deletePattern.test(sql)) {
+    // Zusätzliche Logik für DELETE kann bei Bedarf hinzugefügt werden
+    return true; // Im Beispiel wird angenommen, dass keine Überprüfungen für DELETE erforderlich sind
+  }
+  return true;
+}
+
+// Modifizierte execute-Funktion zum Ausführen von Befehlen in der ausgewählten Datenbank
 function execute(commands, outputElement, callback) {
-    if (!currentDatabase || !databases[currentDatabase]) {
-      console.error("No database selected or database not opened.");
-      outputElement.innerHTML = "Error: No database selected or database not opened.";
+  // Konvertiert den SQL-Befehl in Kleinbuchstaben
+  commands = commands.toLowerCase();
+
+  const restrictedTable = "mitarbeiter";
+  const allowedColumns = ["Mitarbeiter_ID", "Name", "Zugangsberechtigung", "Arbeitsplatz"];
+
+  // Überprüft, ob eine aktuelle Datenbank ausgewählt und geöffnet ist
+  if (!currentDatabase || !databases[currentDatabase]) {
+    console.error("No database selected or database not opened.");
+    outputElement.innerHTML = "Error: No database selected or database not opened.";
+    if (callback) callback(false);
+    return;
+  }
+
+  // Validiert die SQL-Befehle vor der Ausführung
+  if (!validateSQL(commands, restrictedTable, allowedColumns) && currentDatabase === DbNames.SERVER_LOCKED) {
+    serverViewError();
+    if (callback) callback(false);
+    return;
+  }
+
+  // Holt den Worker für die aktuelle Datenbank
+  var worker = databases[currentDatabase];
+
+  // Definiert den onmessage-Handler für den Worker
+  worker.onmessage = function (event) {
+    var results = event.data.results;
+    if (!results) {
+      // Bei einem Fehler, loggt diesen und aktualisiert das Ausgabeelement
+      error({ message: event.data.error });
       if (callback) callback(false);
       return;
     }
-  
-    var worker = databases[currentDatabase]; // Zugriff auf den Worker der aktuellen Datenbank
-  
-    worker.onmessage = function (event) {
-      var results = event.data.results;
-      if (!results) {
-        error({ message: event.data.error });
-        if (callback) callback(false);
-        return;
-      }
-  
-      outputElement.innerHTML = ""; // Leeren des Output-Elements
-  
-      for (var i = 0; i < results.length; i++) {
-        outputElement.appendChild(
-          tableCreate(results[i].columns, results[i].values)
-        );
-      }
-      if (callback) callback(true);
-    };
-    worker.postMessage({ action: "exec", sql: commands });
-  }
+
+    // Leert das Ausgabeelement
+    outputElement.innerHTML = "";
+
+    // Durchläuft die Ergebnisse und fügt Tabellen dem Ausgabeelement hinzu
+    for (var i = 0; i < results.length; i++) {
+      outputElement.appendChild(
+        tableCreate(results[i].columns, results[i].values)
+      );
+    }
+    // Ruft das Callback mit true für Erfolg auf
+    if (callback) callback(true);
+  };
+
+  // Sendet die SQL-Befehle an den Worker
+  worker.postMessage({ action: "exec", sql: commands });
+}
 
 // Create an HTML table
 var tableCreate = (function () {
@@ -116,7 +185,6 @@ var sqlInput = CodeMirror.fromTextArea(document.getElementById("commands"), {
       cm.replaceSelection("\n");
     },
     "Ctrl-Enter": execEditorContents,
-    "Ctrl-S": savedb,
   },
 });
 
@@ -134,24 +202,6 @@ function checkAndUpdateHeight() {
   }
 }
 
-// Save the db to a file
-function savedb() {
-  worker.onmessage = function (event) {
-    var arraybuff = event.data.buffer;
-    var blob = new Blob([arraybuff]);
-    var a = document.createElement("a");
-    document.body.appendChild(a);
-    a.href = window.URL.createObjectURL(blob);
-    a.download = "sql.db";
-    a.onclick = function () {
-      setTimeout(function () {
-        window.URL.revokeObjectURL(a.href);
-      }, 1500);
-    };
-    a.click();
-  };
-  worker.postMessage({ action: "export" });
-}
 
 // Open the database
 var databases = {}; // Objekt zur Speicherung der geöffneten Datenbanken
@@ -159,7 +209,7 @@ var currentDatabase = null; // Variable zur Speicherung der aktuellen Datenbank
 
 function openDatabase(dbPath, dbName) {
     if (databases[dbName]) {
-      console.log(`Database ${dbName} already opened.`);
+      //console.log(`Database ${dbName} already opened.`);
       return;
     }
 
@@ -179,8 +229,8 @@ function openDatabase(dbPath, dbName) {
         if (!currentDatabase) {
           currentDatabase = dbName; // Setze die erste geöffnete DB als aktuelle DB
         }
-        console.log(`Database ${dbName} opened.`);
-        console.log(databases);
+        //console.log(`Database ${dbName} opened.`);
+        //console.log(databases);
       };
 
       fileReader.readAsArrayBuffer(blob);
@@ -205,20 +255,38 @@ function saveAndLoadSqlCommand(viewIndex) {
   sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
 
+
+const DbNames = {
+  POLICE: 'police',
+  SERVER_LOCKED: 'server_locked',
+  SERVER_UNLOCKED: 'server_unlocked',
+  MAP: 'map',
+  BOMB: 'bomb'
+}
+
+const PcState = {
+  LOCKED: 0,
+  GUEST: 1,
+  UNLCOKED: 2
+}
+
 function openDatabaseFromDbName(dbName){
     var dbPath = "";
     switch(dbName){
-        case "police":
-            dbPath = "./db/police.sqlite"
+        case DbNames.POLICE:
+            dbPath = "./db/police.sqlite";
             break;
-        case "server":
-             dbPath = "./db/firma.sqlite"
+        case DbNames.SERVER_LOCKED:
+             dbPath = "./db/firma.sqlite";
             break;
-        case "map":
-             dbPath = "./db/veranstaltung.sqlite"
+        case DbNames.SERVER_UNLOCKED:
+            dbPath = "./db/firma_unlocked.sqlite";
             break;
-        case "bomb":
-             dbPath = "./db/bombe.sqlite"
+        case DbNames.MAP:
+             dbPath = "./db/veranstaltung.sqlite";
+            break;
+        case DbNames.BOMB:
+            dbPath = "./db/bombe.sqlite";
             break;
     }
     openDatabase(dbPath, dbName);
@@ -233,34 +301,41 @@ function handleButtonClick(viewIndex, dbName, backgroundImage) {
     changeBackgroundImage(backgroundImage);
     openDatabaseFromDbName(dbName);
     currentDatabase = dbName; // Set the current database when button is clicked
-    console.log(`Current database set to ${dbName}`);
   }
 
   function loadPoliceView(){
-    handleButtonClick(0, "police", "./assets/images/background/pinboard.png");
+    handleButtonClick(0, DbNames.POLICE, "./assets/images/background/pinboard.png");
   }
 
 
+  let pcState = PcState.LOCKED;
 
   function loadServerView(){
-    //if(isPcUnlocked){
-    if(true){
-      handleButtonClick(1, "server", "./assets/images/background/computer.png");
-
-    }
-    else{
-      handleButtonClick(1, "server", "./assets/images/background/computer_login.png");
-      hideLoginDiv(false);
-      hideSqlDiv(true);
+    switch(pcState){
+      case PcState.LOCKED:
+        handleButtonClick(1, DbNames.SERVER_LOCKED, "./assets/images/background/computer_login.png");
+        hideLoginDiv(false);
+        hideSqlDiv(true);
+        break;
+      case PcState.GUEST:
+        handleButtonClick(1, DbNames.SERVER_LOCKED, "./assets/images/background/computer.png");
+        hideLoginDiv(true);
+        hideSqlDiv(false);
+        break;
+      case PcState.UNLCOKED:
+        hideLoginDiv(true);
+        hideSqlDiv(false);
+        handleButtonClick(1, DbNames.SERVER_UNLOCKED, "./assets/images/background/computer_unlocked.png");
+        break;
     }
   }
 
   function loadMapView(){
-    handleButtonClick(2, "map", "./assets/images/background/map.png");
+    handleButtonClick(2, DbNames.MAP, "./assets/images/background/map.png");
   }
 
   function loadBombView(){
-    handleButtonClick(3, "bomb","./assets/images/background/bomb.png");
+    handleButtonClick(3, DbNames.BOMB,"./assets/images/background/bomb.png");
   }
   
   // Example of opening databases
@@ -431,7 +506,6 @@ document.getElementById('resetBtn').addEventListener('click', function() {
   }
 
 
-let isPcUnlocked = false;
 let pcPassword = "qtr-Ch3n-wy";
 let pcUsername = "max.brandt";
 
@@ -454,16 +528,24 @@ function hideLoginDiv(isVisible){
   }
 }
 
+document.getElementById('guestLoginText').addEventListener('click', function() {
+  pcState = PcState.GUEST;
+  loadServerView();
+});
+
 
 document.getElementById('btnLogin').addEventListener('click', function(){
   var inputUsername = document.getElementById("inputUsername").value.toLowerCase() ;
   var inputPassword = document.getElementById("inputPassword").value;
-
-
+  var loginError = document.getElementById("loginError");
 
   if(inputUsername == pcUsername && inputPassword == pcPassword){
-    isPcUnlocked = true;
+    pcState = PcState.UNLCOKED;
+    loginError.classList.add("invisible");
     loadServerView();
+  }else{
+    pcState = PcState.LOCKED;
+    loginError.classList.remove("invisible");
   }
 });
 

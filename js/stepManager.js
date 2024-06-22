@@ -1,5 +1,5 @@
 
-let currentStep = 2;
+let currentStep = 4;
 
 const stepsNames = [
     { id: 'step1', message: 'Tatortbericht' },

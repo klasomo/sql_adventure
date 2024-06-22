@@ -16,24 +16,16 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "PDF Herunterladen wenn angeklickt\n",
-                    "id": "a80xvz52akvkvbh34fjndxj4"
-                },
-                {
-                    "text": "Entschlüsselung von Email Input ungleich den Output",
-                    "id": "el9g9okyu49cx6sqqa9jngyo"
-                },
-                {
-                    "text": "Zuätzliche Firmen Datanbank\n",
-                    "id": "qfmev6673cwvlx246g1jke4x"
+                    "text": "Wrong Login allert oder info ausgeben ",
+                    "id": "lrkks4ch5p4g4s3rz3qg0erf"
                 },
                 {
                     "text": "Gast Login Button Hinzufügen\n",
                     "id": "yb7vkazv6k1rwyy7hw08inex"
                 },
                 {
-                    "text": "Wrong Login allert oder info ausgeben ",
-                    "id": "lrkks4ch5p4g4s3rz3qg0erf"
+                    "text": "Zuätzliche Firmen Datanbank\n",
+                    "id": "qfmev6673cwvlx246g1jke4x"
                 },
                 {
                     "text": "Einstieg Hinzufügen mit pfeilen",
@@ -44,8 +36,16 @@
                     "id": "yrya669wtbbefku0qnuosr6o"
                 },
                 {
+                    "text": "PDF Herunterladen wenn angeklickt\n",
+                    "id": "a80xvz52akvkvbh34fjndxj4"
+                },
+                {
                     "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
                     "id": "wh6uz0jmjuwmhy2ugqi4mo7d"
+                },
+                {
+                    "text": "Refactor Interfaces and Classes\n",
+                    "id": "wq8x387896yhtodl30l7gjzk"
                 },
                 {
                     "text": "--------------------NICHT HOCH PRIOR------------------------",
@@ -61,7 +61,12 @@
         },
         {
             "title": "Doing",
-            "tasks": [],
+            "tasks": [
+                {
+                    "text": "Entschlüsselung von Email Input ungleich den Output",
+                    "id": "el9g9okyu49cx6sqqa9jngyo"
+                }
+            ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
             "color": "#0693e3"
         },
@@ -151,5 +156,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719056308895
+    "timestamp": 1719058321346
 }

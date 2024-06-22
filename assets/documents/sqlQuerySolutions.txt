@@ -46,7 +46,7 @@ select count(*) from Türprotokoll where Raum_Nr is "404";
 STEP 3:
 Eingabe: Wer ist der Täter der die bombe gelegt hat:
 
-select count(*) Anzahl, * from Türprotokoll group by mitarbeiter_id;
+select count(*), * from Türprotokoll group by mitarbeiter_id;
 --> Täter wird zurückgegeben Paul Huber
 
 

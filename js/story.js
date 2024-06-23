@@ -8,15 +8,19 @@ const flipBook = (elBook) => {
     page.style.setProperty("--i", idx);
 
     page.addEventListener("click", async (evt) => {
-      const curr = evt.target.closest(".back") ? idx : idx + 1;
-      elBook.style.setProperty("--c", curr);
+        const curr = evt.target.closest(".back") ? idx : idx + 1;
+        if(curr === totalPages){
+          return;
+        }
+        elBook.style.setProperty("--c", curr);
 
-      // Überprüfe, ob es sich um die letzte Seite handelt
-      if (curr === totalPages-1) {
-        elBook.style.width = '55vw'; // Setze die Breite des Buches auf 55vh
-        await sleep(10000);
-        window.location.href = 'email.html'; // Weiterleitung zur email.html
-      }
+        // Überprüfe, ob es sich um die letzte Seite handelt
+        if (curr === totalPages-1) {
+          await sleep(1000);
+          elBook.style.width = '55vw'; // Setze die Breite des Buches auf 55vh
+          await sleep(250);
+          window.location.href = 'email.html'; // Weiterleitung zur email.html
+        }
     });
   });
 };

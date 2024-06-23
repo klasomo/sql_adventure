@@ -16,16 +16,12 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Hint Kapitel namen anpassen\n",
-                    "id": "iq84357g5up14wwkz8y9zxem"
+                    "text": "Step Inputs nach Lösung Überprüfen",
+                    "id": "ch9er5hofok17hyevrojrqv8"
                 },
                 {
                     "text": "Block views und DB with steps",
                     "id": "uj7ebvcioi6nzo11zmdqgzj1"
-                },
-                {
-                    "text": "Step Inputs nach Lösung Überprüfen",
-                    "id": "ch9er5hofok17hyevrojrqv8"
                 },
                 {
                     "text": "Update and Delete commands feedback green allert window",
@@ -174,6 +170,10 @@
                     "id": "lrkks4ch5p4g4s3rz3qg0erf"
                 },
                 {
+                    "text": "Hint Kapitel namen anpassen\n",
+                    "id": "iq84357g5up14wwkz8y9zxem"
+                },
+                {
                     "text": "Step Modal Input Hinzufügen",
                     "id": "moznvs8vitsmx6ybir8eai97"
                 }
@@ -184,5 +184,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719144679875
+    "timestamp": 1719163295526
 }

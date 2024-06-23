@@ -2,14 +2,14 @@ const hints = [
     // Step 1
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Tatortbericht',
             hints: [
                 'Nutze die Datenbank "Tatortbericht", um herauszufinden, was sich bei der Firma Symmex am 27.06. ereignet hat.',
                 'SELECT * FROM Tatortbericht WHERE ort = "Symmex";'
             ]
         },
         {
-            chapterTitle: 'Kapitel 2',
+            chapterTitle: 'Zeugenaussage',
             hints: [
                 'Nutze die Datenbank "Zeugenaussage", um herauszufinden, was sich am Tatort ereignet hat.',
                 'Was weißt du bereits über den Tatort? Wer war der Ermittler und wann ist die Tat geschehen?',
@@ -21,7 +21,7 @@ const hints = [
     // Step 2
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Einloggen',
             hints: [
                 'Als Gast hast du keinen Zugriff auf alle Daten, vielleicht solltest du dich einloggen.',
                 'Auf dem Computerbildschirm klebt ein Aufkleber mit den Zahlen "204-03". Wo hast du diese schon mal gesehen?',
@@ -33,7 +33,7 @@ const hints = [
     // Step 3
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Türprotokoll',
             hints: [
                 'Vielleicht kannst du mithilfe des Türprotokolls herausfinden, wer den Raum 404 am Tag der Tat besucht hat.',
                 'Eine Zeugin sagt etwas davon, dass eine verdächtige Person den Raum 404 am 27.06.24 sehr häufig besucht hätte. Vielleicht kannst du mit der Datenbank "Türprotokoll" herausfinden, um welchen Mitarbeiter es sich dabei handelt.',
@@ -44,7 +44,7 @@ const hints = [
     // Step 4
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Zugangsberechtigung',
             hints: [
                 'Dein Zugangsberechtigung reicht nicht aus, um auf die gesamte Datenbank zuzugreifen. Vielleicht kannst du sie irgendwie updaten?',
                 'UPDATE Mitarbeiter SET Zugangsberechtigung = "5" WHERE Name = "Max Brandt";'
@@ -54,7 +54,7 @@ const hints = [
     // Step 5
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Emails',
             hints: [
                 'Nutze die Datenbank "Email", um herauszufinden, was der Täter geplant hat.',
                 'Suche nach den Emails, die vom Täter gesendet und empfangen wurden.',
@@ -65,7 +65,7 @@ const hints = [
     // Step 6
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Veranstaltungsort',
             hints: [
                 'Nutze die Datenbank "Veranstaltung", um herauszufinden, wo die zweite Bombe platziert wurde. Schau dir dazu nochmal die Informationen aus den Emails der Täter an.',
                 'Die Bombe soll an dem Ort hochgehen, wo am 27.06. die meisten Menschen anwesend sind.',
@@ -76,7 +76,7 @@ const hints = [
     // Step 7
     [
         {
-            chapterTitle: 'Kapitel 1',
+            chapterTitle: 'Bombe',
             hints: [
                 'Nutze die Datenbank "Bombe", um herauszufinden, wie du die Bombe entschärfen kannst.',
                 'Schau dir mal den Blueprint der Bombe an, vielleicht kannst du auf diese Weise Informationen erhalten, die dir helfen, die richtige Bombe zu finden.',

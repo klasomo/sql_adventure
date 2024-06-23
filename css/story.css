@@ -82,6 +82,13 @@ body {
   background-repeat: no-repeat; /* Verhindere das Wiederholen des Hintergrundbildes */
 }
 
+#book_cover{
+  width: 100%; /* Oder eine spezifische Breite */
+  height: 100%; /* Oder eine spezifische Höhe */
+  background-size: 100%;
+  background-image: url('/assets/images/story/story_before/book_cover.png');
+}
+
 #img1{
   background-image: url('/assets/images/story/story_before/call1.png');
 }
@@ -105,4 +112,8 @@ body {
 
 #img7{
   background-image: url('/assets/images/story/story_before/call7.png');
+}
+
+#imgEmailPage{
+  background-image: url('/assets/images/background/computer_mail.png');
 }

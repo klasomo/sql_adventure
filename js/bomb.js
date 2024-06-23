@@ -254,10 +254,68 @@ function initColorPicker(){
         var thisRGB;
         var thisRGBRy;
 
+
+        // Funktion zum Laden eines Bildes und Aktualisieren des Canvas
+        function loadImageAndRefreshCanvas(imagePath) {
+          var img = new Image();
+          img.src = imagePath;
+          
+          img.onload = function() {
+            var w = imgW;
+            var h = imgW * img.height / img.width;
+            
+            
+            // clear canvas & swatches
+            ctx.clearRect(0, 0, cw, ch);
+            clearSwatches(palette);
+            colorsRy.length = 0;
+            console.clear();
+            
+            // resize the canvas
+            ch = canvas.height = h,
+              cy = ch / 2;
+            
+            // draw new image
+            ctx.drawImage(this, 0, 0, w, h);
+            imgData = ctx.getImageData(0, 0, cw, ch);
+            pixels = imgData.data;
+          }
+        }
+
+
         //set custom Cursor
         //canvas.style.cursor = 'url(https://cur.cursors-4u.net/nature/nat-11/nat1021.cur), default';
         canvas.style.cursor = 'url(assets/images/mouseIcon/plier.cur), default';
         
+
+        function isWireColor(rgbArray, tolerance) {
+            var colorsToMatch = [
+              [50, 158, 240],   // #329ef0
+              [255, 249, 117],  // #fff975
+              [161, 103, 229]   // #a167e5
+          ];
+      
+          var R = rgbArray[0];
+          var G = rgbArray[1];
+          var B = rgbArray[2];
+      
+          // Durchlaufen der Liste der spezifischen Farben
+          for (var i = 0; i < colorsToMatch.length; i++) {
+              var color = colorsToMatch[i];
+              var targetR = color[0];
+              var targetG = color[1];
+              var targetB = color[2];
+      
+              // Überprüfen, ob die Farbe innerhalb der Toleranz liegt
+              if (Math.abs(R - targetR) <= tolerance &&
+                  Math.abs(G - targetG) <= tolerance &&
+                  Math.abs(B - targetB) <= tolerance) {
+                  return i;  // Index der übereinstimmenden Farbe zurückgeben
+              }
+          }
+          return -1;  // Keine Übereinstimmung gefunden
+        }
+
         // on mousemove you get the current color
         canvas.addEventListener("mousemove", function(e) {
           var m = oMousePos(canvas, e);
@@ -268,8 +326,18 @@ function initColorPicker(){
           var B = pixels[i + 2];
           thisRGBRy = [R, G, B];
           thisRGB = display_rgb(thisRGBRy);
-          viewColor.style.backgroundColor = thisRGB;
-          viewColor.style.color = getFontColor(thisRGBRy);
+
+          var tolerance = 20;
+          // Prüfen, ob die Farbe einer der spezifischen Farben entspricht
+          var matchingIndex = isWireColor(thisRGBRy, tolerance)
+          if (matchingIndex !== -1) {
+            viewColor.style.backgroundColor = thisRGB;
+            viewColor.style.color = getFontColor(thisRGBRy);
+          } else {
+              viewColor.style.backgroundColor = "rgb(255,255,255)";
+              viewColor.style.color = getFontColor([255,255,255]);
+          }
+          
           //viewColor.innerHTML =  thisRGB;
         
         }, false);
@@ -295,13 +363,36 @@ function initColorPicker(){
         }
         
         canvas.addEventListener("click", function(e) {
-          // add swatch on click
-          var swatch = new Swatch(thisRGBRy, palette);
-          colorsRy.push(swatch);
-          // get the colors string
-          var colorsStr = getColorsStr(colorsRy);
-          console.clear();
-          console.log(colorsStr);
+          var tolerance = 20;
+          // Prüfen, ob die Farbe einer der spezifischen Farben entspricht
+          var matchingIndex = isWireColor(thisRGBRy, tolerance);
+          console.log(matchingIndex);
+          switch(matchingIndex){
+            case 0:
+              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_blau.png');
+              // Blau
+              break;
+            case 1:
+              // Gelb
+              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_gelb.png');
+              break;
+            case 2:
+              // Lila
+              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_lila.png');
+              break;
+            default:
+              break;
+          }
+
+
+
+          // // add swatch on click
+          // var swatch = new Swatch(thisRGBRy, palette);
+          // colorsRy.push(swatch);
+          // // get the colors string
+          // var colorsStr = getColorsStr(colorsRy);
+          // console.clear();
+          // console.log(colorsStr);
         
         }, false);
         

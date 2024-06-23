@@ -1,22 +1,22 @@
-let currentPage = 1;
-  const totalPages = 3; // Anzahl der Seiten
+const flipBook = (elBook) => {
+  const pages = elBook.querySelectorAll(".page");
+  const totalPages = pages.length;
+  
+  elBook.style.setProperty("--c", 0); // Set current page
 
-  function handleClick(event) {
-    const halfWidth = document.querySelector('.book').offsetWidth / 2; // Halbe Breite des Buches
-    const clickX = event.clientX - event.target.getBoundingClientRect().left; // Position des Klicks relativ zum Buch
+  pages.forEach((page, idx) => {
+    page.style.setProperty("--i", idx);
 
-    if (clickX < halfWidth && currentPage > 1) {
-      // Klick auf linke Hälfte und es gibt eine vorherige Seite
-      currentPage--;
-    } else if (clickX >= halfWidth && currentPage < totalPages) {
-      // Klick auf rechte Hälfte und es gibt eine nächste Seite
-      currentPage++;
-    }
+    page.addEventListener("click", (evt) => {
+      const curr = evt.target.closest(".back") ? idx : idx + 1;
+      elBook.style.setProperty("--c", curr);
 
-    updateBook();
-  }
+      // Check if it's the last page
+      if (curr === totalPages) {
+        window.location.href = 'email.html';
+      }
+    });
+  });
+};
 
-  function updateBook() {
-    const book = document.querySelector('.book');
-    book.style.transform = `rotateY(${(currentPage - 1) * -120}deg)`; // Berechnung des Rotationswinkels
-  }
+document.querySelectorAll(".book").forEach(flipBook);

@@ -1,126 +1,305 @@
 ID,Name,Geschlecht,Geburtsdatum,Wohnort
-1,Hans Meyer,männlich,12/10/1987,Hamburg
-2,Anna Schmidt,weiblich,5/22/1992,Kiel
-3,Peter Müller,männlich,3/15/1985,Lübeck
-4,Laura Weber,weiblich,7/1/1990,Flensburg
-5,Manfred Amid,männlich,11/18/1983,Norderstedt
-6,Katrin Fischer,weiblich,2/9/1991,Neumünster
-7,Thomas Wagner,männlich,4/27/1986,Elmshorn
-8,Sabine Becker,weiblich,9/13/1988,Pinneberg
-9,Andreas Schäfer,männlich,6/30/1984,Pinneberg
-10,Maria Schulz,weiblich,12/7/1982,Wedel
-11,Stefan Hoffmann,männlich,1/25/1987,Ahrensburg
-12,Lisa König,weiblich,5/3/1990,Wedel
-13,Markus Neumann,männlich,8/19/1985,Geesthacht
-14,Julia Schwarz,weiblich,10/10/1991,Itzehoe
-15,Christian Krüger,männlich,4/12/1989,Rendsburg
-16,Sophie Schneider,weiblich,6/5/1986,Elmshorn
-17,Jan Lehmann,männlich,2/28/1988,Itzehoe
-18,Emma Fischer,weiblich,11/11/1984,Lübeck
-19,Alexander Wolf,männlich,3/23/1987,Kiel
-20,Clara Richter,weiblich,7/17/1992,Lübeck
-21,David Zimmermann,männlich,9/20/1985,Hamburg
-22,Lena Fuchs,weiblich,1/2/1988,Reinbek
-23,Tim Herrmann,männlich,5/15/1989,Henstedt-Ulzburg
-24,Lisa Peters,weiblich,12/29/1987,Schleswig
-25,Florian Weiß,männlich,8/8/1986,Rendsburg
-26,Lea Roth,weiblich,4/21/1983,Elmshorn
-27,Benjamin Lang,männlich,3/14/1990,Hamburg
-28,Emily Keller,weiblich,11/19/1987,Norderstedt
-29,Jonas Frank,männlich,6/10/1984,Kiel
-30,Mia Schmitt,weiblich,12/5/1991,Kiel
-31,Paul Böhm,männlich,7/23/1985,Rendsburg
-32,Clara Voigt,weiblich,9/28/1986,Neumünster
-33,Lukas Engel,männlich,5/16/1988,Kaltenkirchen
-34,Julia Groß,weiblich,11/3/1983,Norderstedt
-35,Daniel Horn,männlich,2/27/1990,Lübeck
-36,Laura Busch,weiblich,8/22/1989,Bad Oldesloe
-37,Max Koch,männlich,10/14/1987,Husum
-38,Hanna Braun,weiblich,1/17/1991,Quickborn
-39,Philipp Vogel,männlich,7/12/1985,Husum
-40,Sara Schröder,weiblich,11/9/1988,Heide
-41,Tobias Scholz,männlich,6/1/1986,Henstedt-Ulzburg
-42,Laura Klein,weiblich,3/4/1990,Quickborn
-43,Johannes Winter,männlich,8/18/1987,Eckernförde
-44,Anna Krause,weiblich,10/23/1984,Kiel
-45,Martin Sommer,männlich,12/12/1986,Hamburg
-46,Clara Seidel,weiblich,4/15/1989,Lübeck
-47,Julian Maier,männlich,6/30/1987,Bad Schwartau
-48,Emma Huber,weiblich,9/5/1985,Hamburg
-49,Fabian Lenz,männlich,1/21/1989,Kiel
-50,Laura Stein,weiblich,7/14/1990,Quickborn
-51,Leon Pohl,männlich,3/29/1988,Elmshorn
-52,Lisa Arnold,weiblich,5/8/1986,Reinbek
-53,Felix Bergmann,männlich,11/17/1991,Rendsburg
-54,Sophie Werner,weiblich,2/25/1987,Kiel
-55,Paul Kraus,männlich,8/6/1985,Norderstedt
-56,Hanna Sauer,weiblich,12/3/1992,Mölln
-57,Tim König,männlich,4/18/1989,Uetersen
-58,Clara Otto,weiblich,9/15/1988,Heide 
-59,David Böhler,männlich,11/20/1986,Quickborn
-60,Marie Fink,weiblich,7/2/1989,Husum
-61,Jonas Faber,männlich,1/19/1987,Hamburg
-62,Laura Bayer,weiblich,4/10/1988,Itzehoe
-63,Alexander Günther,männlich,8/26/1986,Glinde
-64,Julia Simon,weiblich,12/11/1989,Bad Segeberg
-65,Benjamin Lehmann,männlich,3/15/1988,Halstenbek
-66,Emma Hermann,weiblich,7/27/1990,Schwarzenbek
-67,Daniel Beck,männlich,2/23/1986,Kiel
-68,Mia Friedrich,weiblich,5/30/1987,Halle (Saale)
-69,Lukas Schuster,männlich,9/17/1989,Neumünster
-70,Laura Neubauer,weiblich,11/11/1984,Kaltenkirchen
-71,Jonas Mohr,männlich,4/25/1986,Norderstedt
-72,Sara Herzog,weiblich,6/6/1988,Lübeck
-73,Paul Lorenz,männlich,10/19/1991,Bad Oldesloe
-74,Sophie König,weiblich,1/22/1990,Kiel
-75,Max Brandt,männlich,3/12/1988,Flensburg
-76,Lisa Lang,weiblich,12/14/1989,Quickborn
-77,Jan Peters,männlich,5/9/1986,Elmshorn
-78,Laura Fischer,weiblich,8/27/1990,Reinbek
-79,Simon Krüger,männlich,10/3/1987,Rendsburg
-80,Hanna Neumann,weiblich,11/18/1985,Kiel
-81,Martin Schäfer,männlich,2/21/1990,Norderstedt
-82,Emma Klein,weiblich,7/15/1989,Lübeck
-83,Alexander Hofmann,männlich,4/28/1986,Kiel
-84,Mia Müller,weiblich,7/19/2003,Flensburg
-85,Udo Berger,männlich,1/21/1966,Kiel
-86,Jan Peter,männlich,4/4/2001,Lübeck
-87,Edgar Bäring,männlich,2/11/1973,Heide
-88,Simone Elgers,weiblich,9/7/1999,Heide 
-89,Kai Meier,männlich,9/18/1959,Itzehoe
-90,Clara Wolf,weiblich,4/15/1992,Frankfurt
-91,Fabian Richter,männlich,7/22/1988,München
-92,Lena Meyer,weiblich,5/5/1991,Stuttgart
-93,Paul Huber,männlich,8/18/1989,Ahrensburg
-94,Sophie Schmidt,weiblich,10/27/1987,Lübeck
-95,Tim Weber,männlich,12/11/1990,Heide
-96,Fredericke Schmid,weiblich,2/20/1986,Hamburg
-97,Jonas Bauer,männlich,3/9/1988,Lübeck
-98,Emma Fischer,weiblich,6/1/1989,Kiel
-99,Lukas Schneider,männlich,9/17/1991,Lübeck
-100,Hanna Vogel,weiblich,11/29/1992,Hamburg
-101,Julia Braun,weiblich,1/7/1992,Reinbek
-102,Daniel Lang,männlich,8/25/1987,Henstedt-Ulzburg
-103,Clara Keller,weiblich,3/12/1991,Schleswig
-104,Tim Albrecht,männlich,10/9/1988,Rendsburg
-105,Laura Schulze,weiblich,6/4/1989,Elmshorn
-106,Clara Wolf,weiblich,4/15/1992,Hamburg
-107,Fabian Richter,männlich,7/22/1988,Norderstedt
-108,Lena Meyer,weiblich,5/5/1991,Kiel
-109,Paul Huber,männlich,8/18/1989,Kiel
-110,Sophie Schmidt,weiblich,10/27/1987,Halle (Saale)
-111,Tim Weber,männlich,12/11/1990,Neumünster
-112,Laura Schmid,weiblich,2/20/1986,Kaltenkirchen
-113,Jonas Bauer,männlich,3/9/1988,Hamburg
-114,Emma Fischer,weiblich,6/1/1989,Norderstedt
-115,Lukas Schneider,männlich,9/17/1991,Kiel
-116,Hanna Vogel,weiblich,11/29/1992,Kiel
-117,Lina Haerter,weiblich,6/27/2001,Halle (Saale)
-118,Emil Müller,männlich,8/3/1985,Neumünster
-119,Max Braun,männlich,10/14/1990,Kaltenkirchen
-120,Anna Fischer,weiblich,12/18/1988,Hamburg
-121,Leon Maier,männlich,7/21/1986,Quickborn
-122,Mia Neumann,weiblich,5/9/1992,Schleswig
-123,Noah Wolf,männlich,3/28/1990,Schwarzenbek
-124,Emily Klein,weiblich,2/6/1989,Hamburg
-125,Niklas Becker,männlich,9/15/1987,Bad Oldesloe
+1,Hans Meyer,männlich,10.12.1987,Hamburg
+2,Anna Schmidt,weiblich,22.5.1992,Kiel
+3,Peter Müller,männlich,15.3.1985,Lübeck
+4,Laura Weber,weiblich,1.7.1990,Flensburg
+5,Manfred Amid,männlich,18.11.1983,Norderstedt
+6,Katrin Fischer,weiblich,9.2.1991,Neumünster
+7,Thomas Wagner,männlich,27.4.1986,Elmshorn
+8,Sabine Becker,weiblich,13.9.1988,Pinneberg
+9,Andreas Schäfer,männlich,30.6.1984,Pinneberg
+10,Maria Schulz,weiblich,7.12.1982,Wedel
+11,Stefan Hoffmann,männlich,25.1.1987,Ahrensburg
+12,Lisa König,weiblich,3.5.1990,Wedel
+13,Markus Neumann,männlich,19.8.1985,Geesthacht
+14,Julia Schwarz,weiblich,10.10.1991,Itzehoe
+15,Christian Krüger,männlich,12.4.1989,Rendsburg
+16,Tina Schneider,weiblich,5.6.1986,Elmshorn
+17,Jan Lehmann,männlich,28.2.1988,Itzehoe
+18,Emma Fischer,weiblich,11.11.1984,Lübeck
+19,Alexander Wolf,männlich,23.3.1987,Kiel
+20,Clara Richter,weiblich,17.7.1992,Lübeck
+21,David Zimmermann,männlich,20.9.1985,Hamburg
+22,Lena Fuchs,weiblich,2.1.1988,Reinbek
+23,Tim Herrmann,männlich,15.5.1989,Henstedt-Ulzburg
+24,Lisa Peters,weiblich,29.12.1987,Schleswig
+25,Florian Weiß,männlich,8.8.1986,Rendsburg
+26,Lea Roth,weiblich,21.4.1983,Elmshorn
+27,Benjamin Lang,männlich,14.3.1990,Hamburg
+28,Emily Keller,weiblich,19.11.1987,Norderstedt
+29,Jonas Frank,männlich,10.6.1984,Kiel
+30,Mia Schmitt,weiblich,5.12.1991,Kiel
+31,Paul Böhm,männlich,23.7.1985,Rendsburg
+32,Clara Voigt,weiblich,28.9.1986,Neumünster
+33,Lukas Engel,männlich,16.5.1988,Kaltenkirchen
+34,Julia Groß,weiblich,3.11.1983,Norderstedt
+35,Daniel Horn,männlich,27.2.1990,Lübeck
+36,Laura Busch,weiblich,22.8.1989,Bad Oldesloe
+37,Max Koch,männlich,14.10.1987,Husum
+38,Hanna Braun,weiblich,17.1.1991,Quickborn
+39,Philipp Vogel,männlich,12.7.1985,Husum
+40,Sara Schröder,weiblich,9.11.1988,Heide
+41,Tobias Scholz,männlich,1.6.1986,Henstedt-Ulzburg
+42,Laura Klein,weiblich,4.3.1990,Quickborn
+43,Johannes Winter,männlich,18.8.1987,Eckernförde
+44,Anna Krause,weiblich,23.10.1984,Kiel
+45,Martin Sommer,männlich,12.12.1986,Hamburg
+46,Clara Seidel,weiblich,15.4.1989,Lübeck
+47,Julian Maier,männlich,30.6.1987,Bad Schwartau
+48,Emma Huber,weiblich,5.9.1985,Hamburg
+49,Fabian Lenz,männlich,21.1.1989,Kiel
+50,Laura Stein,weiblich,14.7.1990,Quickborn
+51,Leon Pohl,männlich,29.3.1988,Elmshorn
+52,Lisa Arnold,weiblich,8.5.1986,Reinbek
+53,Felix Bergmann,männlich,17.11.1991,Rendsburg
+54,Sophie Werner,weiblich,25.2.1987,Kiel
+55,Paul Kraus,männlich,6.8.1985,Norderstedt
+56,Hanna Sauer,weiblich,3.12.1992,Mölln
+57,Tim König,männlich,18.4.1989,Uetersen
+58,Clara Otto,weiblich,15.9.1988,Heide 
+59,David Böhler,männlich,20.11.1986,Quickborn
+60,Marie Fink,weiblich,2.7.1989,Husum
+61,Jonas Faber,männlich,19.1.1987,Hamburg
+62,Laura Bayer,weiblich,10.4.1988,Itzehoe
+63,Alexander Günther,männlich,26.8.1986,Glinde
+64,Julia Simon,weiblich,11.12.1989,Bad Segeberg
+65,Benjamin Lehmann,männlich,15.3.1988,Halstenbek
+66,Emma Hermann,weiblich,27.7.1990,Schwarzenbek
+67,Daniel Beck,männlich,23.2.1986,Kiel
+68,Mia Friedrich,weiblich,30.5.1987,Halle (Saale)
+69,Lukas Schuster,männlich,17.9.1989,Neumünster
+70,Laura Neubauer,weiblich,11.11.1984,Kaltenkirchen
+71,Jonas Mohr,männlich,25.4.1986,Norderstedt
+72,Sara Herzog,weiblich,6.6.1988,Lübeck
+73,Paul Lorenz,männlich,19.10.1991,Bad Oldesloe
+74,Sophie König,weiblich,22.1.1990,Kiel
+75,Max Brandt,männlich,12.3.1988,Flensburg
+76,Lisa Lang,weiblich,14.12.1989,Quickborn
+77,Jan Peters,männlich,9.5.1986,Elmshorn
+78,Laura Fischer,weiblich,27.8.1990,Reinbek
+79,Simon Krüger,männlich,3.10.1987,Rendsburg
+80,Hanna Neumann,weiblich,18.11.1985,Kiel
+81,Martin Schäfer,männlich,21.2.1990,Norderstedt
+82,Emma Klein,weiblich,15.7.1989,Lübeck
+83,Alexander Hofmann,männlich,28.4.1986,Kiel
+84,Mia Müller,weiblich,19.7.2003,Flensburg
+85,Udo Berger,männlich,21.1.1966,Kiel
+86,Jan Peter,männlich,4.4.2001,Lübeck
+87,Edgar Bäring,männlich,11.2.1973,Heide
+88,Simone Elgers,weiblich,7.9.1999,Heide 
+89,Kai Meier,männlich,18.9.1959,Itzehoe
+90,Clara Wolf,weiblich,15.4.1992,Frankfurt
+91,Fabian Richter,männlich,22.7.1988,München
+92,Lena Meyer,weiblich,5.5.1991,Stuttgart
+93,Paul Huber,männlich,18.8.1989,Ahrensburg
+94,Sophie Schmidt,weiblich,27.10.1987,Lübeck
+95,Tim Weber,männlich,11.12.1990,Heide
+96,Fredericke Schmid,weiblich,20.2.1986,Hamburg
+97,Jonas Bauer,männlich,9.3.1988,Lübeck
+98,Emma Fischer,weiblich,1.6.1989,Kiel
+99,Lukas Schneider,männlich,17.9.1991,Lübeck
+100,Hanna Vogel,weiblich,29.11.1992,Hamburg
+101,Julia Braun,weiblich,7.1.1992,Reinbek
+102,Daniel Lang,männlich,25.8.1987,Henstedt-Ulzburg
+103,Clara Keller,weiblich,12.3.1991,Schleswig
+104,Tim Albrecht,männlich,9.10.1988,Rendsburg
+105,Laura Schulze,weiblich,4.6.1989,Elmshorn
+106,Clara Wolf,weiblich,15.4.1992,Hamburg
+107,Fabian Richter,männlich,22.7.1988,Norderstedt
+108,Lena Meyer,weiblich,5.5.1991,Kiel
+109,Paul Huber,männlich,18.8.1989,Kiel
+110,Sophie Schmidt,weiblich,27.10.1987,Halle (Saale)
+111,Tim Weber,männlich,11.12.1990,Neumünster
+112,Laura Schmid,weiblich,20.2.1986,Kaltenkirchen
+113,Jonas Bauer,männlich,9.3.1988,Hamburg
+114,Emma Fischer,weiblich,1.6.1989,Norderstedt
+115,Lukas Schneider,männlich,17.9.1991,Kiel
+116,Hanna Vogel,weiblich,29.11.1992,Kiel
+117,Lina Haerter,weiblich,27.6.2001,Halle (Saale)
+118,Emil Müller,männlich,3.8.1985,Neumünster
+119,Max Braun,männlich,14.10.1990,Kaltenkirchen
+120,Anna Fischer,weiblich,18.12.1988,Hamburg
+121,Leon Maier,männlich,21.7.1986,Quickborn
+122,Mia Neumann,weiblich,9.5.1992,Schleswig
+123,Noah Wolf,männlich,28.3.1990,Schwarzenbek
+124,Emily Klein,weiblich,6.2.1989,Hamburg
+125,Niklas Becker,männlich,15.9.1987,Bad Oldesloe
+126,Anna Müller,Weiblich,12.3.1985,Kiel
+127,Max Mustermann,Männlich,24.7.1990,Lübeck
+128,Lisa Meier,Weiblich,5.11.1978,Flensburg
+129,Jan Schmidt,Männlich,18.1.1983,Neumünster
+130,Sophie Bauer,Weiblich,30.9.1992,Norderstedt
+131,Paul Fischer,Männlich,22.2.1987,Elmshorn
+132,Clara Schulz,Weiblich,14.6.1991,Itzehoe
+133,Tim Becker,Männlich,9.12.1984,Wedel
+134,Mia Wagner,Weiblich,28.7.1993,Ahrensburg
+135,Leon Weber,Männlich,17.4.1982,Reinbek
+136,Emma Hofmann,Weiblich,3.8.1986,Geesthacht
+137,Finn Lehmann,Männlich,11.11.1990,Quickborn
+138,Laura Krause,Weiblich,25.5.1985,Henstedt-Ulzburg
+139,Ben Neumann,Männlich,7.1.1992,Pinneberg
+140,Lena Peters,Weiblich,21.9.1988,Rendsburg
+141,Tom Frank,Männlich,15.10.1987,Bad Oldesloe
+142,Julia Wolf,Weiblich,4.2.1993,Heide
+143,Lukas König,Männlich,13.5.1989,Eckernförde
+144,Sarah Herrmann,Weiblich,27.3.1991,Husum
+145,David Lorenz,Männlich,10.8.1983,Schleswig
+146,Marie Weiß,Weiblich,19.12.1986,Bad Schwartau
+147,Janina Simon,Weiblich,8.11.1995,Bargteheide
+148,Erik Hof,Männlich,1.1.1984,Glinde
+149,Nina Martens,Weiblich,29.6.1990,Kaltenkirchen
+150,Felix Krüger,Männlich,12.9.1987,Bad Bramstedt
+151,Hannah Böhm,Weiblich,23.7.1994,Tönning
+152,Noah Jansen,Männlich,5.5.1986,Eutin
+153,Leonie Lange,Weiblich,14.3.1992,Bad Segeberg
+154,Maxine Ernst,Weiblich,16.4.1993,Oldenburg
+155,Philipp Busch,Männlich,22.8.1990,Bordesholm
+156,Emily Richter,Weiblich,9.10.1988,Ratzeburg
+157,Jonas Arnold,Männlich,18.2.1985,Uetersen
+158,Clara Voigt,Weiblich,30.12.1991,Mölln
+159,Moritz Lange,Männlich,7.11.1993,Glückstadt
+160,Lea Sauer,Weiblich,2.6.1994,Bad Malente
+161,Felix Bergmann,Männlich,14.9.1986,Preetz
+162,Laura Busch,Weiblich,19.4.1992,Heiligenhafen
+163,Tim Hartmann,Männlich,11.1.1985,Plön
+164,Johanna Brandt,Weiblich,5.7.1989,Kappeln
+165,Ole Mohr,Männlich,24.3.1987,Lütjenburg
+166,Lara Engel,Weiblich,13.8.1991,Timmendorfer Strand
+167,Paul Schröder,Männlich,29.10.1984,Schenefeld
+168,Mia Hofmann,Weiblich,20.6.1988,Kellinghusen
+169,Erik Keller,Männlich,15.12.1990,Hohenwestedt
+170,Lena Winter,Weiblich,8.4.1987,Wyk auf Föhr
+171,Tom Schultz,Männlich,17.5.1991,Glücksburg
+172,Nora Paul,Weiblich,4.11.1989,Schönberg
+173,Max Klein,Männlich,9.2.1994,Grömitz
+174,Anna Friedrich,Weiblich,26.12.1990,Fehmarn
+175,Jan Brandt,Männlich,14.7.1986,Bad Segeberg
+176,Hannah Klein,Weiblich,22.1.1988,Kiel
+177,Jonas Meyer,Männlich,30.3.1990,Lübeck
+178,Lara Vogel,Weiblich,15.6.1992,Flensburg
+179,Elias Fuchs,Männlich,9.8.1984,Neumünster
+180,Mia Berger,Weiblich,23.11.1985,Norderstedt
+181,Luca Schröder,Männlich,12.5.1989,Elmshorn
+182,Emily Zimmermann,Weiblich,5.4.1993,Itzehoe
+183,Paul Wagner,Männlich,18.9.1991,Wedel
+184,Lisa Braun,Weiblich,27.12.1987,Ahrensburg
+185,Max Schmitt,Männlich,16.2.1994,Reinbek
+186,Emma Hartmann,Weiblich,3.10.1988,Geesthacht
+187,Tom Neumann,Männlich,22.6.1985,Quickborn
+188,Clara Lange,Weiblich,7.1.1991,Henstedt-Ulzburg
+189,Tim Weiß,Männlich,11.7.1990,Pinneberg
+190,Sophie Müller,Weiblich,28.3.1986,Rendsburg
+191,Finn Richter,Männlich,19.5.1983,Bad Oldesloe
+192,Lea Schulze,Weiblich,2.9.1989,Heide
+193,Noah Becker,Männlich,14.11.1992,Eckernförde
+194,Lina Hoffmann,Weiblich,25.12.1987,Husum
+195,Ben König,Männlich,8.3.1986,Schleswig
+196,Anna Krause,Weiblich,5.6.1994,Bad Schwartau
+197,Lukas Peters,Männlich,30.4.1988,Bargteheide
+198,Julia Wolf,Weiblich,17.8.1990,Glinde
+199,Jan Bauer,Männlich,29.10.1985,Kaltenkirchen
+200,Marie Koch,Weiblich,9.7.1993,Bad Bramstedt
+201,Erik Frank,Männlich,12.2.1987,Tönning
+202,Leonie Schwarz,Weiblich,3.12.1991,Eutin
+203,David Keller,Männlich,14.1.1989,Bad Segeberg
+204,Johanna Lange,Weiblich,20.5.1986,Oldenburg
+205,Felix Walter,Männlich,7.11.1992,Bordesholm
+206,Mia Horn,Weiblich,18.9.1985,Ratzeburg
+207,Jonas Kraus,Männlich,11.3.1991,Uetersen
+208,Lea Arnold,Weiblich,22.12.1989,Mölln
+209,Max Sauer,Männlich,10.8.1987,Glückstadt
+210,Sophie Simon,Weiblich,6.1.1992,Bad Malente
+211,Noah Braun,Männlich,21.7.1986,Preetz
+212,Emily Mohr,Weiblich,19.2.1989,Heiligenhafen
+213,Tim Voigt,Männlich,23.11.1994,Plön
+214,Hanna Fischer,Weiblich,4.6.1987,Kappeln
+215,Ben Ernst,Männlich,30.9.1991,Lütjenburg
+216,Lara Böhm,Weiblich,16.4.1985,Timmendorfer Strand
+217,Leon Schröder,Männlich,8.10.1990,Schenefeld
+218,Lisa Schneider,Weiblich,27.5.1988,Kellinghusen
+219,Finn Bergmann,Männlich,9.12.1992,Hohenwestedt
+220,Anna Lehmann,Weiblich,14.2.1986,Wyk auf Föhr
+221,Paul Groß,Männlich,1.8.1989,Glücksburg
+222,Clara Hahn,Weiblich,5.11.1993,Schönberg
+223,Tim König,Männlich,17.7.1985,Grömitz
+224,Mia Lorenz,Weiblich,26.12.1990,Fehmarn
+225,Jonas Wolf,Männlich,19.4.1988,Bad Segeberg
+226,Marie Schmidt,Weiblich,1.2.1985,Kiel
+227,Tom Fischer,Männlich,13.4.1991,Lübeck
+228,Lena Weber,Weiblich,21.7.1988,Flensburg
+229,Jonas Hoffmann,Männlich,9.10.1983,Neumünster
+230,Laura Neumann,Weiblich,18.12.1990,Norderstedt
+231,Max Schulz,Männlich,2.3.1986,Elmshorn
+232,Sophie Lehmann,Weiblich,7.11.1989,Itzehoe
+233,Leon Wolf,Männlich,25.5.1984,Wedel
+234,Clara Schwarz,Weiblich,13.6.1993,Ahrensburg
+235,Erik Koch,Männlich,29.1.1987,Reinbek
+236,Mia Walter,Weiblich,11.8.1992,Geesthacht
+237,Finn Krause,Männlich,22.12.1985,Quickborn
+238,Hannah Richter,Weiblich,16.2.1990,Henstedt-Ulzburg
+239,Paul Lange,Männlich,4.5.1987,Pinneberg
+240,Lara Becker,Weiblich,12.9.1984,Rendsburg
+241,Tim Wagner,Männlich,7.1.1992,Bad Oldesloe
+242,Emily Meier,Weiblich,19.3.1991,Heide
+243,Jonas Hansen,Männlich,28.11.1988,Eckernförde
+244,Lea Schmitt,Weiblich,5.4.1986,Husum
+245,Felix Hofmann,Männlich,20.10.1990,Schleswig
+246,Sophie Schröder,Weiblich,31.8.1993,Bad Schwartau
+247,Max Meyer,Männlich,14.6.1985,Bargteheide
+248,Hannah Vogel,Weiblich,27.2.1989,Glinde
+249,Paul Weber,Männlich,10.7.1986,Kaltenkirchen
+250,Mia Frank,Weiblich,22.5.1991,Bad Bramstedt
+251,Jonas Braun,Männlich,3.10.1988,Tönning
+252,Emily Klein,Weiblich,16.11.1984,Eutin
+253,Finn Zimmermann,Männlich,29.3.1990,Bad Segeberg
+254,Clara Krüger,Weiblich,18.12.1991,Oldenburg
+255,Tom Hartmann,Männlich,9.1.1987,Bordesholm
+256,Lena Weiß,Weiblich,25.7.1986,Ratzeburg
+257,Max Schmidt,Männlich,4.9.1989,Uetersen
+258,Sophie Fischer,Weiblich,13.2.1992,Mölln
+259,Leon Schulze,Männlich,26.8.1984,Glückstadt
+260,Hanna Lange,Weiblich,17.11.1990,Bad Malente
+261,Paul Neumann,Männlich,1.3.1986,Preetz
+262,Emma Müller,Weiblich,19.12.1987,Heiligenhafen
+263,Felix Becker,Männlich,15.5.1992,Plön
+264,Lara Peters,Weiblich,27.6.1985,Kappeln
+265,Jonas Hof,Männlich,10.4.1991,Lütjenburg
+266,Clara Sauer,Weiblich,23.1.1988,Timmendorfer Strand
+267,Max Schneider,Männlich,5.7.1986,Schenefeld
+268,Sophie Voigt,Weiblich,14.3.1990,Kellinghusen
+269,Leon Braun,Männlich,2.12.1983,Hohenwestedt
+270,Lea Ernst,Weiblich,30.10.1991,Wyk auf Föhr
+271,Erik Klein,Männlich,19.2.1985,Glücksburg
+272,Hannah Schröder,Weiblich,25.6.1989,Schönberg
+273,Felix Müller,Männlich,7.5.1992,Grömitz
+274,Marie Berger,Weiblich,22.1.1986,Fehmarn
+275,Tom Hoffmann,Männlich,18.8.1990,Bad Segeberg
+276,Mia Walter,Weiblich,14.4.1987,Kiel
+277,Paul Krüger,Männlich,11.9.1984,Lübeck
+278,Clara Meier,Weiblich,27.3.1992,Flensburg
+279,Tim Schmidt,Männlich,2.12.1989,Neumünster
+280,Emma Schulz,Weiblich,21.7.1986,Norderstedt
+281,Max Hoff,Männlich,9.1.1991,Elmshorn
+282,Sophie Becker,Weiblich,16.6.1985,Itzehoe
+283,Leon Walter,Männlich,19.11.1988,Wedel
+284,Hannah Lange,Weiblich,8.5.1993,Ahrensburg
+285,Paul Neumann,Männlich,14.10.1984,Reinbek
+286,Mia Koch,Weiblich,23.2.1990,Geesthacht
+287,Jonas Krause,Männlich,29.11.1987,Quickborn
+288,Emily König,Weiblich,7.4.1986,Henstedt-Ulzburg
+289,Tim Peters,Männlich,12.9.1991,Pinneberg
+290,Lara Berger,Weiblich,5.11.1985,Rendsburg
+291,Finn Hofmann,Männlich,25.1.1990,Bad Oldesloe
+292,Sophie Lehmann,Weiblich,13.6.1987,Heide
+293,Max Richter,Männlich,21.8.1992,Eckernförde
+294,Mia Meyer,Weiblich,9.10.1986,Husum
+295,Paul Müller,Männlich,30.12.1989,Schleswig
+296,Hannah Wolf,Weiblich,17.11.1991,Bad Schwartau
+297,Jonas Becker,Männlich,2.7.1985,Bargteheide
+298,Clara Schmitt,Weiblich,20.3.1990,Glinde
+299,Leon Krüger,Männlich,29.4.1988,Kaltenkirchen
+300,Sophie Lange,Weiblich,12.2.1993,Bad Bramstedt
+301,Max Hansen,Männlich,8.9.1986,Tönning
+302,Emily Weber,Weiblich,26.1.1991,Eutin
+303,Finn Meier,Männlich,10.5.1987,Bad Segeberg
+304,Clara Hartmann,Weiblich,18.8.1989,Oldenburg

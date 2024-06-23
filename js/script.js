@@ -363,6 +363,7 @@ var btnCommandHistory = document.getElementById("commandHistory");
 
 btnCommandHistory.addEventListener("click", function () {
     outputElm.innerHTML = "";
+    noerror();
   
     // Erstellen eines Container-Divs für die Historie
     var containerDiv = document.createElement("div");

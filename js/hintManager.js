@@ -5,7 +5,7 @@ const hints = [
             chapterTitle: 'Kapitel 1',
             hints: [
                 'Nutze die Datenbank "Tatortbericht", um herauszufinden, was sich bei der Firma Symmex am 27.06. ereignet hat.',
-                'SELECT * FROM Tatortbericht WHERE ort = "Symmex"'
+                'SELECT * FROM Tatortbericht WHERE ort = "Symmex";'
             ]
         },
         {
@@ -14,7 +14,7 @@ const hints = [
                 'Nutze die Datenbank "Zeugenaussage", um herauszufinden, was sich am Tatort ereignet hat.',
                 'Was weißt du bereits über den Tatort? Wer war der Ermittler und wann ist die Tat geschehen?',
                 'Suche mithilfe eines Select-Befehls nach dem Ermittler "Alexander Wolf" und dem Datum "27.06.2024".',
-                'SELECT * FROM Zeugenaussage WHERE Ermittler = "Alexander Wolf" AND Datum = "27.06.2024"'
+                'SELECT * FROM Zeugenaussage WHERE Ermittler = "Alexander Wolf" AND Datum = "27.06.2024";'
             ]
         }
     ],
@@ -26,7 +26,7 @@ const hints = [
                 'Als Gast hast du keinen Zugriff auf alle Daten, vielleicht solltest du dich einloggen.',
                 'Auf dem Computerbildschirm klebt ein Aufkleber mit den Zahlen "204-03". Wo hast du diese schon mal gesehen?',
                 'Finde heraus, wem der Arbeitsplatz "204-03" gehört und melde dich mit seinem Namen und dem am Computerbildschirm hängenden Passwort an.',
-                'SELECT name FROM Mitarbeiter WHERE Arbeitsplatz = "204-03"'
+                'SELECT name FROM Mitarbeiter WHERE Arbeitsplatz = "204-03";'
             ]
         }
     ],
@@ -37,7 +37,7 @@ const hints = [
             hints: [
                 'Vielleicht kannst du mithilfe des Türprotokolls herausfinden, wer den Raum 404 am Tag der Tat besucht hat.',
                 'Eine Zeugin sagt etwas davon, dass eine verdächtige Person den Raum 404 am 27.06.24 sehr häufig besucht hätte. Vielleicht kannst du mit der Datenbank "Türprotokoll" herausfinden, um welchen Mitarbeiter es sich dabei handelt.',
-                'SELECT count(*), * FROM Türprotokoll GROUP BY mitarbeiter_id'
+                'SELECT count(*), * FROM Türprotokoll where Tür_id is "404" GROUP BY mitarbeiter_id;'
             ]
         }
     ],
@@ -47,7 +47,7 @@ const hints = [
             chapterTitle: 'Kapitel 1',
             hints: [
                 'Dein Zugangsberechtigung reicht nicht aus, um auf die gesamte Datenbank zuzugreifen. Vielleicht kannst du sie irgendwie updaten?',
-                'UPDATE Mitarbeiter SET Zugangsberechtigung = "5" WHERE Name = "Max Brandt"'
+                'UPDATE Mitarbeiter SET Zugangsberechtigung = "5" WHERE Name = "Max Brandt";'
             ]
         }
     ],
@@ -58,7 +58,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Email", um herauszufinden, was der Täter geplant hat.',
                 'Suche nach den Emails, die vom Täter gesendet und empfangen wurden.',
-                'SELECT * FROM Email WHERE Absender = "p.huber@symmex.it" or Empfänger = "p.huber@symmex.it"'
+                'SELECT * FROM Email WHERE Absender = "p.huber@symmex.it" or Empfänger = "p.huber@symmex.it";'
             ]
         }
     ],
@@ -69,7 +69,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Veranstaltung", um herauszufinden, wo die zweite Bombe platziert wurde. Schau dir dazu nochmal die Informationen aus den Emails der Täter an.',
                 'Die Bombe soll an dem Ort hochgehen, wo am 27.06. die meisten Menschen anwesend sind.',
-                'SELECT * FROM Veranstaltung ORDER BY Personenanzahl ASC'
+                'SELECT * FROM Veranstaltung ORDER BY Personenanzahl ASC;'
             ]
         }
     ],
@@ -81,7 +81,7 @@ const hints = [
                 'Nutze die Datenbank "Bombe", um herauszufinden, wie du die Bombe entschärfen kannst.',
                 'Schau dir mal den Blueprint der Bombe an, vielleicht kannst du auf diese Weise Informationen erhalten, die dir helfen, die richtige Bombe zu finden.',
                 'Suche in der Datenbank "Bombe" die Bombe, mit der Modellnummer, die die Zeichen _74B_0 enthält.',
-                'SELECT * FROM Bombe WHERE Modellnummer = "%74B_0"'
+                'SELECT * FROM Bombe WHERE Modellnummer = "%74B_0";'
             ]
         }
     ]

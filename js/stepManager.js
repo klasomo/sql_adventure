@@ -1,5 +1,5 @@
 
-let currentStep = 4;
+let currentStep = 6;
 
 const stepsNames = [
     { id: 'step1', message: 'Tatortbericht' },
@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function updateProgressBar(){
-    var steps = document.querySelectorAll('.steps .step');
+    var step_progressbar = document.getElementById("step_progressbar");
+    var steps = step_progressbar.querySelectorAll('.steps .step');
     
     for(var i = 0; i < steps.length; i++){
         if ( i < currentStep+1){

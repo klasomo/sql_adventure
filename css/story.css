@@ -1,94 +1,108 @@
-:root {
-  --border-radius: 5px;
-}
+* { box-sizing: border-box; }
 
 body {
-  transform-style: preserve-3d;
-  transform: perspective(2000px);
-  text-align: center;
-}
-
-.title {
-  font-size: 40px;
-  color: gray;
-  text-align: center;
+  /* or any other parent wrapper */
+  margin: 0;
+  display: flex;
+  height: 100dvh;
+  perspective: 3000px;
+  font: 16px/1.4 sans-serif;
+  overflow: hidden;
 }
 
 .book {
-  position: relative;
-  width: 600px;
-  height: 338px;
-  box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.5);
-  margin: 0px auto;
+  display: flex;
+  margin: auto;
+  width: 45vw;
+  /*1* let pointer event go trough pages of lower Z than .book */
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  /* DEMO ONLY: incline on the X axis for pages preview */
+  rotate: 1 0 0 0deg;
 }
 
 .page {
-  position: absolute;
-  height: inherit;
-  width: 300px;
-  top: 0px;
-  background-size: 600px auto;
-  transition: 1s ease-in-out;
+  --thickness: 5;
+  /* PS: Don't go below thickness 0.4 or the pages might transpare */
+  flex: none;
+  display: flex;
+  width: 90%;
+  aspect-ratio: 1500 / 1688;
+  /*1* allow pointer events on pages */
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  border: 1px solid #0008;
+  transform-origin: left center;
+  transition:
+    transform 1s,
+    rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ( calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 1px)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
 }
 
-.page:after {
-  content: "";
-  position: absolute;
+.page img {
   width: 100%;
-  height: inherit;
-  background-image: inherit;
-  top: 0px;
-  -webkit-transform-origin: 0% 0%;
-  -moz-transform-origin: 0% 0%;
-  -webkit-transition: 1s ease-in-out;
-  -moz-transition: 1s ease-in-out;
-  background-size: 600px auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+.front,
+.back {
+  flex: none;
+  width: 100%;
   backface-visibility: hidden;
-  box-shadow: inset 0px 0px 0px 300px rgba(0,0,0,0);
+  background-color: #fff;
+  /* Fix backface visibility Firefox: */
+  translate: 0px;
 }
 
-.page.p1 {
-  left: 0px;
-  background-image: url("../assets/images/story/call2.png");
-  background-position: 0% 65%;
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+.back {
+  background-image: linear-gradient(to right, #fff 80%, #ddd 100%);
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
 }
 
-.page.p1:after {
-  left: 300px;
-  transform-origin: 0% 0%;
-  z-index: 2;
-  background-position: 100% 65%;
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
+.image-half-left {
+  width: 100%;
+  height: 100%; /* Höhe des div */
+  background-size: 200%; /* Verdoppele die Größe des Hintergrundbildes */
+  background-position: left top; /* Zeige die linke obere Ecke des Bildes */
+  background-repeat: no-repeat; /* Verhindere das Wiederholen des Hintergrundbildes */
 }
 
-.page.p2 {
-  right: 0px;
-  background-image: url("../assets/images/story/call3.png");
-  background-position: 100% 65%;
-  border-top-right-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
+.image-half-right {
+  width: 100%; /* Oder eine spezifische Breite */
+  height: 100%; /* Oder eine spezifische Höhe */
+  background-size: 200%; /* Verdoppele die Größe des Hintergrundbildes */
+  background-position: right top; /* Zeige die rechte obere Ecke des Bildes */
+  background-repeat: no-repeat; /* Verhindere das Wiederholen des Hintergrundbildes */
 }
 
-.page.p2:after {
-  left: -300px;
-  transform-origin: 100% 0%;
-  transform: rotateY(180deg);
-  z-index: 1;
-  background-position: 0% 65%;
-  box-shadow: inset 0px 0px 0px 300px rgba(0,0,0,0.4);
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+#img1{
+  background-image: url('/assets/images/story/story_before/call1.png');
 }
 
-.book:hover .page.p1:after {
-  transform: rotateY(-180deg);
-  box-shadow: inset 0px 0px 0px 300px rgba(0,0,0,0.4);
+#img2{
+  background-image: url('/assets/images/story/story_before/call2.png');
+}
+#img3{
+  background-image: url('/assets/images/story/story_before/call3.png');
+}
+#img4{
+  background-image: url('/assets/images/story/story_before/call4.png');
+}
+#img5{
+  background-image: url('/assets/images/story/story_before/call5.png');
 }
 
-.book:hover .page.p2:after {
-  transform: rotateY(0deg);
-  box-shadow: inset 0px 0px 0px 300px rgba(0,0,0,0);
+#img6{
+  background-image: url('/assets/images/story/story_before/call6.png');
+}
+
+#img7{
+  background-image: url('/assets/images/story/story_before/call7.png');
 }

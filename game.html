@@ -94,12 +94,14 @@
 <!-- Template für Schritt 5 -->
 <div id="step5-template" style="display: none;">
     <div class="flex justify-center">
-        <p class="text-2xl text-primary">33%</p>
+        <ul class="steps w-full mb-5">
+            <li class="step step-primary">E-Mail 1</li>
+            <li class="step">E-Mail 2</li>
+            <li class="step">E-Mail 3</li>
+          </ul>
     </div>
-         <progress class="progress progress-primary w-full mb-5" value="33" max="100"></progress>
         <textarea class="textarea textarea-primary w-full h-[40vh] codedText text-2xl font-bold mx-auto px-0"
             id="encryptedText" placeholder="Encrypted Text"></textarea>
-
     <button class="btn btn-primary w-full mt-5" id="decryptBtn">
         Decrypt
     </button>
@@ -120,8 +122,8 @@
 <!-- Template für Schritt 7 -->
 <div id="step7-template" style="display: none;">
     <article class="flex flex-col items-center">
-        <img id="img" src="/assets/images/bomb_uncut.png" />
-        <div class="viewColor">current color</div>
+        <img id="img" src="/assets/images/bomb/bomb_uncut.png" />
+        <div class="viewColor">Draht durchschneiden</div>
         <canvas id="canvas_bomb"></canvas>
         <div class="palette">
         </div>
@@ -155,7 +157,7 @@
         <div class="flex flex-col justify-between" style="height: 100vh">
             <!-- Progressbar -->
              <div class="w-full">
-                <ul class="steps bg-neutral py-5 min-h-[100px] w-full">
+                <ul class="steps bg-neutral py-5 min-h-[100px] w-full" id="step_progressbar">
                     <li id="step1" class="step text-xl font-typewriter">Case Overview</li>
                     <li id="step2" class="step text-xl font-typewriter">Victim & Time</li>
                     <li id="step3" class="step text-xl font-typewriter">Get Access</li>

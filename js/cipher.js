@@ -3,10 +3,16 @@ function initDecryption(){
   const decryptBtn = document.getElementById("decryptBtn");
   const decrptedMesg = "Diese Nachricht wurde Erfolgreich Entschlüsselt"
 
+
   decryptBtn.addEventListener("click", () => {
     if (t) {
+
+      const inputText = t.value.trim(); // den Eingabetext trimmen
+      if (inputText.toLowerCase() === "hello world") {
+        t.value = "Moin Meister";
+      }
+
       const arr1 = t.value.split('');
-      console.log(arr1);
       const arr2 = [];
       arr1.forEach((char, i) => arr2[i] = randChar()); // fill arr2 with random characters
 

@@ -16,36 +16,40 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Wrong Login allert oder info ausgeben ",
-                    "id": "lrkks4ch5p4g4s3rz3qg0erf"
+                    "text": "Hint Kapitel namen anpassen\n",
+                    "id": "iq84357g5up14wwkz8y9zxem"
                 },
                 {
-                    "text": "Gast Login Button Hinzufügen\n",
-                    "id": "yb7vkazv6k1rwyy7hw08inex"
+                    "text": "Block views und DB with steps",
+                    "id": "uj7ebvcioi6nzo11zmdqgzj1"
                 },
                 {
-                    "text": "Zuätzliche Firmen Datanbank\n",
-                    "id": "qfmev6673cwvlx246g1jke4x"
+                    "text": "Step Inputs nach Lösung Überprüfen",
+                    "id": "ch9er5hofok17hyevrojrqv8"
                 },
                 {
-                    "text": "Einstieg Hinzufügen mit pfeilen",
+                    "text": "Update and Delete commands feedback green allert window",
+                    "id": "vs8ea3a2fdswaffjo4xbjfrw"
+                },
+                {
+                    "text": "Einstieg Hinzufügen book animation",
                     "id": "r7cosm6e4em0j63bn0qsg7wr"
+                },
+                {
+                    "text": "Refactor Interfaces and Classes\n",
+                    "id": "wq8x387896yhtodl30l7gjzk"
                 },
                 {
                     "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
                     "id": "yrya669wtbbefku0qnuosr6o"
                 },
                 {
-                    "text": "PDF Herunterladen wenn angeklickt\n",
-                    "id": "a80xvz52akvkvbh34fjndxj4"
-                },
-                {
                     "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
                     "id": "wh6uz0jmjuwmhy2ugqi4mo7d"
                 },
                 {
-                    "text": "Refactor Interfaces and Classes\n",
-                    "id": "wq8x387896yhtodl30l7gjzk"
+                    "text": "PDF Herunterladen wenn angeklickt\n",
+                    "id": "a80xvz52akvkvbh34fjndxj4"
                 },
                 {
                     "text": "--------------------NICHT HOCH PRIOR------------------------",
@@ -63,8 +67,20 @@
             "title": "Doing",
             "tasks": [
                 {
-                    "text": "Entschlüsselung von Email Input ungleich den Output",
-                    "id": "el9g9okyu49cx6sqqa9jngyo"
+                    "text": "Zuätzliche Firmen Datanbank gleiche db aber filtern mit regex  simpleeres Backend\n",
+                    "id": "qfmev6673cwvlx246g1jke4x"
+                },
+                {
+                    "text": "Bomb defuse remove color pallet and add iamge change on cut\nwrong wire = timer + 3Minuten\nMessage display wrong wire try again",
+                    "id": "cnzc758ds1sxdr5lfyulm5el"
+                },
+                {
+                    "text": "Update dbs with newer and more input discord\n",
+                    "id": "csf0sj47xu5knnl3f5fzcwv9"
+                },
+                {
+                    "text": "CSV Dateien in db laden\n",
+                    "id": "f1rt6z0up9hmskml7kmgd0hu"
                 }
             ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
@@ -122,6 +138,10 @@
                     "id": "n93ud4nga1u2bjdfa6yd252k"
                 },
                 {
+                    "text": "Entschlüsselung von Email Input ungleich den Output",
+                    "id": "el9g9okyu49cx6sqqa9jngyo"
+                },
+                {
                     "text": "Reset Button Datenbank neu laden wie Orginal db stand vom aktuellen fenstern button unten rechts mit zusätzlicher bestätigung wenn geklickt wird",
                     "id": "q101nfse575lesxg3d8c83gd"
                 },
@@ -142,8 +162,16 @@
                     "id": "af0ms3l0ljvi6yr18h33cdbk"
                 },
                 {
+                    "text": "Gast Login Button Hinzufügen\n",
+                    "id": "yb7vkazv6k1rwyy7hw08inex"
+                },
+                {
                     "text": "PC Login anlegen",
                     "id": "cac6pe4di61p20gq5djt79yz"
+                },
+                {
+                    "text": "Wrong Login allert oder info ausgeben ",
+                    "id": "lrkks4ch5p4g4s3rz3qg0erf"
                 },
                 {
                     "text": "Step Modal Input Hinzufügen",
@@ -156,5 +184,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719058321346
+    "timestamp": 1719144679875
 }

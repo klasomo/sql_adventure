@@ -1,51 +1,213 @@
-Id,Datum,Verfasser,Zeuge,Aussage
-1,6/1/2024,Alexander Wolf,Peter Klum,"Ich erkannte den Täter an seiner roten Jacke, die er immer trägt."
-2,6/3/2024,Jonas Faber,Antonius Ria,"Der Dieb war sehr schnell und verschwand in der Menge, bevor jemand reagieren konnte."
-3,6/4/2024,Lukas Schuster,Brigitte Zaro,Der Verdächtige hatte eine auffällige Tätowierung am rechten Arm.
-4,6/10/2024,Alexander Wolf,Markus Neumann,"Der Täter war etwa 1,80 m groß und trug einen schwarzen Kapuzenpulli."
-5,6/13/2024,Alexander Wolf,Überwachungskamera,Die Überwachungskamera hat den gesamten Vorfall aufgezeichnet.
-6,6/22/2024,Julia Groß,Julia Schwarz,"Ich hörte einen lauten Knall und als ich nach draußen schaute, war das Auto bereits in Flammen."
-7,6/17/2024,Alexander Wolf,Christian Krüger,Sie hatten ein langes Messer bei sich und bedrohten die Kassiererin im Laden.
-8,6/18/2024,Jonas Faber,Maria Gans,"Ich bemerkte den Mann mit der Sturmhaube, als er versuchte, das Fahrrad zu stehlen."
-9,6/6/2024,Lukas Schuster,Michael Strube,"Ich sah, wie jemand die Garage aufbrach und mehrere Werkzeuge entwendete."
-10,6/21/2024,Alexander Wolf,Theresa Schmied,"Der Einbrecher ließ Spuren im Garten zurück, die eindeutig auf einen Kampf hindeuteten."
-11,6/9/2024,Jan Lehmann,Laura Schulze,Sie hatten ein detailliertes Wissen über die Sicherheitsvorkehrungen.
-12,6/27/2024,Alexander Wolf,Sophie Schmidt,"An dem Tag als die Bombe gefunden wurde, sah ich jemanden aus der IT-Abteilung mit einer großen Golftasche zur Arbeit erscheinen. Das kam mir komische vor, weil niemand aus der IT Golf spielt."
-13,6/8/2024,Julia Groß,Jule Haerter,"Der Täter ist etwa 1,75 m groß, und hat dunkle Haare."
-14,6/2/2024,Jan Lehmann,Timo Franzer,"Das verdächtige Verhalten des Fremden fiel mir sofort auf, als er in der Bank herumschlich."
-15,6/20/2024,Jan Lehmann,Jürgen Braun,"Ich beobachtete den Täter dabei, wie er das Fenster einschlug."
-16,6/21/2024,Tobias Scholz,Paul Böhm,"Der Täter war etwa 1,80 m groß mit kurzen Haaren."
-17,6/13/2024,Julia Groß,Clara Voigt,Ich erkannte das Gesicht des Täters von einem früheren Vorfall.
-18,6/17/2024,Alexander Wolf,Sabine Neuer,Der Mann war maskiert und forderte das Geld aus der Kasse.
-19,6/11/2024,Alexander Wolf,Lea Roth,Der Täter war groß und schlank.
-20,6/19/2024,Jonas Faber,Benjamin Lang,Der Täter war sehr nervös und sah sich ständig um.
-21,6/2/2024,Tobias Scholz,Marie Egant,"Es waren drei Personen, die die Bank überfielen und das Geld forderten."
-22,6/27/2024,Alexander Wolf,Anna Fischer,"Ich fand die Bombe, als ich das Großraumbüro 404 reinigte im Papierkorb. Ich rief sofort die Polizei."
-23,6/18/2024,Jonas Faber,Michela Marins,"Der Dieb hatte auffällige, bunte Haare."
-24,6/12/2024,Jan Lehmann,Überwachungskamera,"Überwachungskameras zeichnen einen unbekannten Mann auf, der das Fahrzeug knackte."
-25,6/5/2024,Jonas Faber,Fred Parker,Ich erkannte den Einbrecher als jemanden aus meiner Nachbarschaft.
-26,6/25/2024,Alexander Wolf,Daniel Lang,Der Täter hatte ein auffälliges Muttermal im Gesicht.
-27,6/17/2024,Alexander Wolf,Clara Keller,"Ich hörte den Alarm, als sie das Fenster einschlugen."
-28,6/25/2024,Alexander Wolf,Tim Albrecht,"Ich sah, wie sie das gestohlene Gut in einem nahegelegenen Schuppen versteckten."
-29,6/9/2024,Jonas Faber,Überwachungskamera,"Überwachungskameras zeigen drei maskierte Personen, die den LKW entwendeten."
-30,6/14/2024,Tobias Scholz,Fabian Lenz,Der Einbrecher hinterließ eine Nachricht an der Wand.
-31,6/17/2024,Tobias Scholz,Laura Stein,Da war niemand.
-32,6/8/2024,Tobias Scholz,Leon Pohl,"Die Person trug Handschuhe, um keine Spuren zu hinterlassen."
-33,6/15/2024,Julia Groß,Karla Quirel,"Sie verwendeten ein Brecheisen, um die Tür des Geschäfts aufzubrechen."
-34,6/2/2024,Tobias Scholz,Lisa König,"Ich sah die Person, wie sie um Mitternacht in das Haus einbrach und durch das Fenster verschwand."
-35,6/18/2024,Jonas Faber,Alexander Hofmann,Der Täter war mit einem Messer bewaffnet und sehr aggressiv.
-36,6/21/2024,Lukas Schuster,Mia Müller,"Sie zerschlugen die Überwachungskameras, bevor sie einstiegen."
-37,6/17/2024,Alexander Wolf,Udo Berger,"Ich bemerkte den Verdächtigen, wie er das Schloss knacken wollte."
-38,6/19/2024,Jonas Faber,Mathilda Hildeberg,Ich sah einen weißen Lieferwagen.
-39,6/2/2024,Jonas Faber,Sara Schröder,"Ich sah den Täter, wie er das Opfer in den Park schleppte."
-40,6/16/2024,Alexander Wolf,Mike Tremo,"Es waren laute Geräusche aus dem Keller zu hören, wo die Tat stattfand."
-41,6/1/2024,Jonas Faber,Laura Busch,Ich hat nichts gesehen.
-42,6/26/2024,Jonas Faber,Max Koch,"Ich sah den Täter, wie er mit einer Brechstange die Tür öffnete."
-43,6/19/2024,Lukas Schuster,Hanna Braun,"Die Täter schienen genau zu wissen, wo sich die Wertsachen befinden."
-44,6/4/2024,Alexander Wolf,Philipp Vogel,"Ich sah, wie sie das Opfer in ein Auto zwangen."
-45,6/16/2024,Tobias Scholz,Überwachungskamera,Überwachungskameras zeigten zwei maskierte Täter.
-46,6/25/2024,Julia Groß,Tobias Scholz,Ich habe nichts gesehen.
-47,6/16/2024,Julia Groß,Laura Klein,Ich sah einen verdächtigen Lieferwagen in der Nähe der Kirche.
-48,4/24/2024,Jonas Faber,Linus Attner,"Ich sah die Person, wie sie eine Tasche mit Schmuck aus dem Haus trug."
-49,6/3/2024,Jonas Faber,Hennig Weiler,Der Verdächtige fuhr mit einem gestohlenen Wagen davon.
-50,6/15/2024,Lukas Schuster,Gertrud Döner,Ich hörte Schreie aus dem Haus und rief sofort die Polizei.
+Id,Datum,Ermittler,Zeuge,Aussage
+1,1.6.2024,Alexander Wolf,Peter Klum,"Ich erkannte den Täter an seiner roten Jacke, die er immer trägt."
+2,3.6.2024,Jonas Faber,Antonius Ria,"Der Dieb war sehr schnell und verschwand in der Menge, bevor jemand reagieren konnte."
+3,4.6.2024,Lukas Schuster,Brigitte Zaro,Der Verdächtige hatte eine auffällige Tätowierung am rechten Arm.
+4,10.6.2024,Alexander Wolf,Markus Neumann,"Der Täter war etwa 1,80 m groß und trug einen schwarzen Kapuzenpulli."
+5,13.6.2024,Alexander Wolf,Überwachungskamera,Die Überwachungskamera hat den gesamten Vorfall aufgezeichnet.
+6,22.6.2024,Julia Groß,Julia Schwarz,"Ich hörte einen lauten Knall und als ich nach draußen schaute, war das Auto bereits in Flammen."
+7,17.6.2024,Alexander Wolf,Christian Krüger,Sie hatten ein langes Messer bei sich und bedrohten die Kassiererin im Laden.
+8,18.6.2024,Jonas Faber,Maria Gans,"Ich bemerkte den Mann mit der Sturmhaube, als er versuchte, das Fahrrad zu stehlen."
+9,6.6.2024,Lukas Schuster,Michael Strube,"Ich sah, wie jemand die Garage aufbrach und mehrere Werkzeuge entwendete."
+10,21.6.2024,Alexander Wolf,Theresa Schmied,"Der Einbrecher ließ Spuren im Garten zurück, die eindeutig auf einen Kampf hindeuteten."
+11,9.6.2024,Jan Lehmann,Laura Schulze,Sie hatten ein detailliertes Wissen über die Sicherheitsvorkehrungen.
+12,27.6.2024,Alexander Wolf,Sophie Schmidt,"An dem Tag als die Bombe gefunden wurde, sah ich jemanden aus der IT-Abteilung mit einer großen Golftasche zur Arbeit erscheinen. Das kam mir komische vor, weil niemand aus der IT Golf spielt."
+13,8.6.2024,Julia Groß,Jule Haerter,"Der Täter ist etwa 1,75 m groß, und hat dunkle Haare."
+14,2.6.2024,Jan Lehmann,Timo Franzer,"Das verdächtige Verhalten des Fremden fiel mir sofort auf, als er in der Bank herumschlich."
+15,20.6.2024,Jan Lehmann,Jürgen Braun,"Ich beobachtete den Täter dabei, wie er das Fenster einschlug."
+16,21.6.2024,Tobias Scholz,Paul Böhm,"Der Täter war etwa 1,80 m groß mit kurzen Haaren."
+17,13.6.2024,Julia Groß,Clara Voigt,Ich erkannte das Gesicht des Täters von einem früheren Vorfall.
+18,17.6.2024,Alexander Wolf,Sabine Neuer,Der Mann war maskiert und forderte das Geld aus der Kasse.
+19,11.6.2024,Alexander Wolf,Lea Roth,Der Täter war groß und schlank.
+20,19.6.2024,Jonas Faber,Benjamin Lang,Der Täter war sehr nervös und sah sich ständig um.
+21,2.6.2024,Tobias Scholz,Marie Egant,"Es waren drei Personen, die die Bank überfielen und das Geld forderten."
+22,27.6.2024,Alexander Wolf,Anna Fischer,"Ich fand die Bombe, als ich das Großraumbüro 404 reinigte im Papierkorb. Ich rief sofort die Polizei."
+23,18.6.2024,Jonas Faber,Michela Marins,"Der Dieb hatte auffällige, bunte Haare."
+24,12.6.2024,Jan Lehmann,Überwachungskamera,"Überwachungskameras zeichnen einen unbekannten Mann auf, der das Fahrzeug knackte."
+25,5.6.2024,Jonas Faber,Fred Parker,Ich erkannte den Einbrecher als jemanden aus meiner Nachbarschaft.
+26,25.6.2024,Alexander Wolf,Daniel Lang,Der Täter hatte ein auffälliges Muttermal im Gesicht.
+27,17.6.2024,Alexander Wolf,Clara Keller,"Ich hörte den Alarm, als sie das Fenster einschlugen."
+28,25.6.2024,Alexander Wolf,Tim Albrecht,"Ich sah, wie sie das gestohlene Gut in einem nahegelegenen Schuppen versteckten."
+29,9.6.2024,Jonas Faber,Überwachungskamera,"Überwachungskameras zeigen drei maskierte Personen, die den LKW entwendeten."
+30,14.6.2024,Tobias Scholz,Fabian Lenz,Der Einbrecher hinterließ eine Nachricht an der Wand.
+31,17.6.2024,Tobias Scholz,Laura Stein,Da war niemand.
+32,8.6.2024,Tobias Scholz,Leon Pohl,"Die Person trug Handschuhe, um keine Spuren zu hinterlassen."
+33,15.6.2024,Julia Groß,Karla Quirel,"Sie verwendeten ein Brecheisen, um die Tür des Geschäfts aufzubrechen."
+34,2.6.2024,Tobias Scholz,Lisa König,"Ich sah die Person, wie sie um Mitternacht in das Haus einbrach und durch das Fenster verschwand."
+35,18.6.2024,Jonas Faber,Alexander Hofmann,Der Täter war mit einem Messer bewaffnet und sehr aggressiv.
+36,21.6.2024,Lukas Schuster,Mia Müller,"Sie zerschlugen die Überwachungskameras, bevor sie einstiegen."
+37,17.6.2024,Alexander Wolf,Udo Berger,"Ich bemerkte den Verdächtigen, wie er das Schloss knacken wollte."
+38,19.6.2024,Jonas Faber,Mathilda Hildeberg,Ich sah einen weißen Lieferwagen.
+39,2.6.2024,Jonas Faber,Sara Schröder,"Ich sah den Täter, wie er das Opfer in den Park schleppte."
+40,16.6.2024,Alexander Wolf,Mike Tremo,"Es waren laute Geräusche aus dem Keller zu hören, wo die Tat stattfand."
+41,1.6.2024,Jonas Faber,Laura Busch,Ich hat nichts gesehen.
+42,26.6.2024,Jonas Faber,Max Koch,"Ich sah den Täter, wie er mit einer Brechstange die Tür öffnete."
+43,19.6.2024,Lukas Schuster,Hanna Braun,"Die Täter schienen genau zu wissen, wo sich die Wertsachen befinden."
+44,4.6.2024,Alexander Wolf,Philipp Vogel,"Ich sah, wie sie das Opfer in ein Auto zwangen."
+45,16.6.2024,Tobias Scholz,Überwachungskamera,Überwachungskameras zeigten zwei maskierte Täter.
+46,25.6.2024,Julia Groß,Tobias Scholz,Ich habe nichts gesehen.
+47,16.6.2024,Julia Groß,Laura Klein,Ich sah einen verdächtigen Lieferwagen in der Nähe der Kirche.
+48,24.4.2024,Jonas Faber,Linus Attner,"Ich sah die Person, wie sie eine Tasche mit Schmuck aus dem Haus trug."
+49,3.6.2024,Jonas Faber,Hennig Weiler,Der Verdächtige fuhr mit einem gestohlenen Wagen davon.
+50,15.6.2024,Lukas Schuster,Gertrud Döner,Ich hörte Schreie aus dem Haus und rief sofort die Polizei.
+51,2.6.2024,Tobias Scholz,Maria Bauer,"Ich sah den Täter wegrennen, er hatte eine schwarze Mütze auf."
+52,3.6.2024,Jan Lehmann,Karl Meier,Der Täter war sehr groß und hatte einen auffälligen Bart.
+53,4.6.2024,Lukas Schuster,Laura Weber,"Ich habe den Einbruch beobachtet, der Täter war etwa 30 Jahre alt."
+54,5.6.2024,Julia Groß,Tim Müller,Der Täter trug einen blauen Pullover und eine Jeans.
+55,6.6.2024,Jonas Faber,Nina Schmidt,"Ich habe den Täter beim Weglaufen gesehen, er war sehr schlank und hatte dunkle Haare."
+56,7.6.2024,Alexander Wolf,Peter Wagner,Der Täter hatte ein Tattoo am rechten Arm.
+57,8.6.2024,Tobias Scholz,Anna Fischer,"Ich hörte den Alarm und sah den Täter wegrennen, er trug eine schwarze Kapuzenjacke."
+58,9.6.2024,Jan Lehmann,Max Becker,Der Täter hatte eine auffällige Narbe im Gesicht.
+59,10.6.2024,Lukas Schuster,Lena Meier,"Ich habe den Täter gesehen, er war etwa 1,80 Meter groß und hatte blonde Haare."
+60,11.6.2024,Julia Groß,Paul Neumann,Der Täter trug Handschuhe und hinterließ keine Fingerabdrücke.
+61,12.6.2024,Jonas Faber,Clara Fischer,"Ich habe den Täter am Tatort gesehen, er hatte eine auffällige gelbe Jacke an."
+62,13.6.2024,Alexander Wolf,Leon Hoffmann,"Der Täter war maskiert, aber ich konnte seine Augenfarbe erkennen, sie waren grün."
+63,14.6.2024,Tobias Scholz,Sophie Klein,Der Täter sprach mit einem starken Akzent.
+64,15.6.2024,Jan Lehmann,Emma Schmid,"Ich sah den Täter, er war etwa 25 Jahre alt und trug eine Sonnenbrille."
+65,16.6.2024,Lukas Schuster,Jonas Braun,Der Täter hatte eine auffällige Tätowierung am Hals.
+66,17.6.2024,Julia Groß,Sara Weber,Der Täter benutzte einen weißen Lieferwagen als Fluchtfahrzeug.
+67,18.6.2024,Jonas Faber,Fabian Richter,"Ich habe den Täter gesehen, er war etwa 1,75 Meter groß und hatte braune Haare."
+68,19.6.2024,Alexander Wolf,Hanna Vogel,Der Täter trug auffällige rote Turnschuhe.
+69,20.6.2024,Tobias Scholz,Emil Müller,Der Täter hatte eine Tätowierung auf dem rechten Arm.
+70,21.6.2024,Jan Lehmann,Udo Berger,"Ich hörte den Täter sprechen, er hatte eine tiefe Stimme."
+71,22.6.2024,Lukas Schuster,Laura Neumann,Der Täter trug eine grüne Jacke und eine Mütze.
+72,23.6.2024,Julia Groß,Mia Wolf,Der Täter hatte eine Narbe über dem rechten Auge.
+73,24.6.2024,Jonas Faber,Hans Schmid,Der Täter benutzte einen schwarzen Rucksack.
+74,25.6.2024,Alexander Wolf,Tim Weber,Der Täter war sehr muskulös und trug eine Sonnenbrille.
+75,26.6.2024,Tobias Scholz,Emma Weiß,Der Täter hatte eine tiefe Stimme und trug eine schwarze Maske.
+76,27.6.2024,Jan Lehmann,Leonie Meier,Der Täter trug eine graue Kapuzenjacke und blaue Jeans.
+77,28.6.2024,Lukas Schuster,Paul Klein,"Der Täter war etwa 1,85 Meter groß und hatte blonde Haare."
+78,29.6.2024,Julia Groß,Mia Fischer,Der Täter sprach mit einem ausländischen Akzent.
+79,30.6.2024,Jonas Faber,Max Vogel,"Ich sah den Täter, er hatte einen auffälligen Ring am rechten Hand."
+80,1.7.2024,Alexander Wolf,Sophie Neumann,Der Täter trug eine Kapuze und eine Sonnenbrille.
+81,2.7.2024,Tobias Scholz,Jan Maier,Der Täter hatte eine schwarze Tasche dabei.
+82,3.7.2024,Jan Lehmann,Laura Braun,Der Täter hatte eine auffällige Narbe am Kinn.
+83,4.7.2024,Lukas Schuster,Jonas Herzog,"Der Täter war etwa 1,70 Meter groß und hatte schwarze Haare."
+84,5.7.2024,Julia Groß,Emma Klein,Der Täter hatte einen Bart und trug eine Baseballmütze.
+85,6.7.2024,Jonas Faber,Fabian Vogel,Der Täter hatte eine auffällige Uhr am Handgelenk.
+86,7.7.2024,Alexander Wolf,Lena Huber,Der Täter war sehr groß und hatte breite Schultern.
+87,8.7.2024,Tobias Scholz,Paul Fischer,Der Täter hatte eine auffällige Tätowierung am Hals.
+88,9.7.2024,Jan Lehmann,Hanna Schmid,Der Täter trug eine schwarze Jacke und eine Jeanshose.
+89,10.7.2024,Lukas Schuster,Udo Wolf,"Der Täter war etwa 1,80 Meter groß und hatte dunkle Haare."
+90,11.7.2024,Julia Groß,Laura Müller,Der Täter trug Handschuhe und hinterließ keine Fingerabdrücke.
+91,12.7.2024,Jonas Faber,Mia Maier,Der Täter sprach mit einem starken Akzent und trug eine Mütze.
+92,13.7.2024,Alexander Wolf,Hans Weber,Der Täter hatte eine Narbe über dem linken Auge.
+93,14.7.2024,Tobias Scholz,Tim Fischer,Der Täter trug eine auffällige gelbe Jacke.
+94,15.7.2024,Jan Lehmann,Emma Richter,Der Täter war etwa 25 Jahre alt und hatte eine Sonnenbrille auf.
+95,16.7.2024,Lukas Schuster,Clara Bauer,Der Täter war sehr schlank und hatte eine schwarze Jacke an.
+96,17.7.2024,Julia Groß,Fabian Weiß,Der Täter hatte eine tiefe Stimme und trug eine Maske.
+97,18.7.2024,Jonas Faber,Hanna Vogel,Der Täter hatte eine auffällige Tätowierung am Arm.
+98,19.7.2024,Alexander Wolf,Emil Müller,Der Täter trug einen Rucksack und eine Kapuzenjacke.
+99,20.7.2024,Tobias Scholz,Udo Schmid,"Der Täter war etwa 1,75 Meter groß und hatte blonde Haare."
+100,2.6.2024,Julia Groß,Anna Meier,Der Täter hatte eine auffällige Tätowierung am linken Arm.
+101,3.6.2024,Jonas Faber,Klaus Becker,Ich hörte den Täter über seine Fluchtpläne sprechen.
+102,4.6.2024,Lukas Schuster,Eva Müller,Der Täter war nervös und schaute sich ständig um.
+103,5.6.2024,Jan Lehmann,Otto Fischer,Ich sah den Täter in der Nähe des Tatorts.
+104,6.6.2024,Tobias Scholz,Maria Bauer,Der Täter war groß und trug eine Sonnenbrille.
+105,7.6.2024,Alexander Wolf,Laura Schmidt,Ich erkannte den Täter an seiner Stimme.
+106,8.6.2024,Julia Groß,Hans Weber,Der Täter hatte eine Narbe im Gesicht.
+107,9.6.2024,Jonas Faber,Bernd Koch,Ich sah den Täter das Gebäude verlassen.
+108,10.6.2024,Lukas Schuster,Ingrid Schulz,Der Täter sprach mit einem ausländischen Akzent.
+109,11.6.2024,Jan Lehmann,Erika Braun,Der Täter hatte eine auffällige Armbanduhr.
+110,12.6.2024,Tobias Scholz,Fritz Klein,Ich hörte den Täter laut fluchen.
+111,13.6.2024,Alexander Wolf,Gisela Wolf,"Der Täter rannte schnell weg, als er mich sah."
+112,14.6.2024,Julia Groß,Uwe Hoffmann,"Der Täter trug Handschuhe, obwohl es warm war."
+113,15.6.2024,Jonas Faber,Heike Neumann,Ich sah den Täter mit einem Komplizen sprechen.
+114,16.6.2024,Lukas Schuster,Lothar Frank,Der Täter hatte eine Kapuze über den Kopf gezogen.
+115,17.6.2024,Jan Lehmann,Karin Lange,Ich erkannte den Täter an seiner Gangart.
+116,18.6.2024,Tobias Scholz,Dieter Krause,Der Täter hatte eine auffällige Tätowierung am Hals.
+117,19.6.2024,Alexander Wolf,Monika Schmid,Der Täter trug eine auffällige Kette um den Hals.
+118,20.6.2024,Julia Groß,Holger Möller,Ich sah den Täter in einem blauen Auto flüchten.
+119,21.6.2024,Jonas Faber,Rolf Richter,Der Täter sprach leise und nervös.
+120,22.6.2024,Lukas Schuster,Sabine Mayer,Der Täter trug auffällige rote Schuhe.
+121,23.6.2024,Jan Lehmann,Michael Werner,Der Täter hatte eine tiefe Stimme.
+122,24.6.2024,Tobias Scholz,Claudia Schwarz,Der Täter war sehr muskulös.
+123,2.6.2024,Julia Groß,Anna Meier,Der Täter hatte eine auffällige Tätowierung am linken Arm.
+124,3.6.2024,Jonas Faber,Klaus Becker,Ich hörte den Täter über seine Fluchtpläne sprechen.
+125,4.6.2024,Lukas Schuster,Eva Müller,Der Täter war nervös und schaute sich ständig um.
+126,5.6.2024,Jan Lehmann,Otto Fischer,Ich sah den Täter in der Nähe des Tatorts.
+127,6.6.2024,Tobias Scholz,Maria Bauer,Der Täter war groß und trug eine Sonnenbrille.
+128,7.6.2024,Alexander Wolf,Laura Schmidt,Ich erkannte den Täter an seiner Stimme.
+129,8.6.2024,Julia Groß,Hans Weber,Der Täter hatte eine Narbe im Gesicht.
+130,9.6.2024,Jonas Faber,Bernd Koch,Ich sah den Täter das Gebäude verlassen.
+131,10.6.2024,Lukas Schuster,Ingrid Schulz,Der Täter sprach mit einem ausländischen Akzent.
+132,11.6.2024,Jan Lehmann,Erika Braun,Der Täter hatte eine auffällige Armbanduhr.
+133,12.6.2024,Tobias Scholz,Fritz Klein,Ich hörte den Täter laut fluchen.
+134,13.6.2024,Alexander Wolf,Gisela Wolf,"Der Täter rannte schnell weg, als er mich sah."
+135,14.6.2024,Julia Groß,Uwe Hoffmann,"Der Täter trug Handschuhe, obwohl es warm war."
+136,15.6.2024,Jonas Faber,Heike Neumann,Ich sah den Täter mit einem Komplizen sprechen.
+137,16.6.2024,Lukas Schuster,Lothar Frank,Der Täter hatte eine Kapuze über den Kopf gezogen.
+138,17.6.2024,Jan Lehmann,Karin Lange,Ich erkannte den Täter an seiner Gangart.
+139,18.6.2024,Tobias Scholz,Dieter Krause,Der Täter hatte eine auffällige Tätowierung am Hals.
+140,19.6.2024,Alexander Wolf,Monika Schmid,Der Täter trug eine auffällige Kette um den Hals.
+141,20.6.2024,Julia Groß,Holger Möller,Ich sah den Täter in einem blauen Auto flüchten.
+142,21.6.2024,Jonas Faber,Rolf Richter,Der Täter sprach leise und nervös.
+143,22.6.2024,Lukas Schuster,Sabine Mayer,Der Täter trug auffällige rote Schuhe.
+144,23.6.2024,Jan Lehmann,Michael Werner,Der Täter hatte eine tiefe Stimme.
+145,24.6.2024,Tobias Scholz,Claudia Schwarz,Der Täter war sehr muskulös.
+146,25.6.2024,Alexander Wolf,Lisa Hermann,Der Täter hatte auffällig helle Augen.
+147,26.6.2024,Julia Groß,Werner Berg,Der Täter rauchte eine Zigarette.
+148,27.6.2024,Jonas Faber,Ingrid Schulze,Der Täter trug eine Jeansjacke.
+149,1.6.2024,Lukas Schuster,Peter Schmidt,Der Täter benutzte ein altes Handy.
+150,3.6.2024,Jan Lehmann,Maria Fischer,Der Täter hatte lockige Haare.
+151,4.6.2024,Tobias Scholz,Hans Zimmer,Der Täter trug einen Rucksack.
+152,10.6.2024,Alexander Wolf,Anna Bergmann,Der Täter war mit einem Fahrrad unterwegs.
+153,13.6.2024,Julia Groß,Karl Meier,Der Täter sprach sehr schnell.
+154,22.6.2024,Jonas Faber,Eva Becker,Der Täter trug einen schwarzen Hut.
+155,17.6.2024,Lukas Schuster,Lothar Schulz,Der Täter hatte ein Piercing an der Lippe.
+156,18.6.2024,Jan Lehmann,Petra Klein,Der Täter schaute sich auffällig oft um.
+157,6.6.2024,Tobias Scholz,Michael Bauer,Der Täter hatte eine dunkle Sonnenbrille auf.
+158,21.6.2024,Alexander Wolf,Claudia Meier,Der Täter trug einen auffälligen Schal.
+159,9.6.2024,Julia Groß,Martin Schneider,Der Täter hatte einen Bart.
+160,27.6.2024,Jonas Faber,Laura Fischer,Der Täter sprach mit tiefer Stimme.
+161,8.6.2024,Lukas Schuster,Otto Braun,Der Täter trug weiße Turnschuhe.
+162,2.6.2024,Jan Lehmann,Monika Wagner,Der Täter benutzte oft das Wort „genau“.
+163,20.6.2024,Tobias Scholz,Bernd Hoffmann,Der Täter hatte eine schwere Tasche dabei.
+164,21.6.2024,Alexander Wolf,Gisela Neumann,Der Täter trug einen langen Mantel.
+165,13.6.2024,Julia Groß,Karl Koch,Der Täter wirkte sehr nervös.
+166,17.6.2024,Jonas Faber,Sabine Schulze,Der Täter trug auffälligen Schmuck.
+167,11.6.2024,Lukas Schuster,Dieter Klein,Der Täter sprach in kurzen Sätzen.
+168,19.6.2024,Jan Lehmann,Ingrid Bauer,Der Täter hatte eine raue Stimme.
+169,2.6.2024,Tobias Scholz,Otto Meier,Der Täter war recht groß gewachsen.
+170,27.6.2024,Alexander Wolf,Laura Zimmer,Der Täter trug eine Sporttasche.
+171,18.6.2024,Julia Groß,Werner Hermann,Der Täter hatte dunkle Haare.
+172,12.6.2024,Jonas Faber,Peter Schulz,Der Täter sprach langsam und deutlich.
+173,5.6.2024,Lukas Schuster,Monika Meier,Der Täter hatte auffällige Ohrringe.
+174,25.6.2024,Jan Lehmann,Eva Braun,Der Täter war leicht am Humpeln.
+175,17.6.2024,Tobias Scholz,Hans Schneider,Der Täter trug eine auffällige Jacke.
+176,25.6.2024,Alexander Wolf,Claudia Fischer,Der Täter hatte helle Haut.
+177,9.6.2024,Julia Groß,Martin Zimmer,Der Täter war tätowiert.
+178,14.6.2024,Jonas Faber,Karl Bauer,Der Täter sprach laut.
+179,17.6.2024,Lukas Schuster,Sabine Meier,Der Täter trug eine auffällige Brille.
+180,8.6.2024,Jan Lehmann,Michael Schulz,Der Täter hatte eine raue Stimme.
+181,15.6.2024,Tobias Scholz,Laura Wagner,Der Täter trug ein kariertes Hemd.
+182,2.6.2024,Alexander Wolf,Werner Braun,Der Täter sprach leise.
+183,18.6.2024,Julia Groß,Ingrid Koch,Der Täter trug auffällige Stiefel.
+184,21.6.2024,Jonas Faber,Peter Meier,Der Täter sprach mit einem ausländischen Akzent.
+185,17.6.2024,Lukas Schuster,Monika Klein,Der Täter war sehr dünn.
+186,19.6.2024,Jan Lehmann,Hans Bauer,Der Täter trug eine Baseballmütze.
+187,2.6.2024,Tobias Scholz,Claudia Hermann,Der Täter hatte ein auffälliges Tattoo.
+188,16.6.2024,Alexander Wolf,Michael Fischer,Der Täter trug eine schwarze Hose.
+189,1.6.2024,Julia Groß,Laura Zimmer,Der Täter sprach fließend Englisch.
+190,26.6.2024,Jonas Faber,Werner Braun,Der Täter hatte eine Narbe am Arm.
+191,19.6.2024,Lukas Schuster,Ingrid Meier,Der Täter trug einen Rucksack.
+192,4.6.2024,Jan Lehmann,Peter Schulze,Der Täter war sehr gepflegt.
+193,16.6.2024,Tobias Scholz,Claudia Wagner,Der Täter hatte eine tiefe Stimme.
+194,25.6.2024,Alexander Wolf,Martin Meier,Der Täter trug eine Jeansjacke.
+195,16.6.2024,Julia Groß,Eva Klein,Der Täter hatte eine markante Stimme.
+196,24.4.2024,Jonas Faber,Otto Bauer,Der Täter trug auffällige Schuhe.
+197,3.6.2024,Lukas Schuster,Monika Hermann,Der Täter sprach flüssig.
+198,15.6.2024,Jan Lehmann,Hans Fischer,Der Täter hatte ein auffälliges Lachen.
+199,2.6.2024,Tobias Scholz,Claudia Zimmer,Der Täter trug einen bunten Schal.
+200,3.6.2024,Alexander Wolf,Michael Braun,Der Täter hatte eine Tätowierung am Arm.
+201,4.6.2024,Julia Groß,Laura Koch,Der Täter sprach gebrochen Deutsch.
+202,5.6.2024,Jonas Faber,Werner Schulze,Der Täter trug eine auffällige Jacke.
+203,6.6.2024,Lukas Schuster,Ingrid Meier,Der Täter war klein und dünn.
+204,7.6.2024,Jan Lehmann,Peter Bauer,Der Täter hatte helle Augen.
+205,8.6.2024,Tobias Scholz,Claudia Hermann,Der Täter sprach sehr laut.
+206,9.6.2024,Alexander Wolf,Martin Klein,Der Täter trug einen auffälligen Hut.
+207,10.6.2024,Julia Groß,Eva Zimmer,Der Täter hatte eine tiefe Stimme.
+208,11.6.2024,Jonas Faber,Otto Braun,Der Täter war sehr schlank.
+209,12.6.2024,Lukas Schuster,Monika Fischer,Der Täter hatte eine Sonnenbrille auf.
+210,13.6.2024,Jan Lehmann,Hans Schulze,Der Täter trug eine auffällige Kette.
+211,14.6.2024,Tobias Scholz,Claudia Klein,Der Täter hatte auffällige Schuhe.
+212,15.6.2024,Alexander Wolf,Michael Hermann,Der Täter sprach sehr langsam.

@@ -243,13 +243,13 @@ function initColorPicker(){
         var ctx = canvas.getContext("2d");
         var cw = canvas.width = imgW; //img.width,
         cx = cw / 2;
-        var ch = canvas.height = imgW * img.height / img.width,
+        var ch = canvas.height =  Math.round(imgW * img.height / img.width),
           cy = ch / 2;
         
         //draw the first image on the canvas
         ctx.drawImage(img, 0, 0, cw, ch);
         // get the Image Data
-        var imgData = ctx.getImageData(0, 0, cw, ch);
+        var imgData = ctx.getImageData(0, 0, Math.round(cw), Math.round(ch));
         var pixels = imgData.data;
         var thisRGB;
         var thisRGBRy;
@@ -277,7 +277,7 @@ function initColorPicker(){
             
             // draw new image
             ctx.drawImage(this, 0, 0, w, h);
-            imgData = ctx.getImageData(0, 0, cw, ch);
+            imgData = ctx.getImageData(0, 0,  Math.round(cw),  Math.round(ch));
             pixels = imgData.data;
           }
         }

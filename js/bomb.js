@@ -1,3 +1,5 @@
+var cw, ch, cy, cx;
+
 function initColorPicker() {
   // Hilfsfunktionen zur Farbumwandlung
   function rgb2hsl(rgb) {
@@ -190,7 +192,7 @@ function initColorPicker() {
   }
 
   function getFontColor(rgbRy) {
-      if (colorContrast(rgbRy, [255, 255, 255]) > 4.5) {
+      if (colorContrast(rgbRy, [255, 255, 255]) >= 7) {
           return "white";
       } else {
           return "black";
@@ -204,13 +206,13 @@ function initColorPicker() {
   var colorsRy = [];
   var imgW = 800;
   var canvas = document.getElementById("canvas_bomb");
-  var ctx = canvas.getContext("2d");
+  var ctx = canvas.getContext("2d", { willReadFrequently: true });
 
   img.onload = function () {
-      var cw = canvas.width = imgW;
-      var ch = canvas.height = Math.round(imgW * img.height / img.width);
-      var cx = Math.round(cw / 2);
-      var cy = Math.round(ch / 2);
+      cw = canvas.width = imgW;
+      ch = canvas.height = Math.round(imgW * img.height / img.width);
+      cx = Math.round(cw / 2);
+      cy = Math.round(ch / 2);
 
       // Zeichnen des Bildes auf dem Canvas
       ctx.drawImage(img, 0, 0, cw, ch);
@@ -274,6 +276,61 @@ function initColorPicker() {
       }
   };
 
+  function isWireColor(rgbArray, tolerance) {
+    var colorsToMatch = [
+      [50, 158, 240],   // #329ef0
+      [255, 249, 117],  // #fff975
+      [161, 103, 229]   // #a167e5
+  ];
+
+  var R = rgbArray[0];
+  var G = rgbArray[1];
+  var B = rgbArray[2];
+
+  // Durchlaufen der Liste der spezifischen Farben
+  for (var i = 0; i < colorsToMatch.length; i++) {
+      var color = colorsToMatch[i];
+      var targetR = color[0];
+      var targetG = color[1];
+      var targetB = color[2];
+
+      // Überprüfen, ob die Farbe innerhalb der Toleranz liegt
+      if (Math.abs(R - targetR) <= tolerance &&
+          Math.abs(G - targetG) <= tolerance &&
+          Math.abs(B - targetB) <= tolerance) {
+          return i;  // Index der übereinstimmenden Farbe zurückgeben
+      }
+  }
+    return -1;  // Keine Übereinstimmung gefunden
+  }
+
+  // Funktion zum Laden eines Bildes und Aktualisieren des Canvas
+  function loadImageAndRefreshCanvas(imagePath) {
+    var img = new Image();
+    img.src = imagePath;
+    
+    img.onload = function() {
+      var w = imgW;
+      var h = imgW * img.height / img.width;
+      
+      
+      // clear canvas & swatches
+      ctx.clearRect(0, 0, cw, ch);
+      colorsRy.length = 0;
+      console.clear();
+      
+      // resize the canvas
+      ch = canvas.height = h,
+        cy = ch / 2;
+      
+      // draw new image
+      ctx.drawImage(this, 0, 0, w, h);
+      imgData = ctx.getImageData(0, 0, cw, ch);
+      pixels = imgData.data;
+    }
+  }
+
+
   // Sicherstellen, dass das Bild geladen wird, wenn es nicht bereits geladen ist
   if (img.complete) {
       img.onload();
@@ -281,4 +338,3 @@ function initColorPicker() {
       img.src = img.src; // Ladeereignis für zwischengespeicherte Bilder auslösen
   }
 }
-

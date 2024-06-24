@@ -5,6 +5,10 @@
             "title": "Bugs",
             "tasks": [
                 {
+                    "text": "Map Grid Only Drawn when current Step ",
+                    "id": "udxqnyhi7aur156m9tqwzp6m"
+                },
+                {
                     "text": "Console.log entfernen\n",
                     "id": "fw6umidieftroq41jepbku0z"
                 }
@@ -184,5 +188,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719163295526
+    "timestamp": 1719234578527
 }

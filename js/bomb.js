@@ -369,16 +369,16 @@ function initColorPicker(){
           console.log(matchingIndex);
           switch(matchingIndex){
             case 0:
-              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_blau.png');
+              loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_blau.png');
               // Blau
               break;
             case 1:
               // Gelb
-              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_gelb.png');
+              loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_gelb.png');
               break;
             case 2:
               // Lila
-              loadImageAndRefreshCanvas('../assets/images/bomb/bomb_cut_lila.png');
+              loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_lila.png');
               break;
             default:
               break;

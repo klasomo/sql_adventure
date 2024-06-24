@@ -90,30 +90,30 @@ body {
 }
 
 #img1{
-  background-image: url('./assets/images/story/story_before/call1.png');
+  background-image: url('../assets/images/story/story_before/call1.png');
 }
 
 #img2{
-  background-image: url('/assets/images/story/story_before/call2.png');
+  background-image: url('../assets/images/story/story_before/call2.png');
 }
 #img3{
-  background-image: url('/assets/images/story/story_before/call3.png');
+  background-image: url('../assets/images/story/story_before/call3.png');
 }
 #img4{
-  background-image: url('/assets/images/story/story_before/call4.png');
+  background-image: url('../assets/images/story/story_before/call4.png');
 }
 #img5{
-  background-image: url('/assets/images/story/story_before/call5.png');
+  background-image: url('../assets/images/story/story_before/call5.png');
 }
 
 #img6{
-  background-image: url('/assets/images/story/story_before/call6.png');
+  background-image: url('../assets/images/story/story_before/call6.png');
 }
 
 #img7{
-  background-image: url('/assets/images/story/story_before/call7.png');
+  background-image: url('../assets/images/story/story_before/call7.png');
 }
 
 #imgEmailPage{
-  background-image: url('/assets/images/background/computer_mail.png');
+  background-image: url('../assets/images/background/computer_mail.png');
 }

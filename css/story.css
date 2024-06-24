@@ -86,7 +86,7 @@ body {
   width: 100%; /* Oder eine spezifische Breite */
   height: 100%; /* Oder eine spezifische Höhe */
   background-size: 100%;
-  background-image: url('/assets/images/story/story_before/book_cover.png');
+  background-image: url('../assets/images/story/story_before/book_cover.png');
 }
 
 #img1{

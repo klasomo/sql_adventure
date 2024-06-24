@@ -17,6 +17,9 @@ function updateTimer() {
 }
 
 function addTime(secondsToAdd) {
+    if(secondsToAdd < 0){
+        return;
+    }
     console.log("addTime called");
     pausedTime += secondsToAdd * 1000;
 }

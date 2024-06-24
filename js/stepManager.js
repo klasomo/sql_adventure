@@ -1,5 +1,5 @@
 
-let currentStep = 6;
+let currentStep = 3;
 
 const stepsNames = [
     { id: 'step1', message: 'Tatortbericht' },
@@ -37,9 +37,14 @@ function updateProgressBar(){
     notifyHintManager();
 }
 
+
 function setStepClickEvent(){
     stepsNames.forEach((step, index) => {
         const element = document.getElementById(step.id);
+        const template = document.getElementById(`${step.id}-template`);
+        if(template === null){
+            return;
+        }
         if(index < currentStep){
             // Klickbar
             element.addEventListener('click', () => {
@@ -48,7 +53,7 @@ function setStepClickEvent(){
                 
                 // Füge das spezifische Template ein
                 const modalContent = step_modal.querySelector('.modal-box');
-                const template = document.getElementById(`${step.id}-template`);
+                
                 
                 // Lösche vorherigen Inhalt
                 modalContent.innerHTML = '';
@@ -66,6 +71,8 @@ function setStepClickEvent(){
                         input.disabled = true;
                     });
                 }
+
+                initStep(index);
             });
         }
         if(index === currentStep){
@@ -89,7 +96,7 @@ function setStepClickEvent(){
                 modalContent.style.display = 'block';
                 modalContent.querySelector('div').style.display = 'block';;
 
-                initStep();
+                initStep(index);
 
                 console.log(modalContent);
             });
@@ -101,7 +108,11 @@ function setStepClickEvent(){
     });
 }
 function initStep(step){
-    switch(currentStep){
+    console.log("init Function called");
+    console.log("Step:" + step);
+    console.log("CurrentStep:" + currentStep);
+
+    switch(step){
         case 1:
             break;
         case 2:
@@ -132,7 +143,7 @@ function closeModal(){
 
 //Step Find Location
 
-var selectedCell = [0, 0];
+var selectedCell = [null, null];
 const columns = 16;
 const rows = 9;
 
@@ -140,13 +151,17 @@ function initCityMap(){
     
     const grid = document.querySelector('.grid');
 
-    console.log(grid.childElementCount);
-
     if(grid.childElementCount != 0){
+        console.log("selectedCell:" + selectedCell);
+        if(selectedCell[0] != null){
+            drawTargetOnCell(selectedCell);
+        }
+
         console.log("return init already finished");
         setCellClickEvents();
         return;
     }
+    console.log("Init2 City Map");
 
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -264,7 +279,7 @@ function drawTargetOnCell(cellCords){
     const cell = document.getElementById(cellId);
 
     if (cell) { // Überprüfen, ob das Element gefunden wurde
-        cell.style.backgroundImage = 'url("../assets/images/Crosshair_svg.svg")';
+        cell.style.backgroundImage = 'url("assets/images/crosshair-1-svgrepo-com.svg")';
         cell.style.backgroundSize = 'contain';
         cell.style.backgroundRepeat = 'no-repeat';
     } else {

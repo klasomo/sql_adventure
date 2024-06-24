@@ -264,7 +264,7 @@ function drawTargetOnCell(cellCords){
     const cell = document.getElementById(cellId);
 
     if (cell) { // Überprüfen, ob das Element gefunden wurde
-        cell.style.backgroundImage = 'url("/assets/images/Crosshair_svg.svg")';
+        cell.style.backgroundImage = 'url("../assets/images/Crosshair_svg.svg")';
         cell.style.backgroundSize = 'contain';
         cell.style.backgroundRepeat = 'no-repeat';
     } else {

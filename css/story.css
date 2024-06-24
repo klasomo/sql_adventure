@@ -90,7 +90,7 @@ body {
 }
 
 #img1{
-  background-image: url('/assets/images/story/story_before/call1.png');
+  background-image: url('./assets/images/story/story_before/call1.png');
 }
 
 #img2{

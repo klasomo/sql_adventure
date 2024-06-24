@@ -1,4 +1,5 @@
 var cw, ch, cy, cx;
+var isBombDefused = false;
 
 function initColorPicker() {
   // Hilfsfunktionen zur Farbumwandlung
@@ -202,6 +203,7 @@ function initColorPicker() {
   // Palette- und Canvas-Initialisierung
   var palette = document.querySelector(".palette");
   var img = document.getElementById("img");
+  var wireColorInfo = document.getElementById("wireColorInfo");
   var viewColor = document.querySelector(".viewColor");
   var colorsRy = [];
   var imgW = 800;
@@ -226,41 +228,64 @@ function initColorPicker() {
       var thisRGB;
       var thisRGBRy;
 
-      // Event Listener für mousemove
-      canvas.addEventListener("mousemove", function (e) {
-          var m = oMousePos(canvas, e);
-          var i = (m.x + m.y * cw) * 4;
-          var R = pixels[i];
-          var G = pixels[i + 1];
-          var B = pixels[i + 2];
-          thisRGBRy = [R, G, B];
-          thisRGB = display_rgb(thisRGBRy);
+      // Definieren Sie die Event-Handler-Funktion
+      function handleCanvasMouseMove(e) {
+        var m = oMousePos(canvas, e);
+        var i = (m.x + m.y * cw) * 4;
+        var R = pixels[i];
+        var G = pixels[i + 1];
+        var B = pixels[i + 2];
+        thisRGBRy = [R, G, B];
+        thisRGB = display_rgb(thisRGBRy);
 
-          var tolerance = 20;
-          var matchingIndex = isWireColor(thisRGBRy, tolerance);
-          if (matchingIndex !== -1) {
-              viewColor.style.backgroundColor = thisRGB;
-              viewColor.style.color = getFontColor(thisRGBRy);
-          } else {
-              viewColor.style.backgroundColor = "rgb(255,255,255)";
-              viewColor.style.color = getFontColor([255, 255, 255]);
-          }
-      }, false);
+        var tolerance = 20;
+        var matchingIndex = isWireColor(thisRGBRy, tolerance);
+        if (matchingIndex !== -1) {
+            viewColor.style.backgroundColor = thisRGB;
+            viewColor.style.color = getFontColor(thisRGBRy);
+        } else {
+            viewColor.style.backgroundColor = "rgb(255,255,255)";
+            viewColor.style.color = getFontColor([255, 255, 255]);
+        }
+      }
+
+      // Event Listener für mousemove
+      canvas.addEventListener("mousemove", handleCanvasMouseMove, false);
+
+
+
+      function resetBomb(){
+        loadImageAndRefreshCanvas('assets/images/bomb/bomb_uncut.png');
+        wireColorInfo.removeEventListener('click', resetBomb);
+        canvas.addEventListener("mousemove", handleCanvasMouseMove, false);
+      }
 
       // Event Listener für click
       canvas.addEventListener("click", function (e) {
+          console.log("WIRE CLICKED");
           var tolerance = 20;
           var matchingIndex = isWireColor(thisRGBRy, tolerance);
           console.log(matchingIndex);
+          var wrongWireText = "Falsches Kabel +3 Minuten Klicken um es nochmal zu Versuchen"
+          var correctWireText = 'Bombe Entschärft';
           switch (matchingIndex) {
               case 0:
                   loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_blau.png');
+                  canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
+                  wireColorInfo.textContent = wrongWireText;
+                  addTime(180);
                   break;
               case 1:
                   loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_gelb.png');
+                  canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
+                  wireColorInfo.textContent = wrongWireText;
+                  addTime(180);
                   break;
               case 2:
                   loadImageAndRefreshCanvas('assets/images/bomb/bomb_cut_lila.png');
+                  canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
+                  wireColorInfo.textContent = correctWireText;
+                  pauseTimer();
                   break;
               default:
                   break;
@@ -317,7 +342,6 @@ function initColorPicker() {
       // clear canvas & swatches
       ctx.clearRect(0, 0, cw, ch);
       colorsRy.length = 0;
-      console.clear();
       
       // resize the canvas
       ch = canvas.height = h,

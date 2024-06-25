@@ -8,8 +8,8 @@ const encryptedText = [
    "CWM&SZ,K_KW.rR2@G.BeT_k!yc$jh;beUeRxD)cB)nyX$uGvQBzgmpn}wKbbH70z(TP1B2TD;4=3LPfzSjhcfBZmhBNeHZCgyA&p;E9VG+VEm/A.KeRy_SAxrw;2bh[4cP314nare.JPAA6]XDY"];
 const decryptedText = [
   "Hallo Paul, die Bauteile sollten nun auf dem Weg zu Dir sein. Jetzt muss du noch den Teil deiner Abmachung einhalten. Gruß Sophie",
-  "Hallo Paul, wie abgemacht. Die erste Bombe soll in der Firma Symmex platziert werden, die du seit einigen Monaten infiltriert hast. Die zweite Bombe soll an einem Ort hoch gehen, der eine Opferanzahl von mehr als 30.000 Menschen. Gruß Sophie",
-  "Hallo Sophie, die Abmachung steht. Ich habe deine Lieferung zusammengestellt und werde sie ausliefern, sobald ich den Ort erhalte. Viele Grüße Paul",
+  "Hallo Paul, wie abgemacht. Die erste Bombe soll in der Firma Symmex platziert werden, die du seit einigen Monaten infiltriert hast. Die zweite Bombe soll an dem Ort hoch gehen, wo an besagtem Tag, die meisten Menschen versammelt sind. Gruß Sophie",
+  "Hallo Sophie, die Abmachung steht. Ich habe deine Lieferung zusammengestellt und werde sie am 27.06. ausliefern, sobald ich den Ort erhalte. Viele Grüße Paul",
 ];
 
 

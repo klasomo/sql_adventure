@@ -229,12 +229,12 @@ var tableCreate = (function () {
 
 function incrementStep(currentOldStep){
   console.log(currentStep);
+  console.log(currentOldStep);
   if(currentStep === currentOldStep){
     let nextValue = currentOldStep + 1;
     console.log("increment currentStep: " + nextValue);
     currentStep = nextValue;
   }
-  console.log(currentStep);
   updateProgressBar();
   closeModal();
 }

@@ -55,8 +55,8 @@
 <!-- Template für Schritt 1 -->
 <div id="step1-template" style="display: none;">
     <h3 class="font-bold text-lg">Schritt 1</h3>
-    <input id="step1_input" type="text" placeholder="Raum Nr." class="input input-bordered w-full max-w-xs">
-    <select class="select select-bordered w-full max-w-xs">
+    <input id="step1_input" type="text" placeholder="Raum Nr." class="input input-bordered w-full max-w-xs" id="raumNr_input">
+    <select class="select select-bordered w-full max-w-xs" id="abteilung_input">
         <option disabled selected>Welche Abteilung</option>
         <option>Buchhaltung</option>
         <option>Geschäftsleitung</option>
@@ -67,7 +67,7 @@
         <option>Reinigungskraft</option>
         <option>Sekretärin</option>
     </select>
-    <button class="btn btn-primary mt-4">Überprüfen</button>
+    <button class="btn btn-primary mt-4" id="tatortbericht_check">Überprüfen</button>
 </div>
 
 <!-- Template für Schritt 3 -->
@@ -76,8 +76,8 @@
         <div class="label">
             <span class="label-text">Wer hat die Bombe gelegt?</span>
           </div>
-        <input type="text" placeholder="Täter" id="step3_input" class="input input-bordered w-full max-w-xs">
-        <button class="btn btn-primary mt-4">Überprüfen</button>
+        <input type="text" placeholder="Täter" id="step3_input" class="input input-bordered w-full max-w-xs" id="täter_input">
+        <button class="btn btn-primary mt-4" id="doorLog_check">Überprüfen</button>
     </div>
 </div> 
 

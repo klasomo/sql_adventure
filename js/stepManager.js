@@ -12,7 +12,7 @@ const StepIndex = {
     BOMBE: 6
 }
 
-let currentStep = StepIndex.EMAIL;
+let currentStep = StepIndex.TARTORTBERICHT;
 
 
 const stepsNames = [
@@ -127,7 +127,11 @@ function initStep(step){
     console.log("CurrentStep:" + currentStep);
 
     switch(step){
-        case 1:
+        case StepIndex.TARTORTBERICHT:
+            InitTatortbericht();
+            break;
+        case StepIndex.TÜRPROTOKOLL:
+            InitTürprotokoll();
             break;
         case 2:
             break;
@@ -153,6 +157,54 @@ function closeModal(){
 
 
 // Step 1:
+function InitTatortbericht(){
+   // Event-Listener für den Button "Überprüfen" hinzufügen
+    const checkButton = document.getElementById('tatortbericht_check');
+    checkButton.addEventListener('click', checkTatortbericht);
+}
+
+function checkTatortbericht() {
+    // Input-Feld für Raum Nr.
+    const raumNrInput = document.getElementById('step1_input');
+    // Select-Feld für Abteilung
+    const abteilungInput = document.getElementById('abteilung_input');
+
+    // Wert des Raum Nr. Inputs
+    const raumNrValue = raumNrInput.value.trim();
+    // Wert des Abteilung Selects
+    const abteilungValue = abteilungInput.value;
+    console.log(raumNrInput);
+
+    // Überprüfung, ob Raum Nr. "404" ist und Abteilung "IT" ausgewählt wurde
+    if (raumNrValue === "404" && abteilungValue === "IT") {
+        incrementStep(StepIndex.TARTORTBERICHT);
+    } 
+}
+
+
+//init Türprotkoll
+function InitTürprotokoll(){
+    // Event-Listener für den Button "Überprüfen" hinzufügen
+    const checkButton = document.getElementById('doorLog_check');
+    console.log()
+    checkButton.addEventListener('click', checkTäter);
+
+    function checkTäter() {
+        // Input-Feld für den Täter
+        const täterInput = document.getElementById('step3_input');
+        // Wert des Täter Inputs
+        const täterValue = täterInput.value.trim().toLowerCase(); // Vergleich ist case-insensitive
+    
+        // Zu überprüfender Tätername
+        const gesuchterTäter = "paul huber";
+
+        if (täterValue === gesuchterTäter) {
+            console.log("richtig täter");
+            incrementStep(StepIndex.TÜRPROTOKOLL);
+        }
+    }
+}
+
 
 
 

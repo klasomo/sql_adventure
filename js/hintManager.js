@@ -69,7 +69,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Veranstaltung", um herauszufinden, wo die zweite Bombe platziert wurde. Schau dir dazu nochmal die Informationen aus den Emails der Täter an.',
                 'Die Bombe soll an dem Ort hochgehen, wo am 27.06. die meisten Menschen anwesend sind.',
-                'SELECT * FROM Veranstaltung ORDER BY Personenanzahl ASC;'
+                'SELECT * FROM Veranstaltung WHERE Datum = "27.06.2024" ORDER BY Personenanzahl DESC;'
             ]
         }
     ],

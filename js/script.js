@@ -236,7 +236,7 @@ function incrementStep(currentOldStep){
     currentStep = nextValue;
   }
   updateProgressBar();
-  closeModal();
+  //closeModal();
 }
 
 
@@ -316,7 +316,7 @@ execBtn.addEventListener("click", execEditorContents, true);
 
 // Add syntax highlighting to the textarea
 
-var maxLines = 5;
+var maxLines = 2;
 
 var sqlInput = CodeMirror.fromTextArea(document.getElementById("commands"), {
   theme: "3024-night",
@@ -508,6 +508,7 @@ btnPolice.addEventListener("click", function () {
 });
 
 btnServer.addEventListener("click", function () {
+  pcState = PcState.LOCKED;
   loadServerView();
 });
 

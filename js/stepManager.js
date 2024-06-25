@@ -8,7 +8,7 @@ const StepIndex = {
     BOMBE: 6
 }
 
-let currentStep = StepIndex.TARTORTBERICHT;
+let currentStep = StepIndex.EMAIL;
 
 
 const stepsNames = [
@@ -304,13 +304,13 @@ function clearCell(cellCords) {
 //Überprüf button Event H5
 function setCheckButtonCityMap(){
     console.log("setCheckButtonCitymap");
-    const correctTargetCords = [4,7]
+    const correctTargetCords = [3,13]
    
     document.getElementById("checkCityMap").addEventListener('click', function(){
         console.log(selectedCell);
         if(selectedCell[0] == correctTargetCords[0] && selectedCell[1] == correctTargetCords[1]){
             incrementStep(StepIndex.VERANSTALTUNG);
-            closeModal();
+            //closeModal();
         }else{
             console.log("Falsch");
         }

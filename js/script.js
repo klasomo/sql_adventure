@@ -52,50 +52,85 @@ var commandHistories = {}; // Objekt zur Speicherung der Befehls-Historien für 
 
 var queryOutput = "";
 
-// Funktion zur Validierung der SQL-Befehle für die eingeschränkte Tabelle
-function validateSQL(sql, restrictedTable, allowedColumns) {
-  const allowedColumnsLowerCase = allowedColumns.map((col) =>
-    col.toLowerCase()
-  );
+function validateSQLServerLogin(sql) {
+  const restrictedTable = "email";
+  const allowedTable = "mitarbeiter";
+  const allowedColumns = ["mitarbeiter_id", "name", "zugangsberechtigung", "arbeitsplatz"];
+  const blockedColumns = ["geschlecht", "email_adresse", "abteilung"];
+  const unrestrictedTable = "türprotokoll";
 
-  const selectPattern = new RegExp(
-    `select\\s+(.*)\\s+from\\s+${restrictedTable}`,
-    "i"
-  );
-  const updatePattern = new RegExp(
-    `update\\s+${restrictedTable}\\s+set\\s+(.*)`,
-    "i"
-  );
+  const sqlLower = sql.toLowerCase();
+
+  // Blockiert alle Zugriffe auf die Tabelle "Email"
+  if (sqlLower.includes(restrictedTable)) {
+    return false;
+  }
+
+  const selectPattern = new RegExp(`select\\s+(.*)\\s+from\\s+${allowedTable}`, "i");
+  const insertPattern = new RegExp(`insert\\s+into\\s+${allowedTable}\\s+\\((.*)\\)`, "i");
+  const updatePattern = new RegExp(`update\\s+${allowedTable}\\s+set\\s+(.*)`, "i");
+  const deletePattern = new RegExp(`delete\\s+from\\s+${allowedTable}`, "i");
+
+  // Überprüft SELECT-Befehle auf der Tabelle "Mitarbeiter"
+  if (selectPattern.test(sql)) {
+    const columns = selectPattern.exec(sql)[1].split(",").map(col => col.trim());
+    return columns.every(col => allowedColumns.includes(col.toLowerCase()));
+  }
+
+  // Erlaubt UPDATE-Befehle auf der Tabelle "Mitarbeiter"
+  // if (updatePattern.test(sql)) {
+  //   const setClauses = sql.match(updatePattern)[1].split(",").map(clause => clause.trim().split("=")[0]);
+  //   return setClauses.every(col => allowedColumns.includes(col.toLowerCase()));
+  // }
+
+  // Blockiert INSERT und DELETE-Befehle auf der Tabelle "Mitarbeiter"
+  if (insertPattern.test(sql) || deletePattern.test(sql)) {
+    return false;
+  }
+
+  // Überprüft SELECT-Befehle auf der Tabelle "Türprotokoll"
+  if (sqlLower.includes(unrestrictedTable)) {
+    return true;
+  }
+
+  // Standardmäßig false zurückgeben
+  return true;
+}
+
+
+
+
+function validateSQLServerGuest(sql) {
+  const restrictedTables = ["email", "türprotokolle"];
+  const restrictedTable = "mitarbeiter";
+  const allowedColumns = ["mitarbeiter_id", "name", "arbeitsplatz"];
+  const blockedColumns = ["zugangsberechtigung", "geschlecht", "email_adresse", "abteilung"];
+
+  const sqlLower = sql.toLowerCase();
+
+  // Blockiert alle Zugriffe auf die Tabellen "Email" und "Türprotokolle"
+  if (restrictedTables.some(table => sqlLower.includes(table))) {
+    return false;
+  }
+
+  const selectPattern = new RegExp(`select\\s+(.*)\\s+from\\s+${restrictedTable}`, "i");
+  const insertPattern = new RegExp(`insert\\s+into\\s+${restrictedTable}\\s+\\((.*)\\)`, "i");
+  const updatePattern = new RegExp(`update\\s+${restrictedTable}\\s+set\\s+(.*)`, "i");
   const deletePattern = new RegExp(`delete\\s+from\\s+${restrictedTable}`, "i");
 
-  // Blockiert die Tabelle "EMAIL" komplett
-  const emailTablePattern = new RegExp(`\\bemail\\b`, "i");
-
-  if (emailTablePattern.test(sql)) {
-    return false; // Blockiert den Befehl vollständig
-  }
-
+  // Überprüft SELECT-Befehle
   if (selectPattern.test(sql)) {
-    const columns = selectPattern
-      .exec(sql)[1]
-      .split(",")
-      .map((col) => col.trim());
-    return columns.every((col) =>
-      allowedColumnsLowerCase.includes(col.toLowerCase())
-    );
-  } else if (updatePattern.test(sql)) {
-    const setClauses = updatePattern
-      .exec(sql)[1]
-      .split(",")
-      .map((clause) => clause.split("=")[0].trim());
-    return setClauses.every((col) =>
-      allowedColumnsLowerCase.includes(col.toLowerCase())
-    );
-  } else if (deletePattern.test(sql)) {
-    // Zusätzliche Logik für DELETE kann bei Bedarf hinzugefügt werden
-    return true; // Im Beispiel wird angenommen, dass keine Überprüfungen für DELETE erforderlich sind
+    const columns = selectPattern.exec(sql)[1].split(",").map(col => col.trim());
+    return columns.every(col => allowedColumns.includes(col.toLowerCase()));
   }
-  return true;
+
+  // Blockiert INSERT, UPDATE und DELETE-Befehle auf der Tabelle "Mitarbeiter"
+  if (insertPattern.test(sql) || updatePattern.test(sql) || deletePattern.test(sql)) {
+    return false;
+  }
+
+  // Standardmäßig false zurückgeben
+  return false;
 }
 
 // Modifizierte execute-Funktion zum Ausführen von Befehlen in der ausgewählten Datenbank
@@ -103,13 +138,7 @@ function execute(commands, outputElement, callback) {
   // Konvertiert den SQL-Befehl in Kleinbuchstaben
   var commands_lower = commands.toLowerCase();
 
-  const restrictedTable = "mitarbeiter";
-  const allowedColumns = [
-    "Mitarbeiter_ID",
-    "Name",
-    "Zugangsberechtigung",
-    "Arbeitsplatz",
-  ];
+
 
   // Überprüft, ob eine aktuelle Datenbank ausgewählt und geöffnet ist
   if (!currentDatabase || !databases[currentDatabase]) {
@@ -121,14 +150,28 @@ function execute(commands, outputElement, callback) {
   }
 
   // Validiert die SQL-Befehle vor der Ausführung
-  if (
-    !validateSQL(commands_lower, restrictedTable, allowedColumns) &&
-    currentDatabase === DbNames.SERVER_LOCKED
-  ) {
-    serverViewError();
-    if (callback) callback(false);
-    return;
+  if(currentDatabase === DbNames.SERVER){
+    switch(pcState){
+      case PcState.GUEST:
+        if (!validateSQLServerGuest(commands_lower)) {
+          serverViewError();
+          if (callback) callback(false);
+          return;
+        }
+        case PcState.LOGIN:
+          if(accessLevel <= 5){
+            console.log("validateSQLServerLogin");
+            if(!validateSQLServerLogin(commands_lower)){
+              serverViewError();
+              if (callback) callback(false);
+              return;
+            }else{
+              console.log("validateSQLServerLogin Else");
+            }
+          }
+      }
   }
+
 
   // Holt den Worker für die aktuelle Datenbank
   var worker = databases[currentDatabase];
@@ -160,6 +203,8 @@ function execute(commands, outputElement, callback) {
   worker.postMessage({ action: "exec", sql: commands });
 }
 
+var accessLevel = 0;
+
 // Create an HTML table
 var tableCreate = (function () {
   function valconcat(vals, tagName) {
@@ -182,16 +227,38 @@ var tableCreate = (function () {
   };
 })();
 
+function incrementStep(currentOldStep){
+  console.log(currentStep);
+  if(currentStep === currentOldStep){
+    let nextValue = currentOldStep + 1;
+    console.log("increment currentStep: " + nextValue);
+    currentStep = nextValue;
+  }
+  console.log(currentStep);
+  updateProgressBar();
+  closeModal();
+}
+
 
 function checkAccessLevel(){
   var sqlCommand = 'select Zugangsberechtigung from Mitarbeiter where name like "Max Brandt";'
-  executeSqlIntern(sqlCommand, DbNames.SERVER_UNLOCKED,function (results) {
+  executeSqlIntern(sqlCommand, DbNames.SERVER,function (results) {
     var value = results[0].values[0][0];
-    if(value == 5){
-      currentStep++;
-      updateProgressBar();
+    accessLevel = value;
+    if(value >= 5){
+      if(pcState === PcState.UNLOCKED){
+        return;
+      }
+      console.log("accessLevel high enough")
+      incrementStep(StepIndex.ZUGANGSRECHTE);
+      pcState = PcState.UNLOCKED;
+      loadServerView();
     }else{
-      console.log("Access Level not large enough!");
+      if(pcState === PcState.UNLOCKED){
+        pcState = PcState.LOGIN;
+        loadServerView();
+        console.log("set pc State to login");
+      }
     }
   });
 }
@@ -206,7 +273,9 @@ function execEditorContents() {
       }
       commandHistories[currentDatabase].push(sqlInput.getValue()); // Speichern des Befehls in der Historie der aktuellen Datenbank
       noerror();
-      checkAccessLevel();
+      if(currentDatabase === DbNames.SERVER && pcState !== PcState.GUEST && pcState !== PcState.LOCKED){
+        checkAccessLevel();
+      }
     }
   });
 }
@@ -332,8 +401,7 @@ function saveAndLoadSqlCommand(viewIndex) {
 
 const DbNames = {
   POLICE: "police",
-  SERVER_LOCKED: "server_locked",
-  SERVER_UNLOCKED: "server_unlocked",
+  SERVER: "server_locked",
   MAP: "map",
   BOMB: "bomb",
 };
@@ -341,7 +409,8 @@ const DbNames = {
 const PcState = {
   LOCKED: 0,
   GUEST: 1,
-  UNLCOKED: 2,
+  UNLOCKED: 2,
+  LOGIN: 3
 };
 
 function openDatabaseFromDbName(dbName) {
@@ -350,11 +419,8 @@ function openDatabaseFromDbName(dbName) {
     case DbNames.POLICE:
       dbPath = "./db/police.sqlite";
       break;
-    case DbNames.SERVER_LOCKED:
+    case DbNames.SERVER:
       dbPath = "./db/firma.sqlite";
-      break;
-    case DbNames.SERVER_UNLOCKED:
-      dbPath = "./db/firma_unlocked.sqlite";
       break;
     case DbNames.MAP:
       dbPath = "./db/veranstaltung.sqlite";
@@ -363,9 +429,7 @@ function openDatabaseFromDbName(dbName) {
       dbPath = "./db/bombe.sqlite";
       break;
   }
-
   openDatabase(dbPath, dbName);
-  openDatabase("./db/firma_unlocked.sqlite", DbNames.SERVER_UNLOCKED);
 }
 
 // Function to handle button clicks and open databases
@@ -393,7 +457,7 @@ function loadServerView() {
     case PcState.LOCKED:
       handleButtonClick(
         1,
-        DbNames.SERVER_LOCKED,
+        DbNames.SERVER,
         "./assets/images/background/computer_login.png"
       );
       hideLoginDiv(false);
@@ -402,18 +466,28 @@ function loadServerView() {
     case PcState.GUEST:
       handleButtonClick(
         1,
-        DbNames.SERVER_LOCKED,
-        "./assets/images/background/computer.png"
+        DbNames.SERVER,
+        "./assets/images/background/computer_gast.png"
       );
       hideLoginDiv(true);
       hideSqlDiv(false);
       break;
-    case PcState.UNLCOKED:
+    case PcState.LOGIN:
       hideLoginDiv(true);
       hideSqlDiv(false);
       handleButtonClick(
         1,
-        DbNames.SERVER_UNLOCKED,
+        DbNames.SERVER,
+        "./assets/images/background/computer.png"
+      );
+      break;
+    case PcState.UNLOCKED:
+      hideLoginDiv(true);
+      hideSqlDiv(false);
+
+      handleButtonClick(
+        1,
+        DbNames.SERVER,
         "./assets/images/background/computer_unlocked.png"
       );
       break;
@@ -634,9 +708,8 @@ document.getElementById("btnLogin").addEventListener("click", function () {
   var loginError = document.getElementById("loginError");
 
   if (inputUsername == pcUsername && inputPassword == pcPassword) {
-    currentStep++;
-    updateProgressBar();
-    pcState = PcState.UNLCOKED;
+    incrementStep(StepIndex.LOGIN);
+    pcState = PcState.LOGIN;
     loginError.classList.add("invisible");
     loadServerView();
   } else {

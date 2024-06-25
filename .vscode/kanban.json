@@ -5,8 +5,12 @@
             "title": "Bugs",
             "tasks": [
                 {
-                    "text": "Map Grid Only Drawn when current Step ",
-                    "id": "udxqnyhi7aur156m9tqwzp6m"
+                    "text": "Input Row mutliple linex progressbar gets pushed down ",
+                    "id": "xh1go2vjcdi5x8af05a175kb"
+                },
+                {
+                    "text": "Wird der Login Name auf den Laptop gespeichert nach der eingabe?",
+                    "id": "fk60ksdl892c794qokzvvu4p"
                 },
                 {
                     "text": "Console.log entfernen\n",
@@ -19,6 +23,10 @@
         {
             "title": "To-Do",
             "tasks": [
+                {
+                    "text": "End Story Page Anlegen",
+                    "id": "gdqdeoigfa77ogz2toq4ewat"
+                },
                 {
                     "text": "Step Inputs nach Lösung Überprüfen",
                     "id": "ch9er5hofok17hyevrojrqv8"
@@ -67,14 +75,6 @@
             "title": "Doing",
             "tasks": [
                 {
-                    "text": "Zuätzliche Firmen Datanbank gleiche db aber filtern mit regex  simpleeres Backend\n",
-                    "id": "qfmev6673cwvlx246g1jke4x"
-                },
-                {
-                    "text": "Bomb defuse remove color pallet and add iamge change on cut\nwrong wire = timer + 3Minuten\nMessage display wrong wire try again",
-                    "id": "cnzc758ds1sxdr5lfyulm5el"
-                },
-                {
                     "text": "Update dbs with newer and more input discord\n",
                     "id": "csf0sj47xu5knnl3f5fzcwv9"
                 },
@@ -118,12 +118,24 @@
                     "id": "sgcmuvkhgbwgp0gt23fll9p4"
                 },
                 {
+                    "text": "Zuätzliche Firmen Datanbank gleiche db aber filtern mit regex  simpleeres Backend\n",
+                    "id": "qfmev6673cwvlx246g1jke4x"
+                },
+                {
+                    "text": "Bomb defuse remove color pallet and add iamge change on cut\nwrong wire = timer + 3Minuten\nMessage display wrong wire try again",
+                    "id": "cnzc758ds1sxdr5lfyulm5el"
+                },
+                {
                     "text": "Bomb image loading sporatische fehler ",
                     "id": "jot6f6l3eojswjr739yig7ug"
                 },
                 {
                     "text": "Helles View im Browser Testen\n",
                     "id": "tpdj7xwscsfned19a11ff3j3"
+                },
+                {
+                    "text": "Map Grid Only Drawn when current Step ",
+                    "id": "udxqnyhi7aur156m9tqwzp6m"
                 },
                 {
                     "text": "clear output and input field when background changed\nstore values and input it when next on this background",
@@ -192,5 +204,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719236178578
+    "timestamp": 1719303858204
 }

@@ -1,5 +1,19 @@
 
-let currentStep = 3;
+
+
+
+const StepIndex = {
+    TARTORTBERICHT: 0,
+    LOGIN: 1,
+    TÜRPROTOKOLL: 2,
+    ZUGANGSRECHTE: 3,
+    EMAIL: 4,
+    VERANSTALTUNG: 5,
+    BOMBE: 6
+}
+
+let currentStep = StepIndex.EMAIL;
+
 
 const stepsNames = [
     { id: 'step1', message: 'Tatortbericht' },
@@ -141,8 +155,12 @@ function closeModal(){
 // Step 1:
 
 
-//Step Find Location
 
+
+
+
+
+//Step Find Location
 var selectedCell = [null, null];
 const columns = 16;
 const rows = 9;
@@ -250,8 +268,7 @@ function setCheckButtonCityMap(){
     document.getElementById("checkCityMap").addEventListener('click', function(){
         console.log(selectedCell);
         if(selectedCell[0] == correctTargetCords[0] && selectedCell[1] == correctTargetCords[1]){
-            currentStep++;
-            updateProgressBar();
+            incrementStep(StepIndex.VERANSTALTUNG);
             closeModal();
         }else{
             console.log("Falsch");

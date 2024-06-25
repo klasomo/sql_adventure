@@ -84,12 +84,14 @@
 <!-- Template für Schritt 5 -->
 <div id="step5-template" style="display: none;">
     <div class="flex justify-center">
-        <ul class="steps w-full mb-5">
-            <li class="step step-primary">E-Mail 1</li>
-            <li class="step">E-Mail 2</li>
-            <li class="step">E-Mail 3</li>
+        <ul class="steps w-full" id="email_steps">
+            <li class="step email step-primary">E-Mail 1</li>
+            <li class="step email">E-Mail 2</li>
+            <li class="step email">E-Mail 3</li>
           </ul>
     </div>
+    <div class="divider"></div>
+    <div class="text-center text-2xl font-bold mb-5" id="email_title">E-Mail 1</div>
         <textarea class="textarea textarea-primary w-full h-[40vh] codedText text-2xl font-bold mx-auto px-0"
             id="encryptedText" placeholder="Encrypted Text"></textarea>
     <button class="btn btn-primary w-full mt-5" id="decryptBtn">

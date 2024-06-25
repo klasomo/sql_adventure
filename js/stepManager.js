@@ -50,12 +50,17 @@ function setStepClickEvent(){
 
     stepsNames.forEach((step, index) => {
 
-        
-
         var element = document.getElementById(step.id);
         var template = document.getElementById(`${step.id}-template`);
-
-
+        console.log("Template: ")
+        console.log(template);
+        if(index === 2){
+            console.log("Change to index 1");
+            console.log("Template after change:");
+        
+            template = document.getElementById("step1-template");
+            console.log(template);
+        }
 
         if(template === null){
             return;
@@ -98,8 +103,6 @@ function setStepClickEvent(){
                 
                 // Füge das spezifische Template ein
                 const modalContent = step_modal.querySelector('.modal-box');
-                const template = document.getElementById(`${step.id}-template`);
-                console.log(template);
                 
                 // Lösche vorherigen Inhalt
                 modalContent.innerHTML = '';
@@ -139,18 +142,15 @@ function initStep(step){
             InitTatortbericht();
             break;
         case StepIndex.TÜRPROTOKOLL:
+            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
+            step_modal_box.classList.add("w-auto");  
             console.log("Türprotkoll Index called");
-            step_modal_box.classList.add("w-8/12", "max-w-5xl");
-            step_modal_box.classList.remove("w-auto");  
             InitTürprotokoll();
             break;
         case StepIndex.ZUGANGSRECHTE:
-            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
-            step_modal_box.classList.add("w-auto");  
             break;
         case StepIndex.EMAIL:
-            step_modal_box.classList.add("w-8/12", "max-w-5xl");
-            step_modal_box.classList.remove("w-auto");  
+ 
             initDecryption();
             break;
         case StepIndex.VERANSTALTUNG:
@@ -178,13 +178,9 @@ var currentQuestion = Questions.ROOM;
 
 var sendMessageButton;
 
-// Step 1:
-function InitTatortbericht() {
-    // Hier könnte auch weitere Initialisierungslogik sein
-
+function initPhone(){
     // Event Listener für den Senden-Button hinzufügen
     sendMessageButton = document.getElementById('phone_send_message');
-    console.log("SendMessage click event was set");
     sendMessageButton.addEventListener('click', SendMessage); // Hier: SendMessage ohne ()
 
     var messageInput = document.getElementById('phone_nachricht_input');
@@ -193,7 +189,12 @@ function InitTatortbericht() {
             SendMessage();
         }
     });
+}
 
+// Step 1:
+function InitTatortbericht() {
+    // Hier könnte auch weitere Initialisierungslogik sein
+    initPhone();
     // Beispiel: Aufruf von addChatMessage
     addChatMessage(currentQuestion, false);
 }
@@ -275,48 +276,12 @@ function addChatMessage(messageText, isSender) {
 }
 
 
-
-
-function checkTatortbericht() {
-    // Input-Feld für Raum Nr.
-    const raumNrInput = document.getElementById('step1_input');
-    // Select-Feld für Abteilung
-    const abteilungInput = document.getElementById('abteilung_input');
-
-    // Wert des Raum Nr. Inputs
-    const raumNrValue = raumNrInput.value.trim();
-    // Wert des Abteilung Selects
-    const abteilungValue = abteilungInput.value;
-    console.log(raumNrInput);
-
-    // Überprüfung, ob Raum Nr. "404" ist und Abteilung "IT" ausgewählt wurde
-    if (raumNrValue === "404" && abteilungValue === "IT") {
-        incrementStep(StepIndex.TARTORTBERICHT);
-    } 
-}
-
-
 //init Türprotkoll
 function InitTürprotokoll(){
     // Event-Listener für den Button "Überprüfen" hinzufügen
-    const checkButton = document.getElementById('doorLog_check');
-    console.log()
-    checkButton.addEventListener('click', checkTäter);
-
-    function checkTäter() {
-        // Input-Feld für den Täter
-        const täterInput = document.getElementById('step3_input');
-        // Wert des Täter Inputs
-        const täterValue = täterInput.value.trim().toLowerCase(); // Vergleich ist case-insensitive
-    
-        // Zu überprüfender Tätername
-        const gesuchterTäter = "paul huber";
-
-        if (täterValue === gesuchterTäter) {
-            console.log("richtig täter");
-            incrementStep(StepIndex.TÜRPROTOKOLL);
-        }
-    }
+    currentQuestion = Questions.TÄTER;
+    addChatMessage(currentQuestion, false);
+    initPhone();
 }
 
 

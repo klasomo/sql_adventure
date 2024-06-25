@@ -1,7 +1,3 @@
-
-
-
-
 const StepIndex = {
     TARTORTBERICHT: 0,
     LOGIN: 1,
@@ -50,7 +46,6 @@ function updateProgressBar(){
     setStepClickEvent();
     notifyHintManager();
 }
-
 
 function setStepClickEvent(){
     stepsNames.forEach((step, index) => {
@@ -204,12 +199,6 @@ function InitTürprotokoll(){
         }
     }
 }
-
-
-
-
-
-
 
 
 //Step Find Location

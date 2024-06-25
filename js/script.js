@@ -21,6 +21,18 @@ function error(e) {
   }
 }
 
+function clearSuccessMessage(){
+  var successAlert = document.getElementById("successAlert");
+
+  successAlert.classList.add("hidden");
+}
+
+function successMessage(){
+  var successAlert = document.getElementById("successAlert");
+
+  successAlert.classList.remove("hidden");
+}
+
 function serverViewError() {
   // Fehlermeldung und zugehörige Elemente abrufen
   const errorAlert = document.getElementById("errorAlert");
@@ -185,9 +197,14 @@ function execute(commands, outputElement, callback) {
       if (callback) callback(false);
       return;
     }
+    clearSuccessMessage();
 
     // Leert das Ausgabeelement
     outputElement.innerHTML = "";
+
+    if(results.length === 0){
+      successMessage();
+    }
 
     // Durchläuft die Ergebnisse und fügt Tabellen dem Ausgabeelement hinzu
     for (var i = 0; i < results.length; i++) {

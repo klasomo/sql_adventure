@@ -70,22 +70,46 @@
               </div>
             </div>
             <!-- Chat Div -->
-            <div class="w-full p-2 flex flex-col h-full overflow-auto" id="phone_chat">
-              
-            </div>
+            <div
+              class="w-full p-2 flex flex-col h-full overflow-auto"
+              id="phone_chat"
+            ></div>
             <!-- Chat input Div -->
             <div class="w-full h-auto bg-neutral p-5 flex flex-row">
               <div class="relative w-full full-rounded">
                 <input
-                    type="text"
+                  type="text"
                   id="phone_nachricht_input"
                   class="pr-12 py-2.5 pl-5 w-full text-sm rounded-full"
                   placeholder="Nachricht"
                 />
                 <button
-                  class="absolute top-0 end-0 text-sm h-full w-[40px] bg-primary p-2 flex items-center btn-circle" id="phone_send_message"
+                  class="absolute top-0 end-0 text-sm h-full w-[40px] bg-primary p-2 flex items-center btn-circle"
+                  id="phone_send_message"
                 >
-                <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                  <svg
+                    width="35px"
+                    height="35px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z"
+                        stroke="#ffffff"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -94,21 +118,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <h3 class="font-bold text-lg">Schritt 1</h3>
-    <input id="step1_input" type="text" placeholder="Raum Nr." class="input input-bordered w-full max-w-xs" id="raumNr_input">
-    <select class="select select-bordered w-full max-w-xs" id="abteilung_input">
-        <option disabled selected>Welche Abteilung</option>
-        <option>Buchhaltung</option>
-        <option>Geschäftsleitung</option>
-        <option>IT</option>
-        <option>Management</option>
-        <option>Marketing</option>
-        <option>Personal</option>
-        <option>Reinigungskraft</option>
-        <option>Sekretärin</option>
-    </select>
-    <button class="btn btn-primary mt-4" id="tatortbericht_check">Überprüfen</button> -->
 
   <!-- Template für Schritt 3 -->
   <div id="step3-template" style="display: none">
@@ -271,6 +280,7 @@
             <!-- Output field -->
             <div class="flex items-center justify-center">
               <div class="bg-neutral rounded-box w-full h-[40vh]">
+                <!-- Error Alert -->
                 <div class="p-5 hidden" id="errorAlert">
                   <div role="alert" class="alert alert-warning">
                     <svg
@@ -288,6 +298,27 @@
                     </svg>
                     <span id="errorMessage"
                       >Warning: Invalid email address!</span
+                    >
+                  </div>
+                </div>
+                <!-- success Alert -->
+                <div class="p-5 hidden" id="successAlert">
+                  <div role="alert" class="alert alert-success">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6 shrink-0 stroke-current"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span id="successMessage"
+                      >Command wurde erfolgreich ausgeführt</span
                     >
                   </div>
                 </div>

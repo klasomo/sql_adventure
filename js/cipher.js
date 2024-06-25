@@ -2,16 +2,16 @@ let currentEmailStep = 0;
 let encryptedValues = {};
 let textareaCache = "";
 let textInput = ["","",""];
-// const encryptedText = [
-//   "gK@8?P}@r6$yL4[kS}2mA8c7cg84&2QbDCfMRvhzhaVfFd876qtHU(?2;{HjB6XkrW,n#5g/{kkw?*jW:=aC=ZHPY&V9t@x%b_CWC#D{R&-bgS&)HYWimzK[gn-1yKeG+",
-//    "X/aqkWC;StJ!]g/k%ahR3n71(t[]rVq{Hfx#J:ZCASAL)fg_yH:3$M*Gh04JW:0DhVw:J//2XV}#DeX!RyQ7tSxXNexT).7w7}zW/[m#-w1!N%p?B0f#W}-6VttQzinnd3bRg3L@@Pjdx[qU8U6!HirQ[]rf2n3jp:P:,Z]Uvh_&,C]*wVGh1X/qR36Ck4wSrfHyV4mZ3qWkYa}kM0cEKJYLxi3c%c4!:w8633SAL)fg2n3jK", 
-//    "CWM&SZ,K_KW.rR2@G.BeT_k!yc$jh;beUeRxD)cB)nyX$uGvQBzgmpn}wKbbH70z(TP1B2TD;4=3LPfzSjhcfBZmhBNeHZCgyA&p;E9VG+VEm/A.KeRy_SAxrw;2bh[4cP314nare.JPAA6]XDY"];
+const encryptedText = [
+  "gK@8?P}@r6$yL4[kS}2mA8c7cg84&2QbDCfMRvhzhaVfFd876qtHU(?2;{HjB6XkrW,n#5g/{kkw?*jW:=aC=ZHPY&V9t@x%b_CWC#D{R&-bgS&)HYWimzK[gn-1yKeG+",
+   "X/aqkWC;StJ!]g/k%ahR3n71(t[]rVq{Hfx#J:ZCASAL)fg_yH:3$M*Gh04JW:0DhVw:J//2XV}#DeX!RyQ7tSxXNexT).7w7}zW/[m#-w1!N%p?B0f#W}-6VttQzinnd3bRg3L@@Pjdx[qU8U6!HirQ[]rf2n3jp:P:,Z]Uvh_&,C]*wVGh1X/qR36Ck4wSrfHyV4mZ3qWkYa}kM0cEKJYLxi3c%c4!:w8633SAL)fg2n3jK", 
+   "CWM&SZ,K_KW.rR2@G.BeT_k!yc$jh;beUeRxD)cB)nyX$uGvQBzgmpn}wKbbH70z(TP1B2TD;4=3LPfzSjhcfBZmhBNeHZCgyA&p;E9VG+VEm/A.KeRy_SAxrw;2bh[4cP314nare.JPAA6]XDY"];
 const decryptedText = [
   "Hallo Paul, die Bauteile sollten nun auf dem Weg zu Dir sein. Jetzt muss du noch den Teil deiner Abmachung einhalten. Gruß Sophie",
   "Hallo Paul, wie abgemacht. Die erste Bombe soll in der Firma Symmex platziert werden, die du seit einigen Monaten infiltriert hast. Die zweite Bombe soll an dem Ort hoch gehen, wo an besagtem Tag, die meisten Menschen versammelt sind. Gruß Sophie",
   "Hallo Sophie, die Abmachung steht. Ich habe deine Lieferung zusammengestellt und werde sie am 27.06. ausliefern, sobald ich den Ort erhalte. Viele Grüße Paul",
 ];
-const encryptedText = ["1","2","3"];
+// const encryptedText = ["1","2","3"];
 
 
 function checkIfAllAreDecrypted(){

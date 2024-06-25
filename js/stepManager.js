@@ -27,7 +27,6 @@ const step_modal_checkbox = document.getElementById("step_modal_checkbox");
 
 document.addEventListener('DOMContentLoaded', () => {    
     updateProgressBar();
-    setStepClickEvent();
 });
 
 function updateProgressBar(){
@@ -48,9 +47,16 @@ function updateProgressBar(){
 }
 
 function setStepClickEvent(){
+
     stepsNames.forEach((step, index) => {
-        const element = document.getElementById(step.id);
-        const template = document.getElementById(`${step.id}-template`);
+
+        
+
+        var element = document.getElementById(step.id);
+        var template = document.getElementById(`${step.id}-template`);
+
+
+
         if(template === null){
             return;
         }
@@ -80,7 +86,7 @@ function setStepClickEvent(){
                         input.disabled = true;
                     });
                 }
-
+                console.log("INIT1");
                 initStep(index);
             });
         }
@@ -104,10 +110,9 @@ function setStepClickEvent(){
                 
                 modalContent.style.display = 'block';
                 modalContent.querySelector('div').style.display = 'block';;
-
+                console.log("INIT2");
                 initStep(index);
 
-                console.log(modalContent);
             });
 
         }
@@ -116,29 +121,42 @@ function setStepClickEvent(){
         }
     });
 }
-function initStep(step){
-    console.log("init Function called");
-    console.log("Step:" + step);
-    console.log("CurrentStep:" + currentStep);
 
+function removeEventListeners() {
+    stepsNames.forEach((step, index) => {
+        const element = document.getElementById(step.id);
+        element.removeEventListener('click', clickHandler);
+    });
+}
+
+
+function initStep(step){
+    const step_modal_box = document.getElementById("step_modal_box");
     switch(step){
         case StepIndex.TARTORTBERICHT:
+            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
+            step_modal_box.classList.add("w-auto");  
             InitTatortbericht();
             break;
         case StepIndex.TÜRPROTOKOLL:
+            console.log("Türprotkoll Index called");
+            step_modal_box.classList.add("w-8/12", "max-w-5xl");
+            step_modal_box.classList.remove("w-auto");  
             InitTürprotokoll();
             break;
-        case 2:
+        case StepIndex.ZUGANGSRECHTE:
+            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
+            step_modal_box.classList.add("w-auto");  
             break;
-        case 3:
-            break;
-        case 4:
+        case StepIndex.EMAIL:
+            step_modal_box.classList.add("w-8/12", "max-w-5xl");
+            step_modal_box.classList.remove("w-auto");  
             initDecryption();
             break;
-        case 5:
+        case StepIndex.VERANSTALTUNG:
             initCityMap();
             break;
-        case 6:
+        case StepIndex.BOMBE:
             initColorPicker();
             break;
         default:
@@ -150,13 +168,114 @@ function closeModal(){
     step_modal_checkbox.checked = false;
 }
 
+const Questions = {
+    ROOM: "In welchem Raum wurde die Bombe gefunden?",
+    ABTEILUNG: "Aus welcher Abteilung Stammt der Verdächtige?",
+    TÄTER: "Wer hat die Bombe gelegt?"
+}
+
+var currentQuestion = Questions.ROOM;
+
+var sendMessageButton;
 
 // Step 1:
-function InitTatortbericht(){
-   // Event-Listener für den Button "Überprüfen" hinzufügen
-    const checkButton = document.getElementById('tatortbericht_check');
-    checkButton.addEventListener('click', checkTatortbericht);
+function InitTatortbericht() {
+    // Hier könnte auch weitere Initialisierungslogik sein
+
+    // Event Listener für den Senden-Button hinzufügen
+    sendMessageButton = document.getElementById('phone_send_message');
+    console.log("SendMessage click event was set");
+    sendMessageButton.addEventListener('click', SendMessage); // Hier: SendMessage ohne ()
+
+    var messageInput = document.getElementById('phone_nachricht_input');
+    messageInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            SendMessage();
+        }
+    });
+
+    // Beispiel: Aufruf von addChatMessage
+    addChatMessage(currentQuestion, false);
 }
+
+function SendMessage() {
+    var messageInput = document.getElementById('phone_nachricht_input');
+    if (!messageInput) {
+        console.error("Input element not found!");
+        return;
+    }
+    var messageText = messageInput.value;
+    console.log(messageText);
+    if(messageText !== ""){
+        addChatMessage(messageText, true);
+        checkMessageForSolution(currentQuestion, messageText);
+    }
+
+    // Optional: Hier könntest du weitere Logik hinzufügen, z.B. den Input leeren
+    messageInput.value = '';
+}
+
+
+function checkMessageForSolution(question, messageText){
+    var messageToSendBack = "???";
+    switch(question){
+        case Questions.ROOM:
+            if(messageText === "404"){
+                messageToSendBack = Questions.ABTEILUNG;
+                currentQuestion = Questions.ABTEILUNG;
+            }
+            break;
+        case Questions.ABTEILUNG:
+            console.log("check abteilung frage");
+            if(messageText.toLowerCase() === "it"){
+                messageToSendBack = "Danke du hast jetzt Zugriff auf den Firmen Computer melde dich an!"
+                incrementStep(StepIndex.TARTORTBERICHT);
+            }
+            break;
+        case Questions.TÄTER:
+            if(messageText.toLowerCase() === "paul huber"){
+                messageToSendBack = "Ok, erhöhe deine Zugangsberechtigung um die Emails von Paul Huber zu lesen."
+                incrementStep(StepIndex.TÜRPROTOKOLL);
+            }
+            break;
+        default:
+            break;  
+    }
+    addChatMessage(messageToSendBack, false);
+}
+
+function addChatMessage(messageText, isSender) {
+    console.log("start add chat message funktion");
+    if(messageText === ""){
+        console.log("ADD CHAT WITH EMPTY STRING RETURN");
+        return;
+    }
+    console.log("addChatMessageCalled");
+    // Klasse basierend auf isSender festlegen
+    var chatClass = isSender ? 'chat-end' : 'chat-start';
+    var selfClass = isSender ? 'self-end' : 'self-start';
+
+    // Chat-Nachricht HTML erstellen
+    var messageHtml = `
+        <div class="chat ${chatClass} ${selfClass}">
+            <div class="chat-image avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+            </div>
+            <div class="chat-bubble">${messageText}</div>
+        </div>`;
+
+    // Zur Chat-Liste hinzufügen
+    var chatDiv = document.getElementById('phone_chat');
+    chatDiv.innerHTML += messageHtml;
+
+    // Optional: Scrollen zum Ende des Chat-Verlaufs nach dem Hinzufügen der Nachricht
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+}
+
+
+
 
 function checkTatortbericht() {
     // Input-Feld für Raum Nr.

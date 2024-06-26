@@ -5,7 +5,7 @@ const hints = [
             chapterTitle: 'Tatortbericht',
             hints: [
                 'Nutze die Datenbank "Tatortbericht", um herauszufinden, was sich bei der Firma Symmex am 27.06. ereignet hat.',
-                'SELECT * FROM Tatortbericht WHERE ort = "Symmex";'
+                'SELECT * FROM Tatortbericht WHERE ort = "Symmex" AND datum = "27.06.2024";'
             ]
         },
         {
@@ -58,7 +58,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Email", um herauszufinden, was der Täter geplant hat.',
                 'Suche nach den Emails, die vom Täter gesendet und empfangen wurden.',
-                'SELECT * FROM Email WHERE Absender = "p.huber@symmex.it" or Empfänger = "p.huber@symmex.it";'
+                'SELECT * FROM Email WHERE Absender = "p.huber@symmex.it" or Empfänger = "p.huber@symmex.it" and datum = "27.06.2024";'
             ]
         }
     ],
@@ -81,7 +81,7 @@ const hints = [
                 'Nutze die Datenbank "Bombe", um herauszufinden, wie du die Bombe entschärfen kannst.',
                 'Schau dir mal den Blueprint der Bombe an, vielleicht kannst du auf diese Weise Informationen erhalten, die dir helfen, die richtige Bombe zu finden.',
                 'Suche in der Datenbank "Bombe" die Bombe, mit der Modellnummer, die die Zeichen _74B_0 enthält.',
-                'SELECT * FROM Bombe WHERE Modellnummer = "%74B_0";'
+                'SELECT * FROM Bombe WHERE Modellnummer LIKE "%74B_0";'
             ]
         }
     ]

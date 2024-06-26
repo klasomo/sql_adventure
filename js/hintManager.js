@@ -37,6 +37,7 @@ const hints = [
             hints: [
                 'Vielleicht kannst du mithilfe des Türprotokolls herausfinden, wer den Raum 404 am Tag der Tat besucht hat.',
                 'Eine Zeugin sagt etwas davon, dass eine verdächtige Person den Raum 404 am 27.06.24 sehr häufig besucht hätte. Vielleicht kannst du mit der Datenbank "Türprotokoll" herausfinden, um welchen Mitarbeiter es sich dabei handelt.',
+                'Nutze einen GROUP BY Befehl beim Türprotokoll.',
                 'SELECT count(*), * FROM Türprotokoll where Tür_id is "404" GROUP BY mitarbeiter_id;'
             ]
         }
@@ -47,6 +48,8 @@ const hints = [
             chapterTitle: 'Zugangsberechtigung',
             hints: [
                 'Dein Zugangsberechtigung reicht nicht aus, um auf die gesamte Datenbank zuzugreifen. Vielleicht kannst du sie irgendwie updaten?',
+                'Erhöhe die Zugangsberechtigung von Max Brandt.',
+                'Nutze einen UPDATE Befehl bei Mitarbeiter.',
                 'UPDATE Mitarbeiter SET Zugangsberechtigung = "5" WHERE Name = "Max Brandt";'
             ]
         }
@@ -69,6 +72,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Veranstaltung", um herauszufinden, wo die zweite Bombe platziert wurde. Schau dir dazu nochmal die Informationen aus den Emails der Täter an.',
                 'Die Bombe soll an dem Ort hochgehen, wo am 27.06. die meisten Menschen anwesend sind.',
+                'Nutze einen ORDER BY Befehl.',
                 'SELECT * FROM Veranstaltung WHERE Datum = "27.06.2024" ORDER BY Personenanzahl DESC;'
             ]
         }

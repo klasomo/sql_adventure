@@ -324,7 +324,7 @@ function initColorPicker() {
         loadImageAndRefreshCanvas("assets/images/bomb/bomb_cut_lila.png");
         canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
         wireColorInfo.innerHTML = correctWireText;
-        pauseTimer();
+        endGame();
         break;
       default:
         return;

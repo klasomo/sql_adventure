@@ -14,16 +14,35 @@
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+      .h-custom {
+          height: calc(100% / 11); /* Hier kannst du die Höhe nach Bedarf anpassen */
+      }
+      @font-face {
+        font-family: 'toxTypewriter';
+        src: url('../assets/fonts/ToxTypewriter.ttf') format('truetype');
+      }
+    
+  
+      input[type='text'] { 
+        font-size: 24px;
+        font-family: "toxTypewriter", system-ui; 
+      }
+  </style>
+
 </head>
 <body>
+
   <div class="book" id="book">
     <div class="page">
       <div class="front">
         <div class="" id="book_cover">
           <div class="relative h-full w-full">
-            <div class="absolute bottom-0 right-0 h-16 w-16">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
-            </div> 
+            <div class="h-full w-full flex items-center justify-center">
+              <input id="name_input" onkeypress="handleEnterKeyPress(event)" type="text" placeholder="Name" class="focus:text-black input w-1/2 h-custom input-ghost font-typewriter text-center placeholder-black bg-transparent caret-black text-black f" />
+            </div>
           </div>
         </div>
         
@@ -201,10 +220,34 @@
         
       </div>
     </div>
-
-
-
-
     <script src="js/story.js"></script>
+    <script>
+    
+
+      window.onload = function() {
+        const inputField = document.getElementById('name_input');
+        inputField.focus(); // Cursor in das Eingabefeld setzen
+      };
+  
+      document.addEventListener('click', function(event) {
+        const inputField = document.getElementById('name_input');
+        if (event.target !== inputField) {
+            inputField.focus(); // Falls außerhalb des Eingabefelds geklickt wird, den Fokus wiederherstellen
+        }
+      });
+  
+      // JavaScript Funktion, die aufgerufen wird, wenn Enter gedrückt wird
+      function handleEnterKeyPress(event) {
+          var inputValue = document.getElementById("name_input").value;
+          if (event.key === 'Enter') {
+            if (inputValue.trim() === '') {
+              alert('Bitte geben Sie einen Wert ein.');
+            } else {
+              localStorage.setItem('playerName', inputValue);
+              goToPage(1);
+            }
+          }
+      }
+    </script>
 </body>
 </html>

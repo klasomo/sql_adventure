@@ -28,6 +28,38 @@
             "title": "To-Do",
             "tasks": [
                 {
+                    "text": "Add Bomb clippers in again copy from github\n",
+                    "id": "whw87oqoifrktle6lxrkgprx"
+                },
+                {
+                    "text": "Disable Input after inkrementStepCount",
+                    "id": "r3f92p2dywit05zwc4bau3iw"
+                },
+                {
+                    "text": "Phone Typing Information",
+                    "id": "li3q53ph95vzloaptp2szo99"
+                },
+                {
+                    "text": "Reclick on Command history to close it",
+                    "id": "h2oijpudpfw47whyrtak9hjv"
+                },
+                {
+                    "text": "Falsches Passwort Falscher Benutzername getrennt voneinander ausgeben",
+                    "id": "f6uqh4tl2ypp3keqmafysfzl"
+                },
+                {
+                    "text": "Reset Modal with and hight after Phone",
+                    "id": "bobej6344arcblnvqo1gobms"
+                },
+                {
+                    "text": "Bilder Austasuchen bem Handy\n",
+                    "id": "yvm2dl0jbaa50244btyqs1pi"
+                },
+                {
+                    "text": "Text Nachrichten Verzögert Senden",
+                    "id": "kbd4p8sq0k8ekuxz0rado4q7"
+                },
+                {
                     "text": "End Story Page Anlegen",
                     "id": "gdqdeoigfa77ogz2toq4ewat"
                 },
@@ -75,8 +107,8 @@
             "title": "Doing",
             "tasks": [
                 {
-                    "text": "Step Inputs nach Lösung Überprüfen",
-                    "id": "ch9er5hofok17hyevrojrqv8"
+                    "text": "PC Login with Enter button\n",
+                    "id": "dhhcp2dpmtw113p0eq66gcff"
                 }
             ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
@@ -100,6 +132,10 @@
                 {
                     "text": "DB Umlaute\n",
                     "id": "d3sv8709cp74w611tex8fs76"
+                },
+                {
+                    "text": "Step 2,4 Display\n ",
+                    "id": "xagun620h6z3xoono9v0znqb"
                 },
                 {
                     "text": "Change db with Background change",
@@ -148,6 +184,10 @@
                 {
                     "text": "Alle datenbanken gleichzeitig offen haben damit änderungen wie delete und update gespeichert bleiben",
                     "id": "i4ytxgrc7qafg09ptdazrd1i"
+                },
+                {
+                    "text": "Step Inputs nach Lösung Überprüfen",
+                    "id": "ch9er5hofok17hyevrojrqv8"
                 },
                 {
                     "text": "Code History Fixen eigene History für jede view\n",
@@ -208,5 +248,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719320396645
+    "timestamp": 1719425587354
 }

@@ -54,10 +54,7 @@ function setStepClickEvent(){
         var template = document.getElementById(`${step.id}-template`);
         console.log("Template: ")
         console.log(template);
-        if(index === 2){
-            console.log("Change to index 1");
-            console.log("Template after change:");
-        
+        if(index < 3){
             template = document.getElementById("step1-template");
             console.log(template);
         }
@@ -85,12 +82,11 @@ function setStepClickEvent(){
                 clonedTemplate.style.display = 'block';
                 
                 // Deaktiviere Eingaben und Buttons, wenn index < currentStep
-                if (index < currentStep) {
-                    const inputs = clonedTemplate.querySelectorAll('input, textarea, select, button');
-                    inputs.forEach(input => {
-                        input.disabled = true;
-                    });
-                }
+                const inputs = clonedTemplate.querySelectorAll('input, textarea, select, button');
+                inputs.forEach(input => {
+                    input.disabled = true;
+                });
+
                 console.log("INIT1");
                 initStep(index);
             });
@@ -133,24 +129,32 @@ function removeEventListeners() {
 }
 
 
+
+
+
 function initStep(step){
     const step_modal_box = document.getElementById("step_modal_box");
     switch(step){
         case StepIndex.TARTORTBERICHT:
+            initPhone(false);
             step_modal_box.classList.remove("w-8/12", "max-w-5xl");
             step_modal_box.classList.add("w-auto");  
             InitTatortbericht();
             break;
+        case StepIndex.LOGIN:
+            initPhone(true);
+            break;
         case StepIndex.TÜRPROTOKOLL:
+            initPhone(false);
             step_modal_box.classList.remove("w-8/12", "max-w-5xl");
             step_modal_box.classList.add("w-auto");  
             console.log("Türprotkoll Index called");
             InitTürprotokoll();
             break;
         case StepIndex.ZUGANGSRECHTE:
+            initPhone(true);
             break;
         case StepIndex.EMAIL:
- 
             initDecryption();
             break;
         case StepIndex.VERANSTALTUNG:
@@ -178,31 +182,77 @@ var currentQuestion = Questions.ROOM;
 
 var sendMessageButton;
 
-function initPhone(){
+function initPhone(lockPhone){
+    var chatDiv = document.getElementById('phone_chat');
+    chatDiv.innerHTML = "";
+
     // Event Listener für den Senden-Button hinzufügen
     sendMessageButton = document.getElementById('phone_send_message');
     sendMessageButton.addEventListener('click', SendMessage); // Hier: SendMessage ohne ()
 
     var messageInput = document.getElementById('phone_nachricht_input');
+
+    if(lockPhone){
+        sendMessageButton.disabled = true;
+        messageInput.disabled = true;
+    }
+
+   
     messageInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             SendMessage();
         }
     });
+    console.log("CHAT LOG");
+    console.log(chatlogs);
+
+    for(let chatlog of chatlogs){
+        addChatMessage(chatlog.message, chatlog.isSender);
+    }
+
 }
+
+var wasInitialized = [0,0,0,0,0,0,0];
+
+let chatlogs = [];
+
 
 // Step 1:
 function InitTatortbericht() {
+
+
+    if(wasInitialized[StepIndex.TARTORTBERICHT]){
+        return;
+    }
+    wasInitialized[StepIndex.TARTORTBERICHT] = true; 
     // Hier könnte auch weitere Initialisierungslogik sein
-    initPhone();
+
     // Beispiel: Aufruf von addChatMessage
     ReciveMessage("Hallo, hier ist Kommissar Wolf.");
     ReciveMessage("Ich hoffe, du findest dich in unserer Datenbank zurecht.");
     ReciveMessage(currentQuestion);
 }
 
+var messageQueue = [];
+var isProcessingMessage = false;
+
 function ReciveMessage(message){
-    addChatMessage(message, false);
+    messageQueue.push(message);
+    if(!isProcessingMessage){
+        processMessageQueue();
+    }
+}
+
+function processMessageQueue(){
+    if(messageQueue.length > 0){
+        isProcessingMessage = true;
+        const message = messageQueue.shift();
+        const timeoutTime = message.length * 35;
+        addChatMessageAndLog(message, false);
+        setTimeout(processMessageQueue, timeoutTime);
+    }else{
+        isProcessingMessage = false;
+    }
 }
 
 function SendMessage() {
@@ -214,7 +264,7 @@ function SendMessage() {
     var messageText = messageInput.value;
     console.log(messageText);
     if(messageText !== ""){
-        addChatMessage(messageText, true);
+        addChatMessageAndLog(messageText, true);
         checkMessageForSolution(currentQuestion, messageText);
     }
 
@@ -250,17 +300,31 @@ function checkMessageForSolution(question, messageText){
         default:
             break;  
     }
+}
 
+
+function addChatMessageAndLog(messageText, isSender){
+    if(addChatMessage(messageText, isSender)){
+
+        let chatMessage = {
+            isSender: isSender,
+            message: messageText
+        }
+
+        chatlogs.push(chatMessage);
+    }
 }
 
 function addChatMessage(messageText, isSender) {
     console.log("start add chat message funktion");
     if(messageText === ""){
         console.log("ADD CHAT WITH EMPTY STRING RETURN");
-        return;
+        return false;
     }
     console.log("addChatMessageCalled");
+
     // Klasse basierend auf isSender festlegen
+    var imagePath = isSender ? 'assets/images/avatar/detective_avatar.png' : 'assets/images/avatar/police_avatar.png'
     var chatClass = isSender ? 'chat-end' : 'chat-start';
     var selfClass = isSender ? 'self-end' : 'self-start';
 
@@ -269,7 +333,7 @@ function addChatMessage(messageText, isSender) {
         <div class="chat ${chatClass} ${selfClass}">
             <div class="chat-image avatar">
                 <div class="w-10 rounded-full">
-                    <img alt="Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    <img alt="Avatar" src=${imagePath} />
                 </div>
             </div>
             <div class="chat-bubble">${messageText}</div>
@@ -279,8 +343,12 @@ function addChatMessage(messageText, isSender) {
     var chatDiv = document.getElementById('phone_chat');
     chatDiv.innerHTML += messageHtml;
 
+
     // Optional: Scrollen zum Ende des Chat-Verlaufs nach dem Hinzufügen der Nachricht
+    console.log("SCROLL DOWN CHAT HISTORY");
     chatDiv.scrollTop = chatDiv.scrollHeight;
+
+    return true;
 }
 
 
@@ -290,7 +358,6 @@ function InitTürprotokoll(){
     currentQuestion = Questions.TÄTER;
     ReciveMessage("Hallo, ich bins nochmal.");
     ReciveMessage(currentQuestion);
-    initPhone();
 }
 
 

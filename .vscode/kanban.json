@@ -19,6 +19,10 @@
                 {
                     "text": "Console.log entfernen\n",
                     "id": "fw6umidieftroq41jepbku0z"
+                },
+                {
+                    "text": "Text Nachrichten Verzögert Senden",
+                    "id": "kbd4p8sq0k8ekuxz0rado4q7"
                 }
             ],
             "id": "ki3nts9bpilwej9j1xfjif2n",
@@ -42,22 +46,6 @@
                 {
                     "text": "Reclick on Command history to close it",
                     "id": "h2oijpudpfw47whyrtak9hjv"
-                },
-                {
-                    "text": "Falsches Passwort Falscher Benutzername getrennt voneinander ausgeben",
-                    "id": "f6uqh4tl2ypp3keqmafysfzl"
-                },
-                {
-                    "text": "Reset Modal with and hight after Phone",
-                    "id": "bobej6344arcblnvqo1gobms"
-                },
-                {
-                    "text": "Bilder Austasuchen bem Handy\n",
-                    "id": "yvm2dl0jbaa50244btyqs1pi"
-                },
-                {
-                    "text": "Text Nachrichten Verzögert Senden",
-                    "id": "kbd4p8sq0k8ekuxz0rado4q7"
                 },
                 {
                     "text": "End Story Page Anlegen",
@@ -107,8 +95,12 @@
             "title": "Doing",
             "tasks": [
                 {
-                    "text": "PC Login with Enter button\n",
-                    "id": "dhhcp2dpmtw113p0eq66gcff"
+                    "text": "Hint Timer  +1Minute\nSolution Timer + 5 Minuten\nBombe Timer +5 Minuten",
+                    "id": "l4qknl3tnvxu0sphvwukosgh"
+                },
+                {
+                    "text": "Reset Modal with and hight after Phone",
+                    "id": "bobej6344arcblnvqo1gobms"
                 }
             ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
@@ -130,8 +122,20 @@
                     "id": "pky8s8bthqf4ejbmj5iticxp"
                 },
                 {
+                    "text": "PC Login with Enter button\n",
+                    "id": "dhhcp2dpmtw113p0eq66gcff"
+                },
+                {
                     "text": "DB Umlaute\n",
                     "id": "d3sv8709cp74w611tex8fs76"
+                },
+                {
+                    "text": "Bilder Austasuchen bem Handy\n",
+                    "id": "yvm2dl0jbaa50244btyqs1pi"
+                },
+                {
+                    "text": "Falsches Passwort Falscher Benutzername getrennt voneinander ausgeben",
+                    "id": "f6uqh4tl2ypp3keqmafysfzl"
                 },
                 {
                     "text": "Step 2,4 Display\n ",
@@ -248,5 +252,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719425587354
+    "timestamp": 1719428143882
 }

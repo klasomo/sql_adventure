@@ -8,7 +8,7 @@ const StepIndex = {
     BOMBE: 6
 }
 
-let currentStep = StepIndex.TARTORTBERICHT;
+let currentStep = StepIndex.BOMBE;
 
 
 const stepsNames = [
@@ -137,8 +137,6 @@ function initStep(step){
     switch(step){
         case StepIndex.TARTORTBERICHT:
             initPhone(false);
-            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
-            step_modal_box.classList.add("w-auto");  
             InitTatortbericht();
             break;
         case StepIndex.LOGIN:
@@ -146,21 +144,24 @@ function initStep(step){
             break;
         case StepIndex.TÜRPROTOKOLL:
             initPhone(false);
-            step_modal_box.classList.remove("w-8/12", "max-w-5xl");
-            step_modal_box.classList.add("w-auto");  
-            console.log("Türprotkoll Index called");
             InitTürprotokoll();
             break;
         case StepIndex.ZUGANGSRECHTE:
             initPhone(true);
             break;
         case StepIndex.EMAIL:
+            step_modal_box.classList.add("w-8/12", "max-w-5xl");
+            step_modal_box.classList.remove("w-auto");  
             initDecryption();
             break;
         case StepIndex.VERANSTALTUNG:
+            step_modal_box.classList.add("w-8/12", "max-w-5xl");
+            step_modal_box.classList.remove("w-auto");  
             initCityMap();
             break;
         case StepIndex.BOMBE:
+            step_modal_box.classList.add("w-8/12", "max-w-5xl");
+            step_modal_box.classList.remove("w-auto");  
             initColorPicker();
             break;
         default:
@@ -183,6 +184,10 @@ var currentQuestion = Questions.ROOM;
 var sendMessageButton;
 
 function initPhone(lockPhone){
+
+    step_modal_box.classList.remove("w-8/12", "max-w-5xl");
+    step_modal_box.classList.add("w-auto");  
+
     var chatDiv = document.getElementById('phone_chat');
     chatDiv.innerHTML = "";
 
@@ -195,6 +200,9 @@ function initPhone(lockPhone){
     if(lockPhone){
         sendMessageButton.disabled = true;
         messageInput.disabled = true;
+    }else{
+        sendMessageButton.disabled = false;
+        messageInput.disabled = false;
     }
 
    
@@ -274,13 +282,13 @@ function SendMessage() {
 
 
 function checkMessageForSolution(question, messageText){
-    var messageToSendBack = "???";
     switch(question){
         case Questions.ROOM:
             if(messageText === "404"){
                 ReciveMessage("Sehr gut.");
                 ReciveMessage(Questions.ABTEILUNG);
                 currentQuestion = Questions.ABTEILUNG;
+                return;
             }
             break;
         case Questions.ABTEILUNG:
@@ -289,17 +297,20 @@ function checkMessageForSolution(question, messageText){
                 ReciveMessage("Alles klar.");
                 ReciveMessage("Ich habe dir jetzt Zugang zur Firmendatenbank von Symmex besorgt. Das sollte helfen den Täter zu finden, wenn du nur mehr Zugriffsrechte hättest.");
                 incrementStep(StepIndex.TARTORTBERICHT);
+                return;
             }
             break;
         case Questions.TÄTER:
             if(messageText.toLowerCase() === "paul huber"){
                 ReciveMessage("Sehr gut. Ich werde mir gleich einen Haftbefehl besorgen, um ihn festzunehmen.");
                 incrementStep(StepIndex.TÜRPROTOKOLL);
+                return;
             }
             break;
         default:
             break;  
     }
+    ReciveMessage("???");
 }
 
 
@@ -354,6 +365,13 @@ function addChatMessage(messageText, isSender) {
 
 //init Türprotkoll
 function InitTürprotokoll(){
+
+    
+    if(wasInitialized[StepIndex.TÜRPROTOKOLL]){
+        return;
+    }
+    wasInitialized[StepIndex.TÜRPROTOKOLL] = true; 
+
     // Event-Listener für den Button "Überprüfen" hinzufügen
     currentQuestion = Questions.TÄTER;
     ReciveMessage("Hallo, ich bins nochmal.");

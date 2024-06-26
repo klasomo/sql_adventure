@@ -169,9 +169,9 @@ function closeModal(){
 }
 
 const Questions = {
-    ROOM: "In welchem Raum wurde die Bombe gefunden?",
-    ABTEILUNG: "Aus welcher Abteilung Stammt der Verdächtige?",
-    TÄTER: "Wer hat die Bombe gelegt?"
+    ROOM: "Wenn du herausgefunden hast, in welchem Raum der Vorfall passiert ist, schreib mir bitte die Raumnummer.",
+    ABTEILUNG: "Der Täter muss ein Mitarbeiter der Firma Symmex sein. Zu welcher Abteilung gehört unser Verdächtiger wahrscheinlich?",
+    TÄTER: "Hast du schon den Täter gefunden?"
 }
 
 var currentQuestion = Questions.ROOM;
@@ -196,7 +196,13 @@ function InitTatortbericht() {
     // Hier könnte auch weitere Initialisierungslogik sein
     initPhone();
     // Beispiel: Aufruf von addChatMessage
-    addChatMessage(currentQuestion, false);
+    ReciveMessage("Hallo, hier ist Kommissar Wolf.");
+    ReciveMessage("Ich hoffe, du findest dich in unserer Datenbank zurecht.");
+    ReciveMessage(currentQuestion);
+}
+
+function ReciveMessage(message){
+    addChatMessage(message, false);
 }
 
 function SendMessage() {
@@ -222,27 +228,29 @@ function checkMessageForSolution(question, messageText){
     switch(question){
         case Questions.ROOM:
             if(messageText === "404"){
-                messageToSendBack = Questions.ABTEILUNG;
+                ReciveMessage("Sehr gut.");
+                ReciveMessage(Questions.ABTEILUNG);
                 currentQuestion = Questions.ABTEILUNG;
             }
             break;
         case Questions.ABTEILUNG:
             console.log("check abteilung frage");
             if(messageText.toLowerCase() === "it"){
-                messageToSendBack = "Danke du hast jetzt Zugriff auf den Firmen Computer melde dich an!"
+                ReciveMessage("Alles klar.");
+                ReciveMessage("Ich habe dir jetzt Zugang zur Firmendatenbank von Symmex besorgt. Das sollte helfen den Täter zu finden, wenn du nur mehr Zugriffsrechte hättest.");
                 incrementStep(StepIndex.TARTORTBERICHT);
             }
             break;
         case Questions.TÄTER:
             if(messageText.toLowerCase() === "paul huber"){
-                messageToSendBack = "Ok, erhöhe deine Zugangsberechtigung um die Emails von Paul Huber zu lesen."
+                ReciveMessage("Sehr gut. Ich werde mir gleich einen Haftbefehl besorgen, um ihn festzunehmen.");
                 incrementStep(StepIndex.TÜRPROTOKOLL);
             }
             break;
         default:
             break;  
     }
-    addChatMessage(messageToSendBack, false);
+
 }
 
 function addChatMessage(messageText, isSender) {
@@ -280,7 +288,8 @@ function addChatMessage(messageText, isSender) {
 function InitTürprotokoll(){
     // Event-Listener für den Button "Überprüfen" hinzufügen
     currentQuestion = Questions.TÄTER;
-    addChatMessage(currentQuestion, false);
+    ReciveMessage("Hallo, ich bins nochmal.");
+    ReciveMessage(currentQuestion);
     initPhone();
 }
 

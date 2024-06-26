@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Adventure</title>
+
+    <!-- local stylesheet -->
+    <link rel="stylesheet" href="css/story_end.css" />
+
+    <!-- Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+        @font-face {
+          font-family: 'toxTypewriter';
+          src: url('../assets/fonts/ToxTypewriter.ttf') format('truetype');
+        }
+      
+        .font-typewriter{
+            font-family: "toxTypewriter", system-ui;
+        }
+    </style>
+
+</head>
+<body>
+
+  <div class="book" id="book">
+    <div class="page">
+      <div class="front">
+        <div class="" id="book_cover">
+
+        </div>
+      </div>
+      <div class="back">
+        <div class="image-half-left" id="img2_1">
+          <div class="relative h-full w-full">
+          
+          </div> 
+        </div>
+      </div>
+    </div>
+  
+    <div class="page">
+      <div class="front">
+        <div class="image-half-right" id="img2_1">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 right-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="image-half-left" id="img2_2">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 left-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div> 
+        </div>
+      </div>
+    </div>
+  
+    <div class="page">
+      <div class="front">
+        <div class="image-half-right" id="img2_2">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 right-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="image-half-left" id="img2_3">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 left-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <div class="image-half-right" id="img2_3">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 right-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="image-half-left" id="img2_4">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 left-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div> 
+        </div>
+      </div>
+    </div>
+
+    <div class="page flex">
+      <div class="front">
+        <div class="image-half-right" id="img2_4">
+          <div class="relative h-full w-full">
+            <div class="absolute bottom-0 right-0 h-16 w-16">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#ffffff"></path> </g></svg>
+            </div> 
+          </div>
+        </div>
+      </div>
+
+      <div class="back">
+        <div class="" id="book_cover_end">
+            <div class="relative h-full w-full">
+                <div class="h-full w-full flex items-center justify-center flex-col">
+                    <div id="playerName" class="text-4xl text-black font-typewriter m-2">
+                    
+                    </div>
+                    <div id="playTime" class="text-4xl text-black font-typewriter m-2">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        function displayPlayerData() {
+            const playerName = localStorage.getItem('playerName');
+            const timerData = JSON.parse(localStorage.getItem('timerData'));
+            let playTimeInSeconds = 0;
+          
+            if (timerData && timerData.startTime) {
+              const { startTime, totalPausedTime, isPaused, pauseStartTime } = timerData;
+              if (isPaused) {
+                playTimeInSeconds = Math.floor((pauseStartTime - startTime - totalPausedTime) / 1000);
+              } else {
+                playTimeInSeconds = Math.floor((Date.now() - startTime - totalPausedTime) / 1000);
+              }
+            }
+          
+            if (playerName) {
+              document.getElementById('playerName').textContent = "Spieler: " + playerName;
+            } else {
+              document.getElementById('playerName').textContent = "Spieler: " + 'No player found';
+            }
+          
+            if (playTimeInSeconds) {
+              const minutes = Math.floor(playTimeInSeconds / 60).toString().padStart(2, '0');
+              const seconds = (playTimeInSeconds % 60).toString().padStart(2, '0');
+              document.getElementById('playTime').textContent = 'Zeit: '+`${minutes}:${seconds}`;
+            } else {
+              document.getElementById('playTime').textContent = 'Zeit: '+ '00:00';
+            }
+          }
+          
+          // Rufe die Funktion auf, wenn die Seite geladen wird oder an einem anderen passenden Ort im Code
+          window.addEventListener('load', displayPlayerData);
+    </script>
+    <script src="js/story_end.js"></script>
+</body>
+</html>

@@ -279,7 +279,7 @@ function initColorPicker() {
     // Event Listener für mousemove
     canvas.addEventListener("mousemove", handleCanvasMouseMove, false);
 
-
+    canvas.style.cursor = 'url(assets/images/mouseIcon/plier.cur), default';
   };
 
   function oMousePos(canvas, evt) {
@@ -303,7 +303,7 @@ function initColorPicker() {
     event.preventDefault();
     var tolerance = 20;
     var matchingIndex = isWireColor(thisRGBRy, tolerance);
-    var wrongWireText = "Falscher Draht <span class='font-bold'>+3</span> Minuten. <span class='font-bold'>Hier klicken</span>, um es nochmal zu versuchen";
+    var wrongWireText = "Falscher Draht <span class='font-bold'>+5</span> Minuten. <span class='font-bold'>Hier klicken</span>, um es nochmal zu versuchen";
     var correctWireText = "<span class='font-bold'>Bombe Entschärft<span>";
     switch (matchingIndex) {
       case WireColor.BLAU:
@@ -311,14 +311,14 @@ function initColorPicker() {
         canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
         wireColorInfo.innerHTML = wrongWireText;
         wireColorInfo.addEventListener("click", resetBomb);
-        addTime(180);
+        addTime(300);
         break;
       case WireColor.GELB:
         loadImageAndRefreshCanvas("assets/images/bomb/bomb_cut_gelb.png");
         canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
         wireColorInfo.innerHTML = wrongWireText;
         wireColorInfo.addEventListener("click", resetBomb);
-        addTime(180);
+        addTime(300);
         break;
       case WireColor.LILA:
         loadImageAndRefreshCanvas("assets/images/bomb/bomb_cut_lila.png");

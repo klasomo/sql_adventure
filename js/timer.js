@@ -1,7 +1,4 @@
 let startTime;
-let totalPausedTime = 0;
-let pauseStartTime;
-let isPaused = false;
 let intervalId;
 let playerName = localStorage.getItem('playerName'); // Laden des Spielername
 
@@ -23,60 +20,23 @@ function startTimer() {
 }
 
 function updateTimer() {
-  let currentTime;
-  if (isPaused) {
-    currentTime = new Date(pauseStartTime - startTime - totalPausedTime);
-  } else {
-    currentTime = new Date(Date.now() - startTime - totalPausedTime);
-  }
+  let currentTime = new Date(Date.now() - startTime);
   const minutes = Math.floor(currentTime / (1000 * 60)).toString().padStart(2, '0');
   const seconds = (Math.floor(currentTime / 1000) % 60).toString().padStart(2, '0');
   timerDisplay.textContent = `${minutes}:${seconds}`;
   saveTimerData();
 }
 
-function addTime(secondsToAdd) {
-  if (secondsToAdd < 0) {
-    return;
-  }
-  totalPausedTime += secondsToAdd * 1000;
-  saveTimerData();
-}
-
-function pauseTimer() {
-  if (!isPaused) {
-    isPaused = true;
-    pauseStartTime = Date.now();
-    clearInterval(intervalId);
-    saveTimerData();
-  }
-}
-
-function continueTimer() {
-  if (isPaused) {
-    isPaused = false;
-    totalPausedTime += Date.now() - pauseStartTime;
-    startTime = Date.now() - (pauseStartTime - startTime);
-    intervalId = setInterval(updateTimer, 1000);
-    saveTimerData();
-  }
-}
-
 function resetTimer() {
   clearInterval(intervalId);
   startTime = 0;
-  totalPausedTime = 0;
-  isPaused = false;
   timerDisplay.textContent = "00:00";
   localStorage.removeItem('timerData');
 }
 
 function saveTimerData() {
   const timerData = {
-    startTime,
-    totalPausedTime,
-    isPaused,
-    pauseStartTime
+    startTime
   };
   localStorage.setItem('timerData', JSON.stringify(timerData));
 }
@@ -85,16 +45,13 @@ function loadTimerData() {
   const timerData = JSON.parse(localStorage.getItem('timerData'));
   if (timerData) {
     startTime = timerData.startTime || 0;
-    totalPausedTime = timerData.totalPausedTime || 0;
-    isPaused = timerData.isPaused || false;
-    pauseStartTime = timerData.pauseStartTime || 0;
     updateTimer(); // Aktualisiere den Timer basierend auf den geladenen Daten
   }
 }
 
 function endGame() {
   clearInterval(intervalId);
-  const elapsedTime = Math.floor((Date.now() - startTime - totalPausedTime) / 1000);
+  const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
   saveEndTime(elapsedTime);
   displayBestTimes(); // Beste Zeiten anzeigen, wenn das Spiel endet
 }
@@ -121,6 +78,14 @@ function displayBestTimes() {
     console.log(`${playerData.name}: ${minutes}:${seconds}`);
   });
 }
+
+function addTime(secondsToAdd) {
+    if (secondsToAdd < 0) {
+      return;
+    }
+    startTime -= secondsToAdd * 1000; // Zeit abziehen, um die Zeit zu erhöhen
+    updateTimer(); // Timer aktualisieren, um die neue Zeit anzuzeigen
+  }
 
 function resetRanking() {
   localStorage.removeItem('gameTimes');

@@ -8,7 +8,7 @@ const StepIndex = {
     BOMBE: 6
 }
 
-let currentStep = StepIndex.BOMBE;
+let currentStep = StepIndex.TARTORTBERICHT;
 
 
 const stepsNames = [
@@ -43,8 +43,10 @@ function updateProgressBar(){
         }
     }
     setStepClickEvent();
+    udpateViews();
     notifyHintManager();
 }
+
 
 function setStepClickEvent(){
 
@@ -86,7 +88,7 @@ function setStepClickEvent(){
                 inputs.forEach(input => {
                     input.disabled = true;
                 });
-
+                initPhone(true);
                 console.log("INIT1");
                 initStep(index);
             });
@@ -110,6 +112,7 @@ function setStepClickEvent(){
                 modalContent.style.display = 'block';
                 modalContent.querySelector('div').style.display = 'block';;
                 console.log("INIT2");
+                initPhone(false);
                 initStep(index);
 
             });
@@ -136,18 +139,17 @@ function initStep(step){
     const step_modal_box = document.getElementById("step_modal_box");
     switch(step){
         case StepIndex.TARTORTBERICHT:
-            initPhone(false);
             InitTatortbericht();
             break;
         case StepIndex.LOGIN:
+            unlockView(DbNames.SERVER);
             initPhone(true);
             break;
         case StepIndex.TÜRPROTOKOLL:
-            initPhone(false);
             InitTürprotokoll();
             break;
         case StepIndex.ZUGANGSRECHTE:
-            initPhone(true);
+            zugangsrechtInit();
             break;
         case StepIndex.EMAIL:
             step_modal_box.classList.add("w-8/12", "max-w-5xl");
@@ -155,11 +157,13 @@ function initStep(step){
             initDecryption();
             break;
         case StepIndex.VERANSTALTUNG:
+            unlockView(DbNames.MAP);
             step_modal_box.classList.add("w-8/12", "max-w-5xl");
             step_modal_box.classList.remove("w-auto");  
             initCityMap();
             break;
         case StepIndex.BOMBE:
+            unlockView(DbNames.BOMB);
             step_modal_box.classList.add("w-8/12", "max-w-5xl");
             step_modal_box.classList.remove("w-auto");  
             initColorPicker();
@@ -167,6 +171,15 @@ function initStep(step){
         default:
             break;
     }
+}
+
+function zugangsrechtInit(){
+    if(wasInitialized[StepIndex.ZUGANGSRECHTE]){
+        return;
+    }
+    wasInitialized[StepIndex.ZUGANGSRECHTE] = true; 
+
+    ReciveMessage("Kannst du mir einen Gefallen tun und seine Emails überprüfen.");
 }
 
 function closeModal(){

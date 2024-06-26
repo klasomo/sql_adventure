@@ -32,8 +32,12 @@
             "title": "To-Do",
             "tasks": [
                 {
-                    "text": "Add Bomb clippers in again copy from github\n",
-                    "id": "whw87oqoifrktle6lxrkgprx"
+                    "text": "Target mouse on ",
+                    "id": "ju5yr2l1t2u3eonbbrjyn0s2"
+                },
+                {
+                    "text": "clipp",
+                    "id": "c8sv669ub5y7ux4sms1s7yg9"
                 },
                 {
                     "text": "Disable Input after inkrementStepCount",
@@ -93,12 +97,7 @@
         },
         {
             "title": "Doing",
-            "tasks": [
-                {
-                    "text": "Hint Timer  +1Minute\nSolution Timer + 5 Minuten\nBombe Timer +5 Minuten",
-                    "id": "l4qknl3tnvxu0sphvwukosgh"
-                }
-            ],
+            "tasks": [],
             "id": "ttux46kf65fq8hkfchvfpmiq",
             "color": "#0693e3"
         },
@@ -110,12 +109,24 @@
                     "id": "eoxlglu15k1zxykkz2ygtc6a"
                 },
                 {
+                    "text": "VIEWS BLOCKIEREN",
+                    "id": "i7knyf6ojhcjfuu7wf3ks664"
+                },
+                {
                     "text": "Timer in Navbar hinzufügen",
                     "id": "cegkhhcuic389w7pxr7bdm8s"
                 },
                 {
+                    "text": "Add Bomb clippers in again copy from github\n",
+                    "id": "whw87oqoifrktle6lxrkgprx"
+                },
+                {
                     "text": "Email New Page anlegen",
                     "id": "pky8s8bthqf4ejbmj5iticxp"
+                },
+                {
+                    "text": "Hint Timer  +1Minute\nSolution Timer + 5 Minuten\nBombe Timer +5 Minuten",
+                    "id": "l4qknl3tnvxu0sphvwukosgh"
                 },
                 {
                     "text": "Reset Modal with and hight after Phone",
@@ -252,5 +263,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719428884721
+    "timestamp": 1719436709043
 }

@@ -120,9 +120,19 @@ document.getElementById("btn_hint").addEventListener('click', () => {
             const input = document.createElement("input");
             input.type = "checkbox";
 
+  
+            
+
             const titleDiv = document.createElement("div");
             titleDiv.classList.add("collapse-title", "text-xl", "font-medium");
             titleDiv.textContent = (index === chapter.hints.length - 1) ? "Lösung" : `Tipp ${index + 1}`;
+            const peneltyTime = (index === chapter.hints.length - 1) ? 300 : 60;
+            // Event Listener hinzufügen
+            input.addEventListener('change', () => {
+            if (input.checked) {
+                addTime(peneltyTime);
+                }
+            });
 
             const contentDiv = document.createElement("div");
             contentDiv.classList.add("collapse-content");
@@ -132,8 +142,23 @@ document.getElementById("btn_hint").addEventListener('click', () => {
             collapseDiv.appendChild(titleDiv);
             collapseDiv.appendChild(contentDiv);
             containerDiv.appendChild(collapseDiv);
+
         });
+
     });
+
+    const hintCostsDiv = document.createElement("div");
+    hintCostsDiv.classList.add("flex", "justify-between", "pt-5");
+    const hintCost = document.createElement("div");
+    const soluitionCost = document.createElement("div");
+    hintCost.innerHTML = "Tipp: +1 Minute";
+    soluitionCost.innerHTML ="Lösung: +5 Minuten";
+
+    hintCostsDiv.appendChild(hintCost);
+    hintCostsDiv.appendChild(soluitionCost);
+
+    containerDiv.appendChild(hintCostsDiv);
+
     hintModalContent.appendChild(containerDiv);
 });
 

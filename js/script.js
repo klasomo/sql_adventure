@@ -1,3 +1,18 @@
+
+const DbNames = {
+  POLICE: "police",
+  SERVER: "server_locked",
+  MAP: "map",
+  BOMB: "bomb",
+};
+
+const PcState = {
+  LOCKED: 0,
+  GUEST: 1,
+  UNLOCKED: 2,
+  LOGIN: 3,
+};
+
 // Start the worker in which sql.js will run
 var worker = new Worker("js/sqlite/worker.sql-wasm.js");
 worker.onerror = error;
@@ -312,6 +327,52 @@ function checkAccessLevel() {
   });
 }
 
+function udpateViews(){
+  switch(currentStep){
+    case StepIndex.TARTORTBERICHT:
+      unlockView(DbNames.POLICE);
+      break;
+    case StepIndex.LOGIN:
+      unlockView(DbNames.SERVER);
+      break;
+    case StepIndex.VERANSTALTUNG:
+      unlockView(DbNames.VERANSTALTUNG);
+      break;
+    case StepIndex.BOMBE:
+      unlockView(DbNames.BOMB);
+      break;
+  }
+}
+
+
+function unlockView(dbName){
+  switch(dbName){
+    case DbNames.POLICE:
+      btnPolice.classList.remove("btn-disabled");
+      var svgPath = btnPolice.querySelector("svg");
+      svgPath.setAttribute("fill", "#ffffff");
+      break;
+    case DbNames.SERVER:
+      btnServer.classList.remove("btn-disabled");
+      var svgPath = btnServer.querySelector("path");
+      svgPath.setAttribute("stroke", "#ffffff");
+      break;
+    case DbNames.MAP:
+      btnMap.classList.remove("btn-disabled");
+      var svgPath = btnMap.querySelector("path");
+      svgPath.setAttribute("stroke", "#ffffff");
+      break;
+    case DbNames.BOMB:
+      btnBomb.classList.remove("btn-disabled");
+      var svgPath = btnBomb.querySelector("path");
+      svgPath.setAttribute("fill", "#ffffff");
+      break;
+    default:
+      break;
+
+  }
+}
+
 // Execute the commands when the button is clicked
 function execEditorContents() {
   outputElm.innerHTML = "";
@@ -449,19 +510,7 @@ function saveAndLoadSqlCommand(viewIndex) {
   sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
 
-const DbNames = {
-  POLICE: "police",
-  SERVER: "server_locked",
-  MAP: "map",
-  BOMB: "bomb",
-};
 
-const PcState = {
-  LOCKED: 0,
-  GUEST: 1,
-  UNLOCKED: 2,
-  LOGIN: 3,
-};
 
 function openDatabaseFromDbName(dbName) {
   var dbPath = "";
@@ -640,10 +689,6 @@ btnCommandHistory.addEventListener("click", function () {
 
 window.onload = function () {
   loadPoliceView();
-};
-
-window.onbeforeunload = function () {
-  //savedb();
 };
 
 // Verhindert das Zoomen mit STRG + Mausrad

@@ -149,7 +149,9 @@ function initStep(step){
             InitTürprotokoll();
             break;
         case StepIndex.ZUGANGSRECHTE:
+            initPhone(true);
             zugangsrechtInit();
+
             break;
         case StepIndex.EMAIL:
             step_modal_box.classList.add("w-8/12", "max-w-5xl");
@@ -411,7 +413,7 @@ function initCityMap(){
         setCellClickEvents();
         return;
     }
-    console.log("Init2 City Map");
+   
 
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -441,7 +443,7 @@ function initCityMap(){
             }
             
             button.id = row + "," + col;
-           
+            button.style.cursor = 'url(assets/images/mouseIcon/cursor_target.cur), default';
             gridCell.appendChild(button);
             grid.appendChild(gridCell);
         }

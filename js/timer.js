@@ -1,6 +1,6 @@
 let startTime;
 let intervalId;
-let playerName = localStorage.getItem('playerName'); // Laden des Spielername
+let playerName = localStorage.getItem('playerName'); // Laden des Spielernamens
 
 const timerDisplay = document.querySelector('.timer');
 
@@ -15,7 +15,6 @@ function startGame() {
 }
 
 function startTimer() {
-  startTime = Date.now();
   intervalId = setInterval(updateTimer, 1000);
 }
 
@@ -29,23 +28,27 @@ function updateTimer() {
 
 function resetTimer() {
   clearInterval(intervalId);
-  startTime = 0;
+  startTime = Date.now();
   timerDisplay.textContent = "00:00";
   localStorage.removeItem('timerData');
 }
 
 function saveTimerData() {
   const timerData = {
-    startTime
+    playerName: playerName,
+    startTime: startTime,
+    elapsedTime: Date.now() - startTime
   };
   localStorage.setItem('timerData', JSON.stringify(timerData));
 }
 
 function loadTimerData() {
   const timerData = JSON.parse(localStorage.getItem('timerData'));
-  if (timerData) {
-    startTime = timerData.startTime || 0;
+  if (timerData && timerData.playerName === playerName) {
+    startTime = Date.now() - timerData.elapsedTime;
     updateTimer(); // Aktualisiere den Timer basierend auf den geladenen Daten
+  } else {
+    resetTimer(); // Initialisiere den Timer, wenn keine Daten vorhanden sind
   }
 }
 
@@ -80,12 +83,12 @@ function displayBestTimes() {
 }
 
 function addTime(secondsToAdd) {
-    if (secondsToAdd < 0) {
-      return;
-    }
-    startTime -= secondsToAdd * 1000; // Zeit abziehen, um die Zeit zu erhöhen
-    updateTimer(); // Timer aktualisieren, um die neue Zeit anzuzeigen
+  if (secondsToAdd < 0) {
+    return;
   }
+  startTime -= secondsToAdd * 1000; // Zeit abziehen, um die Zeit zu erhöhen
+  updateTimer(); // Timer aktualisieren, um die neue Zeit anzuzeigen
+}
 
 function resetRanking() {
   localStorage.removeItem('gameTimes');

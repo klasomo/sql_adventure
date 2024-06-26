@@ -138,17 +138,10 @@
     <script>
         function displayPlayerData() {
             const playerName = localStorage.getItem('playerName');
-            const timerData = JSON.parse(localStorage.getItem('timerData'));
-            let playTimeInSeconds = 0;
-          
-            if (timerData && timerData.startTime) {
-              const { startTime, totalPausedTime, isPaused, pauseStartTime } = timerData;
-              if (isPaused) {
-                playTimeInSeconds = Math.floor((pauseStartTime - startTime - totalPausedTime) / 1000);
-              } else {
-                playTimeInSeconds = Math.floor((Date.now() - startTime - totalPausedTime) / 1000);
-              }
-            }
+            const allGameTimes = JSON.parse(localStorage.getItem('gameTimes'));
+            const playerData = allGameTimes.filter(player => player.name === playerName);
+            let playTimeInSeconds = playerData[0].time;
+            console.log(playerData.time);
           
             if (playerName) {
               document.getElementById('playerName').textContent = "Spieler: " + playerName;

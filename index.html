@@ -41,7 +41,7 @@
         <div class="" id="book_cover">
           <div class="relative h-full w-full">
             <div class="h-full w-full flex items-center justify-center">
-              <input id="name_input" onkeypress="handleEnterKeyPress(event)" type="text" placeholder="Name" class="focus:text-black input w-1/2 h-custom input-ghost font-typewriter text-center placeholder-black bg-transparent caret-black text-black f" />
+              <input id="name_input" onkeypress="handleEnterKeyPress(event)" type="text" placeholder="Name" class="focus:text-black input w-1/2 h-custom border-transparent border-transparent focus:border-transparent focus:ring-0 input-ghost font-typewriter text-center placeholder-black bg-transparent caret-black text-black focus:outline-none" />
             </div>
           </div>
         </div>
@@ -243,6 +243,12 @@
             if (inputValue.trim() === '') {
               alert('Bitte geben Sie einen Namen ein.');
             } else {
+              const allGameTimes = JSON.parse(localStorage.getItem('gameTimes')) || [];
+              const isPlayerNamePresent = allGameTimes.some(player => player.name === inputValue);
+              if(isPlayerNamePresent){
+                alert('Name schon bereits verwendet bitte anderen Eingeben');
+                return;
+              }
               localStorage.setItem('playerName', inputValue);
               goToPage(1);
             }

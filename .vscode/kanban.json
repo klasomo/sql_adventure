@@ -97,10 +97,6 @@
                 {
                     "text": "Hint Timer  +1Minute\nSolution Timer + 5 Minuten\nBombe Timer +5 Minuten",
                     "id": "l4qknl3tnvxu0sphvwukosgh"
-                },
-                {
-                    "text": "Reset Modal with and hight after Phone",
-                    "id": "bobej6344arcblnvqo1gobms"
                 }
             ],
             "id": "ttux46kf65fq8hkfchvfpmiq",
@@ -120,6 +116,10 @@
                 {
                     "text": "Email New Page anlegen",
                     "id": "pky8s8bthqf4ejbmj5iticxp"
+                },
+                {
+                    "text": "Reset Modal with and hight after Phone",
+                    "id": "bobej6344arcblnvqo1gobms"
                 },
                 {
                     "text": "PC Login with Enter button\n",
@@ -252,5 +252,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719428143882
+    "timestamp": 1719428884721
 }

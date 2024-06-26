@@ -54,7 +54,7 @@ function setStepClickEvent(){
         var template = document.getElementById(`${step.id}-template`);
         console.log("Template: ")
         console.log(template);
-        if(index < 3){
+        if(index < 4){
             template = document.getElementById("step1-template");
             console.log(template);
         }

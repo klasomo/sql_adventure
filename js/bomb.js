@@ -251,6 +251,20 @@ function initColorPicker() {
     wireColorInfo.innerHTML = "Schneide den <span class='font-bold'>richtigen</span> Draht durch!";
   }
 
+  function blockInputAndRedirect() {
+    // Alle anklickbaren Elemente deaktivieren
+    var clickableElements = document.querySelectorAll('a, button, input, select, textarea');
+    for (var i = 0; i < clickableElements.length; i++) {
+        clickableElements[i].disabled = true;
+    }
+
+    // Benutzereingabe für 5 Sekunden blockieren
+    setTimeout(function() {
+        // Nach 5 Sekunden zur nächsten Seite weiterleiten
+        window.location.href = 'story_end.html';
+    }, 5000); // 5000 Millisekunden = 5 Sekunden
+}
+
   // Palette- und Canvas-Initialisierung
   var palette = document.querySelector(".palette");
   var img = document.getElementById("img");
@@ -325,6 +339,7 @@ function initColorPicker() {
         canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
         wireColorInfo.innerHTML = correctWireText;
         endGame();
+        blockInputAndRedirect();
         break;
       default:
         return;

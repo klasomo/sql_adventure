@@ -231,6 +231,13 @@ function initPhone(lockPhone){
             SendMessage();
         }
     });
+    // messageInput.addEventListener('input', () => {
+    //     clearTimeout(typingTimeout);
+    //     addTypingAnimation(true);
+    //     typingTimeout = setTimeout(() => {
+    //         removeTypingAnimation();
+    //     }, 300); // Zeit, nachdem die Animation entfernt wird, wenn der Benutzer aufhört zu tippen
+    // });
 
     for(let chatlog of chatlogs){
         addChatMessage(chatlog.message, chatlog.isSender);
@@ -239,7 +246,7 @@ function initPhone(lockPhone){
 }
 
 var wasInitialized = [0,0,0,0,0,0,0];
-
+var typingTimeout;
 let chatlogs = [];
 
 

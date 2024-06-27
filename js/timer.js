@@ -96,5 +96,5 @@ function resetRanking() {
 }
 
 // Ereignislistener für das Laden und Verlassen der Seite
-window.addEventListener('beforeunload', saveTimerData);
+window.addEventListener('beforeunload', endGame);
 window.addEventListener('load', startGame);

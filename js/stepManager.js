@@ -8,7 +8,7 @@ const StepIndex = {
     BOMBE: 6
 }
 
-let currentStep = StepIndex.BOMBE;
+let currentStep = StepIndex.TARTORTBERICHT;
 
 
 const stepsNames = [

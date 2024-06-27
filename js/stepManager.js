@@ -48,6 +48,18 @@ function updateProgressBar(){
 }
 
 
+
+function disableInputsInCurrentModal() {
+    console.log(step_modal);
+    const inputs = step_modal.querySelectorAll('input, textarea, select, button');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+
+    console.log('Alle Inputs in der aktuellen Modal wurden deaktiviert.');
+}
+
+
 function setStepClickEvent(){
 
     stepsNames.forEach((step, index) => {
@@ -309,6 +321,7 @@ function checkMessageForSolution(question, messageText){
         case Questions.ABTEILUNG:
             console.log("check abteilung frage");
             if(messageText.toLowerCase() === "it"){
+                disableInputsInCurrentModal();
                 ReciveMessage("Alles klar.");
                 ReciveMessage("Ich habe dir jetzt Zugang zur Firmendatenbank von Symmex besorgt. Das sollte helfen den Täter zu finden, wenn du nur mehr Zugriffsrechte hättest.");
                 incrementStep(StepIndex.TARTORTBERICHT);
@@ -317,6 +330,7 @@ function checkMessageForSolution(question, messageText){
             break;
         case Questions.TÄTER:
             if(messageText.toLowerCase() === "paul huber"){
+                disableInputsInCurrentModal();
                 ReciveMessage("Sehr gut. Ich werde mir gleich einen Haftbefehl besorgen, um ihn festzunehmen.");
                 incrementStep(StepIndex.TÜRPROTOKOLL);
                 return;
@@ -502,7 +516,9 @@ function setCheckButtonCityMap(){
     document.getElementById("checkCityMap").addEventListener('click', function(){
         console.log(selectedCell);
         if(selectedCell[0] == correctTargetCords[0] && selectedCell[1] == correctTargetCords[1]){
+            disableInputsInCurrentModal();
             incrementStep(StepIndex.VERANSTALTUNG);
+
             //closeModal();
         }else{
             console.log("Falsch");

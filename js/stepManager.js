@@ -50,13 +50,10 @@ function updateProgressBar(){
 
 
 function disableInputsInCurrentModal() {
-    console.log(step_modal);
     const inputs = step_modal.querySelectorAll('input, textarea, select, button');
     inputs.forEach(input => {
         input.disabled = true;
     });
-
-    console.log('Alle Inputs in der aktuellen Modal wurden deaktiviert.');
 }
 
 
@@ -66,11 +63,9 @@ function setStepClickEvent(){
 
         var element = document.getElementById(step.id);
         var template = document.getElementById(`${step.id}-template`);
-        console.log("Template: ")
-        console.log(template);
+
         if(index < 4){
             template = document.getElementById("step1-template");
-            console.log(template);
         }
 
         if(template === null){
@@ -101,7 +96,6 @@ function setStepClickEvent(){
                     input.disabled = true;
                 });
                 initPhone(true);
-                console.log("INIT1");
                 initStep(index);
             });
         }
@@ -123,7 +117,6 @@ function setStepClickEvent(){
                 
                 modalContent.style.display = 'block';
                 modalContent.querySelector('div').style.display = 'block';;
-                console.log("INIT2");
                 initPhone(false);
                 initStep(index);
 
@@ -238,8 +231,6 @@ function initPhone(lockPhone){
             SendMessage();
         }
     });
-    console.log("CHAT LOG");
-    console.log(chatlogs);
 
     for(let chatlog of chatlogs){
         addChatMessage(chatlog.message, chatlog.isSender);
@@ -297,7 +288,6 @@ function SendMessage() {
         return;
     }
     var messageText = messageInput.value;
-    console.log(messageText);
     if(messageText !== ""){
         addChatMessageAndLog(messageText, true);
         checkMessageForSolution(currentQuestion, messageText);
@@ -319,7 +309,6 @@ function checkMessageForSolution(question, messageText){
             }
             break;
         case Questions.ABTEILUNG:
-            console.log("check abteilung frage");
             if(messageText.toLowerCase() === "it"){
                 disableInputsInCurrentModal();
                 ReciveMessage("Alles klar.");
@@ -356,12 +345,10 @@ function addChatMessageAndLog(messageText, isSender){
 }
 
 function addChatMessage(messageText, isSender) {
-    console.log("start add chat message funktion");
+
     if(messageText === ""){
-        console.log("ADD CHAT WITH EMPTY STRING RETURN");
         return false;
     }
-    console.log("addChatMessageCalled");
 
     // Klasse basierend auf isSender festlegen
     var imagePath = isSender ? 'assets/images/avatar/detective_avatar.png' : 'assets/images/avatar/police_avatar.png'
@@ -385,7 +372,6 @@ function addChatMessage(messageText, isSender) {
 
 
     // Optional: Scrollen zum Ende des Chat-Verlaufs nach dem Hinzufügen der Nachricht
-    console.log("SCROLL DOWN CHAT HISTORY");
     chatDiv.scrollTop = chatDiv.scrollHeight;
 
     return true;
@@ -418,12 +404,10 @@ function initCityMap(){
     const grid = document.querySelector('.grid');
 
     if(grid.childElementCount != 0){
-        console.log("selectedCell:" + selectedCell);
         if(selectedCell[0] != null){
             drawTargetOnCell(selectedCell);
         }
 
-        console.log("return init already finished");
         setCellClickEvents();
         return;
     }
@@ -474,7 +458,6 @@ function setCellClickEvents(){
             const cell = document.getElementById(cellId);
 
             cell.addEventListener('click', () => {
-                console.log("Button Pressed");
                 clearCell(selectedCell);
                 selectedCell[0] = row;
                 selectedCell[1] = col;
@@ -495,8 +478,6 @@ function clearCell(cellCords) {
 
         if (cell) { // Überprüfen, ob das Element gefunden wurde
             cell.style.backgroundImage = "";
-            console.log("remove background image");
-            console.log(cell);
         } else {
             console.warn(`Element with ID '${cellId}' not found.`);
         }
@@ -510,18 +491,17 @@ function clearCell(cellCords) {
 
 //Überprüf button Event H5
 function setCheckButtonCityMap(){
-    console.log("setCheckButtonCitymap");
+
     const correctTargetCords = [3,13]
    
     document.getElementById("checkCityMap").addEventListener('click', function(){
-        console.log(selectedCell);
+
         if(selectedCell[0] == correctTargetCords[0] && selectedCell[1] == correctTargetCords[1]){
             disableInputsInCurrentModal();
             incrementStep(StepIndex.VERANSTALTUNG);
 
             //closeModal();
         }else{
-            console.log("Falsch");
         }
     });
 }
@@ -541,7 +521,6 @@ function clearCell(cellCords) {
 }
 
 function drawTargetOnCell(cellCords){
-    console.log("Draw Function was called");
     const cellId = cellCords[0] + "," + cellCords[1];
     const cell = document.getElementById(cellId);
 

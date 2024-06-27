@@ -15,20 +15,17 @@ const decryptedText = [
 
 
 function checkIfAllAreDecrypted(){
-  console.log("TextInput: ");
-  console.log(textInput);
+
   for(let i = 0; i < encryptedText.length; i++){
     if(textInput[i] != encryptedText[i]){
       return false;
     }
   }
-  console.log("all are decrypted");
   return true;
 }
 
 
 function updateEmailProgressbar() {
-  console.log("Current Email Step:" + currentEmailStep);
   const email_steps = document.querySelectorAll(".step.email");
   if (email_steps.length > 0) {
     email_steps.forEach((li, index) => {
@@ -37,9 +34,6 @@ function updateEmailProgressbar() {
           enableTextareaAndButton();
           email_title.textContent = li.textContent;
           textarea.value = "";
-          console.log(
-            "Clicked Email Step " + li.innerHTML + " Index: " + index
-          );
         });
         li.classList.add("step-primary");
         textarea.value="";
@@ -49,9 +43,6 @@ function updateEmailProgressbar() {
       if (index < currentEmailStep) {
         li.addEventListener("click", () => {
           disableTextareaAndButton();
-          console.log(
-            "Clicked Email old Step " + li.innerHTML + " Index: " + index
-          );
           textarea.value = decryptedText[index];
           email_title.textContent = li.textContent;
         });
@@ -60,7 +51,7 @@ function updateEmailProgressbar() {
       }
     });
   } else {
-    console.log("Element mit ID 'email_steps' nicht gefunden.");
+
   }
 }
 
@@ -72,7 +63,7 @@ function initDecryption() {
   textarea = document.getElementById("encryptedText");
   email_steps = document.querySelectorAll(".step.email");
   email_title = document.getElementById("email_title");
-  console.log(email_steps);
+
   const t = document.querySelector(".codedText");
   const decrptedMesg = "Diese Nachricht wurde Erfolgreich Entschlüsselt";
 
@@ -87,19 +78,16 @@ function initDecryption() {
 
       let wasAlreadyDecrypted = false;
       let isValidEncryptedText = false;
-      console.log("Text Input");
-      console.log(textInput);
+
       for (let j = 0; j < textInput.length; j++) {
         if (inputText === textInput[j]) {
-          console.log("was already once decrypted");
           wasAlreadyDecrypted = true;
-          console.log("wasAlreadyDecrypted: "  + wasAlreadyDecrypted);
+
         }
       }
       for (let i = 0; i < encryptedText.length; i++) {
         if (inputText === encryptedText[i]) {
           isValidEncryptedText = true;
-          console.log("isvalidEncryptedText: " + isValidEncryptedText);
 
           if(isValidEncryptedText && !wasAlreadyDecrypted){
             currentEmailStep++;

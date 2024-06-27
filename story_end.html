@@ -141,7 +141,6 @@
             const allGameTimes = JSON.parse(localStorage.getItem('gameTimes'));
             const playerData = allGameTimes.filter(player => player.name === playerName);
             let playTimeInSeconds = playerData[0].time;
-            console.log(playerData.time);
           
             if (playerName) {
               document.getElementById('playerName').textContent = "Spieler: " + playerName;

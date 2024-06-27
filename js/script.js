@@ -27,7 +27,6 @@ function print(text) {
 }
 
 function error(e) {
-  console.log(e);
   var errorAlert = document.getElementById("errorAlert");
   var errorMessage = document.getElementById("errorMessage");
   if (errorAlert && errorMessage) {
@@ -220,13 +219,11 @@ function execute(commands, outputElement, callback) {
         }
       case PcState.LOGIN:
         if (accessLevel <= 5) {
-          console.log("validateSQLServerLogin");
           if (!validateSQLServerLogin(commands_lower)) {
             serverViewError();
             if (callback) callback(false);
             return;
           } else {
-            console.log("validateSQLServerLogin Else");
           }
         }
     }
@@ -292,11 +289,9 @@ var tableCreate = (function () {
 })();
 
 function incrementStep(currentOldStep) {
-  console.log(currentStep);
-  console.log(currentOldStep);
+
   if (currentStep === currentOldStep) {
     let nextValue = currentOldStep + 1;
-    console.log("increment currentStep: " + nextValue);
     currentStep = nextValue;
   }
   updateProgressBar();
@@ -313,7 +308,7 @@ function checkAccessLevel() {
       if (pcState === PcState.UNLOCKED) {
         return;
       }
-      console.log("accessLevel high enough");
+
       incrementStep(StepIndex.ZUGANGSRECHTE);
       pcState = PcState.UNLOCKED;
       loadServerView();
@@ -321,7 +316,6 @@ function checkAccessLevel() {
       if (pcState === PcState.UNLOCKED) {
         pcState = PcState.LOGIN;
         loadServerView();
-        console.log("set pc State to login");
       }
     }
   });
@@ -409,8 +403,6 @@ function executeSqlIntern(sqlCommand, database, callback) {
   worker.onmessage = function (event) {
     var results = event.data.results;
     if (!results) {
-      // Bei einem Fehler, loggt diesen und aktualisiert das Ausgabeelement
-      console.log(event.data.error);
       return;
     }
 
@@ -461,9 +453,7 @@ var databases = {}; // Objekt zur Speicherung der geöffneten Datenbanken
 var currentDatabase = null; // Variable zur Speicherung der aktuellen Datenbank
 
 function openDatabase(dbPath, dbName) {
-  console.log(`Open Database ${dbName}`);
   if (databases[dbName]) {
-    console.log(`Database ${dbName} already opened.`);
     return;
   }
 
@@ -482,10 +472,7 @@ function openDatabase(dbPath, dbName) {
       databases[dbName] = worker; // Speichern des Workers in dem Objekt
       if (!currentDatabase) {
         currentDatabase = dbName; // Setze die erste geöffnete DB als aktuelle DB
-        console.log(currentDatabase);
       }
-      console.log(`Database ${dbName} opened.`);
-      console.log(databases);
     };
 
     fileReader.readAsArrayBuffer(blob);
@@ -762,9 +749,8 @@ document.getElementById("resetBtn").addEventListener("click", function () {
 function removeFromDatabases(dbName) {
   if (databases[dbName]) {
     delete databases[dbName];
-    console.log(`Database ${dbName} removed from databases.`);
   } else {
-    console.log(`Database ${dbName} not found in databases.`);
+
   }
 }
 

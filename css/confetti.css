@@ -1,0 +1,7 @@
+#confetti_canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Damit der Canvas keine Klicks oder Hover-Ereignisse blockiert */
+    z-index: 1000; /* Ein hoher Z-Index, um sicherzustellen, dass der Canvas über anderen Inhalten liegt */
+  }

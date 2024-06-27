@@ -36,16 +36,8 @@
                     "id": "u6mjh5ry5o7u5rriqqo3g7rm"
                 },
                 {
-                    "text": "Target mouse on ",
-                    "id": "ju5yr2l1t2u3eonbbrjyn0s2"
-                },
-                {
                     "text": "clipp",
                     "id": "c8sv669ub5y7ux4sms1s7yg9"
-                },
-                {
-                    "text": "Disable Input after inkrementStepCount",
-                    "id": "r3f92p2dywit05zwc4bau3iw"
                 },
                 {
                     "text": "Phone Typing Information",
@@ -56,28 +48,8 @@
                     "id": "h2oijpudpfw47whyrtak9hjv"
                 },
                 {
-                    "text": "End Story Page Anlegen",
-                    "id": "gdqdeoigfa77ogz2toq4ewat"
-                },
-                {
-                    "text": "Block views und DB with steps",
-                    "id": "uj7ebvcioi6nzo11zmdqgzj1"
-                },
-                {
-                    "text": "Update and Delete commands feedback green allert window",
-                    "id": "vs8ea3a2fdswaffjo4xbjfrw"
-                },
-                {
-                    "text": "Einstieg Hinzufügen book animation",
-                    "id": "r7cosm6e4em0j63bn0qsg7wr"
-                },
-                {
                     "text": "Refactor Interfaces and Classes\n",
                     "id": "wq8x387896yhtodl30l7gjzk"
-                },
-                {
-                    "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
-                    "id": "yrya669wtbbefku0qnuosr6o"
                 },
                 {
                     "text": "Bild immer alles sichtbar also gleichen seiten verhätnis\n",
@@ -111,6 +83,42 @@
                 {
                     "text": "Excel -> SQLlite Db erstellen\n",
                     "id": "eoxlglu15k1zxykkz2ygtc6a"
+                },
+                {
+                    "text": "Confetti\n",
+                    "id": "vg65ypo8ktkvn9v5bk0earti"
+                },
+                {
+                    "text": "Disable Input after inkrementStepCount",
+                    "id": "r3f92p2dywit05zwc4bau3iw"
+                },
+                {
+                    "text": "Target mouse on ",
+                    "id": "ju5yr2l1t2u3eonbbrjyn0s2"
+                },
+                {
+                    "text": "Block inupts when Bomb defused",
+                    "id": "bn3476vviako1so9v6lmb9q2"
+                },
+                {
+                    "text": "Alle Step Inputs anlegen und schauen ob mit anderen Fenster funktionsfähig zu bekommen",
+                    "id": "yrya669wtbbefku0qnuosr6o"
+                },
+                {
+                    "text": "Einstieg Hinzufügen book animation",
+                    "id": "r7cosm6e4em0j63bn0qsg7wr"
+                },
+                {
+                    "text": "Update and Delete commands feedback green allert window",
+                    "id": "vs8ea3a2fdswaffjo4xbjfrw"
+                },
+                {
+                    "text": "Block views und DB with steps",
+                    "id": "uj7ebvcioi6nzo11zmdqgzj1"
+                },
+                {
+                    "text": "End Story Page Anlegen",
+                    "id": "gdqdeoigfa77ogz2toq4ewat"
                 },
                 {
                     "text": "VIEWS BLOCKIEREN",
@@ -267,5 +275,5 @@
     ],
     "autosave": true,
     "saveToFile": true,
-    "timestamp": 1719445294741
+    "timestamp": 1719449179483
 }

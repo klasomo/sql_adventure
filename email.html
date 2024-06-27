@@ -127,69 +127,7 @@
     </div>
 
     <script>
-        document.body.addEventListener('click', (event) => {
-            // Get the position of the click relative to the viewport
-            const clickX = event.clientX;
-            const clickY = event.clientY;
-
-            // Get the dimensions and position of the body element
-            const bodyRect = document.body.getBoundingClientRect();
-            const bodyWidth = bodyRect.width;
-            const bodyHeight = bodyRect.height;
-
-            // Assume background-size: cover; calculate the effective dimensions of the background image
-            const backgroundImage = new Image();
-            backgroundImage.src = getComputedStyle(document.body).backgroundImage.slice(5, -2);
-
-            backgroundImage.onload = () => {
-                const imgWidth = backgroundImage.width;
-                const imgHeight = backgroundImage.height;
-
-                const bgRatio = imgWidth / imgHeight;
-                const bodyRatio = bodyWidth / bodyHeight;
-
-                let effectiveWidth, effectiveHeight;
-                if (bodyRatio > bgRatio) {
-                    // The body is wider than the image
-                    effectiveWidth = bodyWidth;
-                    effectiveHeight = bodyWidth / bgRatio;
-                } else {
-                    // The body is taller than the image
-                    effectiveWidth = bodyHeight * bgRatio;
-                    effectiveHeight = bodyHeight;
-                }
-
-                // Calculate the offset of the image inside the body
-                const offsetX = (bodyWidth - effectiveWidth) / 2;
-                const offsetY = (bodyHeight - effectiveHeight) / 2;
-
-                // Calculate the position of the click relative to the background image
-                const x = clickX - offsetX;
-                const y = clickY - offsetY;
-
-                // Check if the click is within the effective image area
-                if (x >= 0 && x <= effectiveWidth && y >= 0 && y <= effectiveHeight) {
-                    //console.log('Clicked at: ', x, y);
-
-                    // Define your specific region
-                    const specificX1 = 1050;
-                    const specificX2 = 1300;
-                    const specificY1 = 540;
-                    const specificY2 = 650;
-
-                    if (x > specificX1 && x < specificX2 && y > specificY1 && y < specificY2) {
-                        console.log('Clicked within the specific region');
-                        const pdfUrl = '../assets/documents/pdf/Anleitung_SQL.pdf'; // Replace with the URL of your PDF
-                        const link = document.createElement('a');
-                        link.href = pdfUrl;
-                        link.download = 'Anleitung_SQL.pdf'; // Replace with the desired file name
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
-                }
-            };
-        });
+       
     </script>
 </body>
 

@@ -262,7 +262,7 @@ function initColorPicker() {
     setTimeout(function() {
         // Nach 5 Sekunden zur nächsten Seite weiterleiten
         window.location.href = 'story_end.html';
-    }, 5000); // 5000 Millisekunden = 5 Sekunden
+    }, 10000);
 }
 
   // Palette- und Canvas-Initialisierung
@@ -339,6 +339,7 @@ function initColorPicker() {
         canvas.removeEventListener("mousemove", handleCanvasMouseMove, false);
         wireColorInfo.innerHTML = correctWireText;
         endGame();
+        startConfetti()
         blockInputAndRedirect();
         break;
       default:

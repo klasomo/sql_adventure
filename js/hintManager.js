@@ -174,7 +174,6 @@ function notifyHintManager(newStepIndex) {
     if (newStepIndex !== stepIndex) {
         stepIndex = newStepIndex;
         openedHints = [];
-        console.log("clear OpenHint array");
     }
 }
 

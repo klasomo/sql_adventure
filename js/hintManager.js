@@ -91,8 +91,9 @@ const hints = [
     ]
 ];
 
-let hintIndex = 0;
+
 let stepIndex = 0;
+let openedHints = []; // Array zur Verfolgung der geöffneten Hinweise
 
 const hintModalCheckbox = document.getElementById("hint_modal_checkbox");
 hintModalCheckbox.checked = false;
@@ -129,8 +130,10 @@ document.getElementById("btn_hint").addEventListener('click', () => {
             const peneltyTime = (index === chapter.hints.length - 1) ? 300 : 60;
             // Event Listener hinzufügen
             input.addEventListener('change', () => {
-            if (input.checked) {
+            
+            if (input.checked && !checkIfHintWasAlreadyOpend(chapter.chapterTitle, index)) {
                 addTime(peneltyTime);
+                openedHints.push({ chapterTitle: chapter.chapterTitle, hintIndex: index });
                 }
             });
 
@@ -162,11 +165,18 @@ document.getElementById("btn_hint").addEventListener('click', () => {
     hintModalContent.appendChild(containerDiv);
 });
 
+
+function checkIfHintWasAlreadyOpend(chapterTitle, hintIndex) {
+    return openedHints.some(hint => hint.chapterTitle === chapterTitle && hint.hintIndex === hintIndex);
+}
+
 function notifyHintManager(newStepIndex) {
     if (newStepIndex !== stepIndex) {
         stepIndex = newStepIndex;
-        hintIndex = 0;
+        openedHints = [];
+        console.log("clear OpenHint array");
     }
 }
+
 
 

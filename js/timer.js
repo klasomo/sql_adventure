@@ -63,7 +63,7 @@ function saveEndTime(timeInSeconds) {
   let times = JSON.parse(localStorage.getItem('gameTimes')) || [];
   let existingPlayer = times.find(item => item.name === playerName);
   if (existingPlayer) {
-    existingPlayer.time += timeInSeconds;
+    existingPlayer.time = timeInSeconds;
   } else {
     times.push({ name: playerName, time: timeInSeconds });
   }

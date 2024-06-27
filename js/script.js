@@ -1,4 +1,3 @@
-
 const DbNames = {
   POLICE: "police",
   SERVER: "server_locked",
@@ -266,30 +265,141 @@ function execute(commands, outputElement, callback) {
 
 var accessLevel = 0;
 
-// Create an HTML table
+// // Create an HTML table
+// var tableCreate = (function () {
+//   function valconcat(vals, tagName) {
+//     if (vals.length === 0) return "";
+//     var open = "<" + tagName + ">",
+//       close = "</" + tagName + ">";
+//     return open + vals.join(close + open) + close;
+//   }
+//   return function (columns, values) {
+//     var tbl = document.createElement("table");
+//     // Hinzufügen der Klassen "table" und "table-zebra"
+//     tbl.classList.add("table", "table-zebra");
+//     var html = "<thead>" + valconcat(columns, "th") + "</thead>";
+//     var rows = values.map(function (v) {
+//       return valconcat(v, "td");
+//     });
+//     html += "<tbody>" + valconcat(rows, "tr") + "</tbody>";
+//     tbl.innerHTML = html;
+//     return tbl;
+//   };
+// })();
+
 var tableCreate = (function () {
   function valconcat(vals, tagName) {
     if (vals.length === 0) return "";
     var open = "<" + tagName + ">",
       close = "</" + tagName + ">";
-    return open + vals.join(close + open) + close;
+    var result = "";
+    for (var i = 0; i < vals.length; i++) {
+      result += open + vals[i] + close;
+    }
+    return result;
   }
+
   return function (columns, values) {
     var tbl = document.createElement("table");
-    // Hinzufügen der Klassen "table" und "table-zebra"
     tbl.classList.add("table", "table-zebra");
-    var html = "<thead>" + valconcat(columns, "th") + "</thead>";
-    var rows = values.map(function (v) {
-      return valconcat(v, "td");
-    });
-    html += "<tbody>" + valconcat(rows, "tr") + "</tbody>";
+
+    var headHtml = "";
+    for (var i = 0; i < columns.length; i++) {
+      headHtml += "<th>" + columns[i] + "</th>";
+    }
+    var html = "<thead'>" + headHtml + "</thead>";
+
+    var rowsHtml = "";
+    for (var i = 0; i < values.length; i++) {
+      var rowHtml = "";
+      for (var j = 0; j < values[i].length; j++) {
+        if (columns[j].toLowerCase() === "nachricht") {
+          rowHtml +=
+            "<td class='flex flex-row items-center'>" +
+            customCopyElement(i, j) +
+            "<div id='copyTarget" +
+            i +
+            "_" +
+            j +
+            "'>" +
+            values[i][j] +
+            "</div>" +
+            "</td>";
+        } else {
+          rowHtml += "<td>" + values[i][j] + "</td>";
+        }
+      }
+      rowsHtml += "<tr>" + rowHtml + "</tr>";
+    }
+    
+    html += "<tbody>" + rowsHtml + "</tbody>";
     tbl.innerHTML = html;
     return tbl;
   };
 })();
 
-function incrementStep(currentOldStep) {
+function customCopyElement(rowIndex, colIndex) {
+  // 1. Erstelle das div-Element für den Tooltip
+  const tooltipDiv = document.createElement('div');
+  tooltipDiv.classList.add('tooltip', 'tooltip-bottom');
+  tooltipDiv.setAttribute('data-tip', 'kopieren');
 
+  // 2. Erstelle das Button-Element
+  const copy_button = document.createElement("button");
+  const target = "#copyTarget" + rowIndex + "_" + colIndex;
+  copy_button.className = "btn btn-square btn-outline copyBnt btn-sm mr-2";
+  copy_button.setAttribute("data-clipboard-target", target);
+  const copy_button_id = "copyBtn" + rowIndex + "_" + colIndex;
+  copy_button.id =  copy_button_id;
+
+  // 3. Erstelle das SVG-Icon
+  const svgIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const svgIconId = "svgIcon" + rowIndex + "_" + colIndex;
+  svgIcon.id = svgIconId;
+  svgIcon.setAttribute("width", "25px");
+  svgIcon.setAttribute("height", "25px");
+  svgIcon.setAttribute("viewBox", "0 0 24 24");
+  svgIcon.setAttribute("fill", "none");
+
+  // SVG Path für das ursprüngliche Symbol
+  const originalPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  originalPath.setAttribute("d", "M19.53 8L14 2.47C13.8595 2.32931 13.6688 2.25018 13.47 2.25H11C10.2707 2.25 9.57118 2.53973 9.05546 3.05546C8.53973 3.57118 8.25 4.27065 8.25 5V6.25H7C6.27065 6.25 5.57118 6.53973 5.05546 7.05546C4.53973 7.57118 4.25 8.27065 4.25 9V19C4.25 19.7293 4.53973 20.4288 5.05546 20.9445C5.57118 21.4603 6.27065 21.75 7 21.75H14C14.7293 21.75 15.4288 21.4603 15.9445 20.9445C16.4603 20.4288 16.75 19.7293 16.75 19V17.75H17C17.7293 17.75 18.4288 17.4603 18.9445 16.9445C19.4603 16.4288 19.75 15.7293 19.75 15V8.5C19.7421 8.3116 19.6636 8.13309 19.53 8ZM14.25 4.81L17.19 7.75H14.25V4.81ZM15.25 19C15.25 19.3315 15.1183 19.6495 14.8839 19.8839C14.6495 20.1183 14.3315 20.25 14 20.25H7C6.66848 20.25 6.35054 20.1183 6.11612 19.8839C5.8817 19.6495 5.75 19.3315 5.75 19V9C5.75 8.66848 5.8817 8.35054 6.11612 8.11612C6.35054 7.8817 6.66848 7.75 7 7.75H8.25V15C8.25 15.7293 8.53973 16.4288 9.05546 16.9445C9.57118 17.4603 10.2707 17.75 11 17.75H15.25V19ZM17 16.25H11C10.6685 16.25 10.3505 16.1183 10.1161 15.8839C9.8817 15.6495 9.75 15.3315 9.75 15V5C9.75 4.66848 9.8817 4.35054 10.1161 4.11612C10.3505 3.8817 10.6685 3.75 11 3.75H12.75V8.5C12.7526 8.69811 12.8324 8.88737 12.9725 9.02747C13.1126 9.16756 13.3019 9.24741 13.5 9.25H18.25V15C18.25 15.3315 18.1183 15.6495 17.8839 15.8839C17.6495 16.1183 17.3315 16.25 17 16.25Z");
+  originalPath.setAttribute("fill", "#ffffff");
+
+  // SVG Path für das geänderte Symbol
+  const changedPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  changedPath.setAttribute("d", "M19.7071 6.29289C20.0976 6.68342 20.0976 7.31658 19.7071 7.70711L10.4142 17C9.63316 17.7811 8.36683 17.781 7.58579 17L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L18.2929 6.29289C18.6834 5.90237 19.3166 5.90237 19.7071 6.29289Z");
+  changedPath.setAttribute("fill", "#4d8628");
+
+  // Füge den ursprünglichen Path zum SVG-Icon hinzu
+  svgIcon.appendChild(originalPath);
+
+
+  // Füge den Button zum Tooltip-Div hinzu
+  tooltipDiv.appendChild(copy_button);
+
+  var clipboard = new ClipboardJS("#"+copy_button_id);
+
+  clipboard.on('success', function(e) {
+    console.log("Copy Btn Clicked");
+    const changeSvgIcon = document.getElementById(svgIconId);
+  
+    changeSvgIcon.innerHTML = changedPath.outerHTML;
+
+    setTimeout(function () {
+        changeSvgIcon.innerHTML = originalPath.outerHTML;
+    }, 1000);
+  });
+
+  
+  // Füge das SVG-Icon zum Button hinzu
+  copy_button.appendChild(svgIcon);
+  // 6. Gib den HTML-String des Tooltip-Divs zurück (optional)
+  return tooltipDiv.outerHTML;
+}
+
+
+function incrementStep(currentOldStep) {
   if (currentStep === currentOldStep) {
     let nextValue = currentOldStep + 1;
     currentStep = nextValue;
@@ -321,26 +431,23 @@ function checkAccessLevel() {
   });
 }
 
-function udpateViews(){
-  switch(currentStep){
-    case StepIndex.TARTORTBERICHT:
-      unlockView(DbNames.POLICE);
-      break;
-    case StepIndex.LOGIN:
-      unlockView(DbNames.SERVER);
-      break;
-    case StepIndex.VERANSTALTUNG:
-      unlockView(DbNames.VERANSTALTUNG);
-      break;
-    case StepIndex.BOMBE:
-      unlockView(DbNames.BOMB);
-      break;
+function udpateViews() {
+  if(currentStep >= StepIndex.TARTORTBERICHT){
+    unlockView(DbNames.POLICE);
+  }
+  if(currentStep >= StepIndex.LOGIN){
+    unlockView(DbNames.SERVER);
+  }
+  if(currentStep >= StepIndex.VERANSTALTUNG){
+    unlockView(DbNames.MAP);
+  }
+  if(currentStep >= StepIndex.BOMBE){
+    unlockView(DbNames.BOMB);
   }
 }
 
-
-function unlockView(dbName){
-  switch(dbName){
+function unlockView(dbName) {
+  switch (dbName) {
     case DbNames.POLICE:
       btnPolice.classList.remove("btn-disabled");
       var svgPath = btnPolice.querySelector("svg");
@@ -363,7 +470,6 @@ function unlockView(dbName){
       break;
     default:
       break;
-
   }
 }
 
@@ -496,8 +602,6 @@ function saveAndLoadSqlCommand(viewIndex) {
   currentViewIndex = viewIndex;
   sqlInput.setValue(sqlInputCache[currentViewIndex]);
 }
-
-
 
 function openDatabaseFromDbName(dbName) {
   var dbPath = "";
@@ -750,7 +854,6 @@ function removeFromDatabases(dbName) {
   if (databases[dbName]) {
     delete databases[dbName];
   } else {
-
   }
 }
 

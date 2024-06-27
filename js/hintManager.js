@@ -61,7 +61,7 @@ const hints = [
             hints: [
                 'Nutze die Datenbank "Email", um herauszufinden, was der Täter geplant hat.',
                 'Suche nach den Emails, die vom Täter gesendet und empfangen wurden.',
-                'SELECT * FROM Email WHERE Absender = "p.huber@symmex.it" or Empfänger = "p.huber@symmex.it" and datum = "27.06.2024";'
+                'SELECT * FROM Email WHERE (Absender = "p.huber@symmex.it" and Empfänger = "tina.schneider@gmy.de") or (Empfänger = "p.huber@symmex.it" and Absender = "tina.schneider@gmy.de");'
             ]
         }
     ],

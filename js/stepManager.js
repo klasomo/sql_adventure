@@ -216,7 +216,7 @@ function initPhone(lockPhone){
     sendMessageButton.addEventListener('click', SendMessage); // Hier: SendMessage ohne ()
 
     var messageInput = document.getElementById('phone_nachricht_input');
-
+    
     if(lockPhone){
         sendMessageButton.disabled = true;
         messageInput.disabled = true;
@@ -255,8 +255,10 @@ function InitTatortbericht() {
 
     // Beispiel: Aufruf von addChatMessage
     ReciveMessage("Hallo, hier ist Kommissar Wolf.");
+
     ReciveMessage("Ich hoffe, du findest dich in unserer Datenbank zurecht.");
     ReciveMessage(currentQuestion);
+    
 }
 
 var messageQueue = [];
@@ -269,14 +271,28 @@ function ReciveMessage(message){
     }
 }
 
-function processMessageQueue(){
-    if(messageQueue.length > 0){
+function processMessageQueue() {
+    if (messageQueue.length > 0) {
         isProcessingMessage = true;
         const message = messageQueue.shift();
-        const timeoutTime = message.length * 35;
-        addChatMessageAndLog(message, false);
-        setTimeout(processMessageQueue, timeoutTime);
-    }else{
+
+        
+        // Dynamische Verzögerung basierend auf Nachrichtenlänge
+        const baseDelay = 35; // Basisverzögerung in Millisekunden pro Zeichen
+        const randomFactor = Math.random() * 100; // Zufällige Verzögerung zwischen 0 und 100 Millisekunden
+        const timeoutTime = message.length * baseDelay + randomFactor;
+
+        addTypingAnimation(false);
+
+        setTimeout(() => {
+            removeTypingAnimation();
+            addChatMessageAndLog(message, false);
+            processMessageQueue();
+            
+        }, timeoutTime);
+
+
+    } else {
         isProcessingMessage = false;
     }
 }
@@ -342,6 +358,41 @@ function addChatMessageAndLog(messageText, isSender){
 
         chatlogs.push(chatMessage);
     }
+}
+
+function removeTypingAnimation() {
+    const typingAnimationDiv = document.getElementById("typing_animation");
+    if (typingAnimationDiv) {
+        typingAnimationDiv.remove();
+    }
+}
+
+
+function addTypingAnimation(isSender){
+    // Klasse basierend auf isSender festlegen
+    var imagePath = isSender ? 'assets/images/avatar/detective_avatar.png' : 'assets/images/avatar/police_avatar.png'
+    var chatClass = isSender ? 'chat-end' : 'chat-start';
+    var selfClass = isSender ? 'self-end' : 'self-start';
+
+    // Chat-Nachricht HTML erstellen
+    var messageHtml = `
+        <div class="chat ${chatClass} ${selfClass}" id="typing_animation">
+            <div class="chat-image avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Avatar" src=${imagePath} />
+                </div>
+            </div>
+            <div class="chat-bubble flex justify-center align-center"><span class="loading loading-dots loading-md"></span></div>
+        </div>`;
+
+    // Zur Chat-Liste hinzufügen
+    var chatDiv = document.getElementById('phone_chat');
+    chatDiv.innerHTML += messageHtml;
+
+    // Optional: Scrollen zum Ende des Chat-Verlaufs nach dem Hinzufügen der Nachricht
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+
+    return true;
 }
 
 function addChatMessage(messageText, isSender) {
@@ -489,7 +540,7 @@ function clearCell(cellCords) {
 
 
 
-//Überprüf button Event H5
+
 function setCheckButtonCityMap(){
 
     const correctTargetCords = [3,13]
